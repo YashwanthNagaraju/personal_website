@@ -1,25 +1,53 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import MenuBar from './components/MenuBar'
+import { Home } from './components/home/Home'
+import { About } from './components/about/About'
+import { Contact } from './components/contact/Contact'
+import styled from 'styled-components'
+import { Footer } from './components/footer/Footer'
+import { Social } from './components/social/Social'
+import { Email } from './components/social/Email'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Appdiv className="App">
+      <MenuBar />
+      <Social />
+      <Email />
+      <Home />
+      <About />
+      <Contact />
+      <Footer />
+    </Appdiv>
+  )
 }
 
-export default App;
+const Appdiv = styled.div`
+  color: white;
+`
+
+export const pageRoutes = [
+  {
+    pathname: '/',
+    exact: true,
+    name: '.home()',
+    id: 'home',
+    component: Home,
+  },
+  {
+    pathname: '/about',
+    exact: true,
+    name: '.about()',
+    id: 'about',
+    component: About,
+  },
+  {
+    pathname: '/contact',
+    exact: true,
+    name: '.contact()',
+    id: 'contact',
+    component: Contact,
+  },
+]
+
+export default App
