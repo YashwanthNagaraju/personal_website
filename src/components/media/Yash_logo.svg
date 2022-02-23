@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  version="1.1"
+  width="105"
+  height="120"
+  viewBox="0 0 105 120"
+  xml:space="preserve"
+>
+<desc>Yash Personal Logo</desc>
+<defs>
+</defs>
+<g transform="matrix(0 0 0 0 0 0)" id="42019b82-d56a-4df0-bcda-084739d75968">
+</g>
+<g
+    transform="matrix(1 0 0 1 52.5 60)"
+    id="c7ed600a-d620-467b-9c8e-b596d7be7c95"
+  >
+<rect
+      style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(14,18,18); fill-rule: nonzero; opacity: 1;"
+      vector-effect="non-scaling-stroke"
+      x="-52.5"
+      y="-60"
+      rx="0"
+      ry="0"
+      width="105"
+      height="120"
+    />
+</g>
+<g
+    transform="matrix(1.01 0 0 2.25 52.5 60)"
+    style=""
+    id="87a8a5b6-ed25-4c0e-83bf-9be8c054d03f"
+  >
+		<text
+      xml:space="preserve"
+      font-family="Cantarell"
+      font-size="46"
+      font-style="normal"
+      font-weight="900"
+      style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1; white-space: pre;"
+    ><tspan x="-48.28" y="14.45">&lt;Y/&gt;</tspan></text>
+</g>
+</svg>

@@ -1,6 +1,6 @@
 import './App.css'
 import MenuBar from './components/MenuBar'
-import { Home } from './components/home/Home'
+import { Experience } from './components/experience/Experience'
 import { About } from './components/about/About'
 import { Contact } from './components/contact/Contact'
 import styled from 'styled-components'
@@ -14,8 +14,8 @@ function App() {
       <MenuBar />
       <Social />
       <Email />
-      <Home />
       <About />
+      <Experience />
       <Contact />
       <Footer />
     </Appdiv>
@@ -28,23 +28,23 @@ const Appdiv = styled.div`
 
 export const pageRoutes = [
   {
-    pathname: '/',
-    exact: true,
-    name: '.home()',
-    id: 'home',
-    component: Home,
-  },
-  {
     pathname: '/about',
     exact: true,
-    name: '.about()',
+    name: 'About',
     id: 'about',
     component: About,
   },
   {
+    pathname: '/experience',
+    exact: true,
+    name: 'Experience',
+    id: 'experience',
+    component: Experience,
+  },
+  {
     pathname: '/contact',
     exact: true,
-    name: '.contact()',
+    name: 'Contact',
     id: 'contact',
     component: Contact,
   },

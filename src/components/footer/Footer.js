@@ -9,9 +9,6 @@ export const Footer = () => {
         <Typography variant="body1" gutterBottom>
           Designed and Built by Yashwanth
         </Typography>
-        <Typography variant="body1" gutterBottom>
-          © Copyright 2021. All right reserved
-        </Typography>
       </StyledDiv>
     </StyledFooter>
   )

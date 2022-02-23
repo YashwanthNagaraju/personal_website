@@ -21,6 +21,9 @@ const ContactDiv = styled.div`
   display: block;
   position: fixed;
   bottom: 0px;
+  @media (max-width: 767px) {
+    display: none;
+  }
 `
 const StyledList = styled.ul`
   list-style-type: none;

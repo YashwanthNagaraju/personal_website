@@ -11,6 +11,7 @@ import MenuItem from '@mui/material/MenuItem'
 import styled from 'styled-components'
 import { pageRoutes } from '../App'
 import { Link } from 'react-scroll'
+import Yash_logo from './media/Yash_logo.svg'
 
 const MenuBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null)
@@ -22,21 +23,23 @@ const MenuBar = () => {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null)
   }
-  const logoText = '<Y/>'
+
   return (
-    <AppBar position="static" id="navMain">
+    <StyledAppBar position="fixed" id="navMain">
       <Container maxWidth="xl" id="navContainer">
         <Toolbar disableGutters id="navBar">
-          <LogoText
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ mr: 2, display: { xs: 'none', md: 'grid' } }}
+          <NoStyleLink
+            offset={-200}
+            to="about"
+            spy={true}
+            smooth={true}
+            duration={500}
+            id="logoLink"
           >
-            {logoText}
-          </LogoText>
+            <img src={Yash_logo} alt="logo" />
+          </NoStyleLink>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <StyledBoxM id="navLinksM" sx={{ flexGrow: 1 }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -52,12 +55,12 @@ const MenuBar = () => {
               anchorEl={anchorElNav}
               anchorOrigin={{
                 vertical: 'bottom',
-                horizontal: 'left',
+                horizontal: 'right',
               }}
               keepMounted
               transformOrigin={{
                 vertical: 'top',
-                horizontal: 'left',
+                horizontal: 'right',
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
@@ -67,28 +70,23 @@ const MenuBar = () => {
             >
               {pageRoutes.map((page) => (
                 <MenuItem key={page.id} onClick={handleCloseNavMenu}>
-                  <Link to={page.id} spy={true} smooth={true}>
+                  <Link offset={-130} to={page.id} spy={true} smooth={true}>
                     {page.name}
                   </Link>
                 </MenuItem>
               ))}
             </Menu>
-          </Box>
-          <LogoText
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: 'grid', md: 'none' } }}
-          >
-            {logoText}
-          </LogoText>
-          <StyledBox
-            id="navLinks"
-            sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}
-          >
+          </StyledBoxM>
+          <StyledBox id="navLinks" sx={{ flexGrow: 1 }}>
             {pageRoutes.map((page) => (
               <NavText>
-                <Link to={page.id} spy={true} smooth={true}>
+                <Link
+                  offset={-200}
+                  to={page.id}
+                  spy={true}
+                  smooth={true}
+                  duration={500}
+                >
                   {page.name}
                 </Link>
               </NavText>
@@ -96,17 +94,53 @@ const MenuBar = () => {
           </StyledBox>
         </Toolbar>
       </Container>
-    </AppBar>
+    </StyledAppBar>
   )
 }
 export default MenuBar
 
-const LogoText = styled(Typography)``
+const StyledBoxM = styled(Box)`
+  @media (max-width: 767px) {
+    display: flex;
+  }
+  display: none;
+`
 
 const StyledBox = styled(Box)`
   justify-content: flex-end;
+  @media (min-width: 768px) {
+    display: flex;
+  }
+  display: none;
 `
+
 const NavText = styled(Typography)`
   margin-left: 15px !important;
   margin-right: 15px !important;
+  &:hover {
+    color: #6e0dd0;
+  }
+  font-size: 18px;
+`
+
+const StyledAppBar = styled(AppBar)`
+  @keyframes slideInFromLeft {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  background-color: rgba(14, 18, 18, 0.85) !important;
+  backdrop-filter: blur(3px);
+  animation: 1s ease-out 0s 1 slideInFromLeft;
+`
+
+const NoStyleLink = styled(Link)`
+  @media (max-width: 900px) {
+  }
+
+  text-decoration: none;
 `

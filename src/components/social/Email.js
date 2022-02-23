@@ -17,6 +17,9 @@ const ContactDiv = styled.div`
   position: fixed;
   bottom: 0px;
   right: 40px;
+  @media (max-width: 767px) {
+    display: none;
+  }
 `
 const Temp = styled.div`
   display: flex;
