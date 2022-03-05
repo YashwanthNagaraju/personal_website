@@ -15,8 +15,8 @@ export const Footer = () => {
 }
 
 const StyledFooter = styled.footer`
-  color: white;
+  color: #f4f9fc;
 `
 const StyledDiv = styled.div`
-  color: white;
+  color: #f4f9fc;
 `

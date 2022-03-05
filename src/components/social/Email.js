@@ -30,5 +30,5 @@ const Temp = styled.div`
 `
 const StyledLink = styled.a`
   text-decoration: none;
-  color: white;
+  color: #f4f9fc;
 `

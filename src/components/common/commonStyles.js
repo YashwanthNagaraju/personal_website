@@ -1,22 +1,26 @@
 import { Container, Typography } from '@mui/material'
 import styled from 'styled-components'
 
-export const PurpleText = styled(Typography)`
-  color: #8838b4;
-`
-
-export const BlueText = styled(Typography)`
-  color: #6e0dd0;
-`
-export const GreenTextBody = styled(Typography)`
+export const ColorTextBody = styled(Typography)`
   color: #08fdd8;
 `
-export const GreenTextHeading = styled(Typography)`
+export const ColorTextHeading = styled(Typography)`
   color: #08fdd8;
+`
+export const TopContainer = styled(Container)`
+  margin-top: 8%;
+  min-height: 100vh;
 `
 export const StyledContainer = styled(Container)`
-  margin-top: 15%;
+  min-height: 100vh;
 `
+export const BottomContainer = styled(Container)`
+  max-height: 95vh;
+`
+
 export const GeneralTextHeading = styled(Typography)`
-  color: rgb(204, 214, 246);
+  color: #f4f9fc;
+`
+export const GeneralTextBody = styled(Typography)`
+  color: #f4f9fc;
 `

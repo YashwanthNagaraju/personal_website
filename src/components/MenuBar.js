@@ -3,6 +3,8 @@ import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
 import IconButton from '@mui/material/IconButton'
+import Button from '@mui/material/Button'
+
 import Typography from '@mui/material/Typography'
 import Menu from '@mui/material/Menu'
 import MenuIcon from '@mui/icons-material/Menu'
@@ -30,7 +32,7 @@ const MenuBar = () => {
         <Toolbar disableGutters id="navBar">
           <NoStyleLink
             offset={-200}
-            to="about"
+            to="home"
             spy={true}
             smooth={true}
             duration={500}
@@ -91,6 +93,7 @@ const MenuBar = () => {
                 </Link>
               </NavText>
             ))}
+            <ResumeButton variant="outlined">Resume</ResumeButton>
           </StyledBox>
         </Toolbar>
       </Container>
@@ -98,6 +101,12 @@ const MenuBar = () => {
   )
 }
 export default MenuBar
+
+const ResumeButton = styled(Button)`
+  color: rgba(8, 253, 216, 1) !important;
+  border: 2px solid rgba(8, 253, 216, 1) !important;
+  margin-left: 2% !important;
+`
 
 const StyledBoxM = styled(Box)`
   @media (max-width: 767px) {
@@ -108,6 +117,7 @@ const StyledBoxM = styled(Box)`
 
 const StyledBox = styled(Box)`
   justify-content: flex-end;
+  align-items: center;
   @media (min-width: 768px) {
     display: flex;
   }
@@ -118,7 +128,7 @@ const NavText = styled(Typography)`
   margin-left: 15px !important;
   margin-right: 15px !important;
   &:hover {
-    color: #6e0dd0;
+    color: #08fdd8;
   }
   font-size: 18px;
 `
