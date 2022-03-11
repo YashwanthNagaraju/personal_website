@@ -1,4 +1,4 @@
-import { Box, Button, Container, Typography } from '@mui/material'
+import { Box, Button, Container, Typography, Paper, Stack } from '@mui/material'
 import styled from 'styled-components'
 import {
   BlueText,
@@ -8,14 +8,48 @@ import {
   StyledContainer,
 } from '../common/commonStyles'
 import { Element } from 'react-scroll'
+import { Carousel } from 'antd';
+
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === 'dark' ? '#ffffff' : '#ffffff',
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+}));
 
 export const Experience = () => {
   // const [dotPosition, setDotPosition] = React.useState('left');
 
+
   return (
     <Element name="experience">
-      <StyledBox sx={{ height: '80vh' }} id="homeBox">
-        <Typography variant="h2" gutterBottom>
+      <StyledBox sx={{ height: '100vh' }} id="homeBox">
+        <Stack direction="row" spacing={2}>
+          <Box
+            sx={{
+              width: 300,
+              height: 300,
+              backgroundColor: 'primary.dark',
+              '&:hover': {
+                backgroundColor: 'primary.main',
+                opacity: [0.9, 0.8, 0.7],
+              },
+            }}
+          >Text</Box >
+          <Box
+            sx={{
+              width: 300,
+              height: 300,
+              backgroundColor: 'primary.dark',
+              '&:hover': {
+                backgroundColor: 'primary.main',
+                opacity: [0.9, 0.8, 0.7],
+              },
+            }}
+          >Text</Box >
+        </Stack>
+        {/* <Typography variant="h2" gutterBottom>
           Where I've Worked
         </Typography>
         <Typography variant="h3" gutterBottom>
@@ -43,14 +77,13 @@ export const Experience = () => {
             Responsible for fixing bugs and issues in styles, functionality, and
             implementing web accessibility.
           </p>
-        </Typography>
-        {/* <Carousl /> */}
+        </Typography> */}
       </StyledBox>
-    </Element>
+    </Element >
   )
 }
 
-const StyledBox = styled(Box)`
+const StyledBox = styled(Box) `
   text-align: initial;
   display: inline-table;
   @media (max-width: 767px) {
@@ -61,5 +94,4 @@ const StyledBox = styled(Box)`
   }
   max-width: 1000px;
   width: 70%;
-  max-width: 1000px;
 `

@@ -31,8 +31,9 @@ export const About = () => {
   )
 }
 
-const StyledBox = styled(Box)`
+const StyledBox = styled(Box) `
   text-align: initial;
+  display: inline-block;    
   width: 70%;
   max-width: 1000px;
 `
