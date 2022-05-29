@@ -28,6 +28,7 @@ export const IdeaSubTitle = () => {
   return (
     <IdeaTitle id="changeText" variant="body1" component="h2" gutterBottom>
       {subText[2]}
+      <a href="https://icons8.com/illustrations/author/XTPoH093lluQ"></a>
     </IdeaTitle>
   )
 }
@@ -47,30 +48,30 @@ export const LotrSubTitle = () => {
 }
 
 const WebTitle = styled(Typography) `
-  padding-top: 2%;
+  padding-top: 1%;
   font-size: 4rem !important;
   z-index: 1;
   color: #f4f9fc !important;
   font-family: rockwell !important;
 `
 const AnimeTitle = styled(Typography) `
-  padding-top: 2%;
+  padding-top: 1%;
   font-size: 4rem !important;
   color: #f4f9fc !important;
 `
 const IdeaTitle = styled(Typography) `
-  padding-top: 2%;
+  padding-top: 1%;
   font-size: 4rem !important;
   color: #f4f9fc !important;
 `
 const CookTitle = styled(Typography) `
-  padding-top: 2%;
+  padding-top: 1%;
   font-size: min(26.6vw, 83px) !important;
   color: #f4f9fc !important;
   font-family: fantasy !important;
 `
 const LotrTitle = styled(Typography) `
-  padding-top: 2%;
+  padding-top: 1%;
   font-size: 4rem !important;
   color: #f4f9fc !important;
 `

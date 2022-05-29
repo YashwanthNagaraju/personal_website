@@ -23,8 +23,8 @@ function App() {
       {/* {timeOut !== 1 && <Loader />} */}
       {/* {timeOut == 1 && ( */}
       <MenuBar />
-      <Social />
-      <Email />
+      {/* <Social />
+      <Email /> */}
       <Home />
       <About />
       <Experience />
@@ -43,21 +43,21 @@ export const pageRoutes = [
   {
     pathname: '/about',
     exact: true,
-    name: '01.About',
+    name: 'About',
     id: 'about',
     component: About,
   },
   {
     pathname: '/experience',
     exact: true,
-    name: '02.Experience',
+    name: 'Experience',
     id: 'experience',
     component: Experience,
   },
   {
     pathname: '/contact',
     exact: true,
-    name: '03.Contact',
+    name: 'Contact',
     id: 'contact',
     component: Contact,
   },

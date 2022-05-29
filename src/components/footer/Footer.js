@@ -1,22 +1,21 @@
-import { Typography } from '@mui/material'
-import React from 'react'
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
+import { MyText, primaryBgColor } from "../common/commonStyles";
 
 export const Footer = () => {
   return (
     <StyledFooter>
       <StyledDiv>
-        <Typography variant="body1" gutterBottom>
-          Designed and Built by Yashwanth
-        </Typography>
+        <MyText variant="body1" gutterBottom>
+          testing
+        </MyText>
       </StyledDiv>
     </StyledFooter>
-  )
-}
+  );
+};
 
 const StyledFooter = styled.footer`
-  color: #f4f9fc;
-`
+  background-color: ${primaryBgColor};
+`;
 const StyledDiv = styled.div`
-  color: #f4f9fc;
-`
+`;

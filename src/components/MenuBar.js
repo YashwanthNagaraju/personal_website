@@ -1,34 +1,33 @@
-import * as React from 'react'
-import AppBar from '@mui/material/AppBar'
-import Box from '@mui/material/Box'
-import Toolbar from '@mui/material/Toolbar'
-import IconButton from '@mui/material/IconButton'
-import Button from '@mui/material/Button'
-
-import Typography from '@mui/material/Typography'
-import Menu from '@mui/material/Menu'
-import MenuIcon from '@mui/icons-material/Menu'
-import Container from '@mui/material/Container'
-import MenuItem from '@mui/material/MenuItem'
-import styled from 'styled-components'
-import { pageRoutes } from '../App'
-import { Link } from 'react-scroll'
-import Yash_logo from './media/Yash_logo.svg'
+import * as React from "react";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import Button from "@mui/material/Button";
+import Menu from "@mui/material/Menu";
+import MenuIcon from "@mui/icons-material/Menu";
+import Container from "@mui/material/Container";
+import MenuItem from "@mui/material/MenuItem";
+import styled from "styled-components";
+import { pageRoutes } from "../App";
+import { Link } from "react-scroll";
+import Yash_logo from "./media/Yash_logo.svg";
+import { MyText, primaryBgColor } from "./common/commonStyles";
 
 const MenuBar = () => {
-  const [anchorElNav, setAnchorElNav] = React.useState(null)
+  const [anchorElNav, setAnchorElNav] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget)
-  }
+    setAnchorElNav(event.currentTarget);
+  };
 
   const handleCloseNavMenu = () => {
-    setAnchorElNav(null)
-  }
+    setAnchorElNav(null);
+  };
 
   return (
-    <StyledAppBar position="fixed" id="navMain">
-      <Container maxWidth="xl" id="navContainer">
+    <StyledAppBar position="fixed" id="navBarMain">
+      <NavContainer maxWidth="xl" id="navContainer">
         <Toolbar disableGutters id="navBar">
           <NoStyleLink
             offset={-200}
@@ -56,23 +55,29 @@ const MenuBar = () => {
               id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'right',
+                vertical: "bottom",
+                horizontal: "right",
               }}
               keepMounted
               transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
+                vertical: "top",
+                horizontal: "right",
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: 'block', md: 'none' },
+                display: { xs: "block", md: "none" },
               }}
             >
               {pageRoutes.map((page) => (
                 <MenuItem key={page.id} onClick={handleCloseNavMenu}>
-                  <Link offset={-130} to={page.id} spy={true} smooth={true}>
+                  <Link
+                    key={page.id}
+                    offset={-130}
+                    to={page.id}
+                    spy={true}
+                    smooth={true}
+                  >
                     {page.name}
                   </Link>
                 </MenuItem>
@@ -81,9 +86,9 @@ const MenuBar = () => {
           </StyledBoxM>
           <StyledBox id="navLinks" sx={{ flexGrow: 1 }}>
             {pageRoutes.map((page) => (
-              <NavText>
+              <NavText key={page.id}>
                 <Link
-                  offset={-200}
+                  key={page.id}
                   to={page.id}
                   spy={true}
                   smooth={true}
@@ -96,24 +101,50 @@ const MenuBar = () => {
             <ResumeButton variant="outlined">Resume</ResumeButton>
           </StyledBox>
         </Toolbar>
-      </Container>
+      </NavContainer>
     </StyledAppBar>
-  )
-}
-export default MenuBar
+  );
+};
+export default MenuBar;
 
 const ResumeButton = styled(Button)`
-  color: rgba(8, 253, 216, 1) !important;
-  border: 2px solid rgba(8, 253, 216, 1) !important;
+  color: #075fe4 !important;
+  border: 2px solid #075fe4 !important;
   margin-left: 2% !important;
-`
+`;
+
+const NavContainer = styled(Container)`
+  && {
+    @media (max-width: 374px) {
+      max-width: 90% !important;
+    }
+    @media (min-width: 375px) and (max-width: 424px) {
+      max-width: 90% !important;
+    }
+    @media (min-width: 425px) and (max-width: 599px) {
+      max-width: 90% !important;
+    }
+    @media (min-width: 600px) and (max-width: 767px) {
+      max-width: 90% !important;
+    }
+    @media (min-width: 768px) and (max-width: 1023px) {
+      max-width: 85% !important;
+    }
+    @media (min-width: 1024px) and (max-width: 1199px) {
+      max-width: 85% !important;
+    }
+    @media (min-width: 1200px) {
+      max-width: 80% !important;
+    }
+  }
+`;
 
 const StyledBoxM = styled(Box)`
   @media (max-width: 767px) {
     display: flex;
   }
   display: none;
-`
+`;
 
 const StyledBox = styled(Box)`
   justify-content: flex-end;
@@ -122,35 +153,28 @@ const StyledBox = styled(Box)`
     display: flex;
   }
   display: none;
-`
+`;
 
-const NavText = styled(Typography)`
+const NavText = styled(MyText)`
   margin-left: 15px !important;
   margin-right: 15px !important;
   &:hover {
     color: #08fdd8;
   }
   font-size: 18px;
-`
+`;
 
 const StyledAppBar = styled(AppBar)`
-  @keyframes slideInFromLeft {
-    0% {
-      transform: translateX(-100%);
-    }
-    100% {
-      transform: translateX(0);
-    }
+  && {
+    background: ${primaryBgColor};
+    backdrop-filter:blur(4px);
+    opacity:4;
   }
-
-  background-color: rgba(14, 18, 18, 0.85) !important;
-  backdrop-filter: blur(3px);
-  animation: 1s ease-out 0s 1 slideInFromLeft;
-`
+`;
 
 const NoStyleLink = styled(Link)`
   @media (max-width: 900px) {
   }
 
   text-decoration: none;
-`
+`;
