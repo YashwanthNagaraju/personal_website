@@ -7,7 +7,7 @@ export const Footer = () => {
     <StyledFooter>
       <StyledDiv>
         <MyText variant="body1" gutterBottom>
-          testing
+          Built by Yashwanth Nagaraju.
         </MyText>
       </StyledDiv>
     </StyledFooter>

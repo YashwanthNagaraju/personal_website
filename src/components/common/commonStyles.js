@@ -13,6 +13,14 @@ export const MyText = styled(Typography)`
   }
 `;
 
+export const LineDiv = styled.div`
+  && {
+    background: ${secondColor};
+    min-width: 7px;
+    margin-right: 5%;
+  }
+`;
+
 export const ColorTextBody = styled(MyText)`
   color: #08fdd8;
 `;
@@ -24,7 +32,12 @@ export const TopContainer = styled(Container)`
   min-height: 100vh;
 `;
 export const StyledContainer = styled(Container)`
-  min-height: 100vh;
+  && {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 export const BottomContainer = styled(Container)`
   max-height: 95vh;

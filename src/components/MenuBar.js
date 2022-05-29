@@ -11,8 +11,8 @@ import MenuItem from "@mui/material/MenuItem";
 import styled from "styled-components";
 import { pageRoutes } from "../App";
 import { Link } from "react-scroll";
-import Yash_logo from "./media/Yash_logo.svg";
-import { MyText, primaryBgColor } from "./common/commonStyles";
+import Yash_logo from "../assets/images/My_Logo.svg";
+import { MyText, primaryBgColor, secondColor } from "./common/commonStyles";
 
 const MenuBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -36,8 +36,9 @@ const MenuBar = () => {
             smooth={true}
             duration={500}
             id="logoLink"
+            tabIndex={1}
           >
-            <img src={Yash_logo} alt="logo" />
+            <img src={Yash_logo} alt="Yashwanth's website logo" />
           </NoStyleLink>
 
           <StyledBoxM id="navLinksM" sx={{ flexGrow: 1 }}>
@@ -71,15 +72,16 @@ const MenuBar = () => {
             >
               {pageRoutes.map((page) => (
                 <MenuItem key={page.id} onClick={handleCloseNavMenu}>
-                  <Link
+                  <HomeLink
                     key={page.id}
                     offset={-130}
                     to={page.id}
                     spy={true}
                     smooth={true}
+                    tabIndex={1}
                   >
                     {page.name}
-                  </Link>
+                  </HomeLink>
                 </MenuItem>
               ))}
             </Menu>
@@ -87,18 +89,19 @@ const MenuBar = () => {
           <StyledBox id="navLinks" sx={{ flexGrow: 1 }}>
             {pageRoutes.map((page) => (
               <NavText key={page.id}>
-                <Link
+                <HomeLink
                   key={page.id}
                   to={page.id}
                   spy={true}
                   smooth={true}
                   duration={500}
+                  tabIndex={1}
                 >
                   {page.name}
-                </Link>
+                </HomeLink>
               </NavText>
             ))}
-            <ResumeButton variant="outlined">Resume</ResumeButton>
+            {/* <ResumeButton variant="outlined">Resume</ResumeButton> */}
           </StyledBox>
         </Toolbar>
       </NavContainer>
@@ -107,11 +110,16 @@ const MenuBar = () => {
 };
 export default MenuBar;
 
-const ResumeButton = styled(Button)`
-  color: #075fe4 !important;
-  border: 2px solid #075fe4 !important;
-  margin-left: 2% !important;
-`;
+// const ResumeButton = styled(Button)`
+//   color: #075fe4 !important;
+//   border: 2px solid #075fe4 !important;
+//   margin-left: 2% !important;
+// `;
+
+const HomeLink = styled(Link)`
+cursor: pointer;
+
+`
 
 const NavContainer = styled(Container)`
   && {
@@ -156,25 +164,36 @@ const StyledBox = styled(Box)`
 `;
 
 const NavText = styled(MyText)`
-  margin-left: 15px !important;
-  margin-right: 15px !important;
-  &:hover {
-    color: #08fdd8;
+  && {
+    margin-left: 15px !important;
+    margin-right: 15px !important;
+    &:hover {
+      color: ${secondColor};
+    }
+    &:hover {
+      color: ${secondColor};
+    }
+    font-size: 20px;
   }
-  font-size: 18px;
 `;
 
 const StyledAppBar = styled(AppBar)`
   && {
-    background: ${primaryBgColor};
-    backdrop-filter:blur(4px);
-    opacity:4;
+    box-shadow: none;
+    background: linear-gradient(
+      180deg,
+      ${primaryBgColor},
+      rgba(21, 24, 28, 0.8) 59%,
+      transparent
+    );
   }
 `;
 
 const NoStyleLink = styled(Link)`
+  margin-top: 15px;
+  cursor: pointer;
+
   @media (max-width: 900px) {
   }
-
   text-decoration: none;
 `;

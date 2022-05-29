@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
 import { Box, Typography } from "@mui/material";
 import styled from "styled-components";
-import { primaryBgColor, TopContainer } from "../common/commonStyles";
-import { Element } from "react-scroll";
 import {
-  AnimeSubTitle,
-  CookSubTitle,
-  IdeaSubTitle,
-  LotrSubTitle,
-  WebSubTitle,
-} from "./Subtitle";
+  MyText,
+  primaryBgColor,
+  secondColor,
+  StyledContainer,
+} from "../common/commonStyles";
+import { Element } from "react-scroll";
+import { Stack } from "react-bootstrap";
 
 export const Home = () => {
   const [seconds, setSeconds] = useState(0);
@@ -28,50 +27,55 @@ export const Home = () => {
 
   return (
     <HomeElement name="home">
-      <StyledBox sx={{ height: "80vh" }} id="homeBox">
-        <NameHeading variant="h3" component="h1">
-          <FirstNameSpan>Yashwanth</FirstNameSpan>
-          <LastNameSpan>Nagaraju</LastNameSpan>
-        </NameHeading>
-        <>
-          {seconds === 0 && <WebSubTitle />}
-          {seconds === 1 && <AnimeSubTitle />}
-          {seconds === 2 && <IdeaSubTitle />}
-          {seconds === 3 && <CookSubTitle />}
-          {seconds === 4 && <LotrSubTitle />}
-        </>
-      </StyledBox>
+      <StyledContainer id="homeContainer">
+        {/* <HomeStack id="homeStack" direction="row" spacing={2}> */}
+        <HomeBox id="homeBox">
+          <NameDiv>
+            <MyText style={{ fontSize: "36px", color: secondColor }}>
+              Hello there,
+            </MyText>
+            <HomeHeading component="h1">I'm Yashwanth,</HomeHeading>
+            <HomeHeading>Web Developer<span style={{ fontSize: "6rem", color: secondColor }}>.</span></HomeHeading>
+            <MyText style={{ fontSize: "24px", marginTop: "15px", }}>
+              An enthusiastic web developer with a passion to design and code user interfaces for people and their business.
+            </MyText>
+          </NameDiv>
+        </HomeBox>
+        <HomeInfoBox
+          component="img"
+          alt="Yashwanth Nagaraju's photo - he ain't good looking"
+          src={require("../../assets/images/john.png")}
+          id="imageHomeBox"
+        ></HomeInfoBox>
+        {/* </HomeStack> */}
+      </StyledContainer>
     </HomeElement>
   );
 };
 
 const HomeElement = styled(Element)`
-background-color:${primaryBgColor};
-`
-const StyledBox = styled(Box)`
-  width: 50%;
-  display: inline-table;
-  text-align: center;
-  @media (max-width: 374px) {
-    padding-top: 40% !important;
+  background-color: ${primaryBgColor};
+`;
+
+const ImageDiv = styled.div``;
+
+const HomeStack = styled(Stack)`
+  && {
+    width: 100%;
+    @media (max-width: 767px) {
+      padding: 15% 0%;
+      display: block;
+    }
+    @media (min-width: 768px) {
+      display: flex;
+    }
   }
-  @media (min-width: 375px) and (max-width: 424px) {
-    padding-top: 20% !important;
-  }
-  @media (min-width: 425px) and (max-width: 599px) {
-    padding-top: 30% !important;
-  }
-  @media (min-width: 600px) and (max-width: 767px) {
-    padding-top: 20% !important;
-  }
-  @media (min-width: 768px) and (max-width: 1023px) {
-    padding-top: 15% !important;
-  }
-  @media (min-width: 1024px) and (max-width: 1199px) {
-    padding-top: 15% !important;
-  }
-  @media (min-width: 1200px) {
-    padding-top: 13% !important;
+`;
+
+const NameDiv = styled.div`
+  && {
+    display: block;
+    text-align: left;
   }
 `;
 
@@ -82,25 +86,58 @@ export const NameHeading = styled(Typography)`
   z-index: 1;
 `;
 
-const FirstNameSpan = styled.span`
-  color: #08fdd8;
-
+const HomeBox = styled(Box)`
+  align-content: baseline;
+  display: flex;
   @media (max-width: 767px) {
-    font-size: min(15.2vw, 20.2px) !important;
+    height:50vh
+    width: 80%;
   }
-  @media (max-width: 1024px) {
-    font-size: min(15.2vw, 78.2px) !important;
+  @media (min-width: 768px) {
+    padding-right:8%;
+    width: 50%;
   }
-  font-size: min(15.2vw, 119.2px) !important;
 `;
-const LastNameSpan = styled.span`
-  background-color: #08fdd8;
-  color: #0e1212;
+
+const HomeInfoBox = styled(Box)`
+  display: grid;
+  transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg);
+  align-content: baseline;
   @media (max-width: 767px) {
-    font-size: min(15.2vw, 20.2px) !important;
+    padding-top:10%;
+    height:50vh
+    width: 80%;
   }
-  @media (max-width: 1024px) {
-    font-size: min(15.2vw, 87.2px) !important;
+  @media (min-width: 768px) {
+    width: 50%;
   }
-  font-size: min(23.6vw, 134px) !important;
+`;
+
+const HomeHeading = styled(MyText)`
+  && {
+    display: block;
+    text-align: left;
+    line-height: 1;
+    @media (max-width: 374px) {
+      font-size: 3.5rem !important;
+    }
+    @media (min-width: 375px) and (max-width: 424px) {
+      font-size: 3.5rem !important;
+    }
+    @media (min-width: 425px) and (max-width: 599px) {
+      font-size: 3.5rem !important;
+    }
+    @media (min-width: 600px) and (max-width: 767px) {
+      font-size: 3.5rem !important;
+    }
+    @media (min-width: 768px) and (max-width: 1023px) {
+      font-size: 4rem !important;
+    }
+    @media (min-width: 1024px) and (max-width: 1199px) {
+      font-size: 5.5rem !important;
+    }
+    @media (min-width: 1200px) {
+      font-size: 5.5rem !important;
+    }
+  }
 `;

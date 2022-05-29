@@ -1,15 +1,14 @@
-import { Box, Container, Grid, Paper, Button, Stack } from "@mui/material";
-import { Card } from "react-bootstrap";
+import { Box, Button, Stack } from "@mui/material";
 import { Element } from "react-scroll";
 import styled from "styled-components";
 import {
-  BottomContainer,
   MyText,
   secondColor,
   secondaryBgColor,
   StyledContainer,
   whiteColor,
   myFont,
+  LineDiv,
 } from "../common/commonStyles";
 
 function handleSubmit() {}
@@ -17,26 +16,30 @@ function handleSubmit() {}
 export const Contact = () => {
   return (
     <ContactElement name="contact">
-      <ContactContainer id="contactContainer">
+      <StyledContainer id="contactContainer">
         <ContactStack id="contactStack" direction="row" spacing={2}>
           <ContactBox id="contactBox">
             <ContactHeading variant="h2" gutterBottom>
               <LineDiv id="random"></LineDiv>
-              Have something to work on?
+              Have a project on your mind?
               <br />
               Get in touch.
             </ContactHeading>
-            {/* <MyText variant="body1">
-          I'm currently interested in freelance opportunities or a good job.
-          Feel free to contact me or send me message if you have a project in
-          mind, want to hire me for building a personal website or just want to
-          say hello.
-        </MyText> */}
-            {/* <MessageButton variant="outlined">Send A Message</MessageButton> */}
           </ContactBox>
           <ContactInfoBox component="form" id="contactInfoBox">
-            <InfoField maxLength={40} id="nameField" type="text" placeholder="Your Name" />
+            <HiddenLabel for="nameField">
+              Name:{" "}
+            </HiddenLabel>
+            <InfoField
+              maxLength={40}
+              id="nameField"
+              type="text"
+              placeholder="Your Name"
+            />
             <StyleDiv />
+            <HiddenLabel for="emailIdField">
+              Email ID:{" "}
+            </HiddenLabel>
             <InfoField
               id="emailIdField"
               type="text"
@@ -44,9 +47,13 @@ export const Contact = () => {
               placeholder="Your email address"
             />
             <StyleDiv />
+            <HiddenLabel for="messageField" >
+              Message:{" "}
+            </HiddenLabel>
             <TextField
               id="messageField"
               placeholder="Message"
+              type="text"
               maxLength={1000}
               style={{ minHeight: "10%", paddingBottom: "10%" }}
             />
@@ -62,20 +69,29 @@ export const Contact = () => {
             </MessageButton>
           </ContactInfoBox>
         </ContactStack>
-      </ContactContainer>
+      </StyledContainer>
     </ContactElement>
   );
 };
+
+const HiddenLabel = styled.label`
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+`;
 
 const ContactStack = styled(Stack)`
   && {
     width: 100%;
     @media (max-width: 767px) {
-      padding: 15% 0%;
       display: block;
     }
     @media (min-width: 768px) {
-      padding: 25% 0%;
     }
   }
 `;
@@ -95,7 +111,8 @@ const InfoField = styled.input`
     cursor: pointer;
     padding-bottom: 5%;
     border-bottom: 3px solid ${secondColor};
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       border: 2px solid ${secondColor};
     }
   }
@@ -111,23 +128,10 @@ const TextField = styled.textarea`
     border: 0px;
     text-align: left;
     border-bottom: 3px solid ${secondColor};
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       border: 2px solid ${secondColor};
     }
-  }
-`;
-
-const ContactContainer = styled(StyledContainer)`
-  && {
-    display: flex;
-  }
-`;
-
-const LineDiv = styled.div`
-  && {
-    background: ${secondColor};
-    min-width: 7px;
-    margin-right: 5%;
   }
 `;
 
@@ -136,7 +140,6 @@ const ContactElement = styled(Element)`
 `;
 
 const ContactBox = styled(Box)`
-  display: grid;
   align-content: baseline;
   @media (max-width: 767px) {
     height:50vh
@@ -178,25 +181,25 @@ const ContactHeading = styled(MyText)`
     display: flex;
     text-align: left;
     @media (max-width: 374px) {
-      font-size: !important;
+      font-size: 3.5rem !important;
     }
     @media (min-width: 375px) and (max-width: 424px) {
-      font-size: !important;
+      font-size: 3.5rem !important;
     }
     @media (min-width: 425px) and (max-width: 599px) {
-      font-size: !important;
+      font-size: 3.5rem !important;
     }
     @media (min-width: 600px) and (max-width: 767px) {
-      font-size: !important;
+      font-size: 3.5rem !important;
     }
     @media (min-width: 768px) and (max-width: 1023px) {
-      font-size: !important;
-    }
-    @media (min-width: 1024px) and (max-width: 1199px) {
-      font-size: !important;
-    }
-    @media (min-width: 1200px) {
       font-size: 4rem !important;
     }
-  } 
+    @media (min-width: 1024px) and (max-width: 1199px) {
+      font-size: 5rem !important;
+    }
+    @media (min-width: 1200px) {
+      font-size: 5rem !important;
+    }
+  }
 `;
