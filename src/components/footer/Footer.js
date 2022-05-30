@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { MyText, primaryBgColor } from "../common/commonStyles";
 
-export const Footer = () => {
+const Footer = () => {
   return (
     <StyledFooter>
       <StyledDiv>
@@ -13,6 +13,8 @@ export const Footer = () => {
     </StyledFooter>
   );
 };
+
+export default Footer;
 
 const StyledFooter = styled.footer`
   background-color: ${primaryBgColor};

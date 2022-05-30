@@ -4,7 +4,7 @@ import InstagramIcon from '@mui/icons-material/Instagram'
 import LocationOnIcon from '@mui/icons-material/LocationOn'
 import WhatsAppIcon from '@mui/icons-material/WhatsApp'
 
-export const Social = () => {
+const Social = () => {
   return (
     <ContactDiv orientation="left">
       <StyledList>
@@ -24,6 +24,8 @@ export const Social = () => {
     </ContactDiv>
   )
 }
+
+export default Social;
 
 const ContactDiv = styled.div`
   display: block;

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Email = () => {
+const Email = () => {
   return (
     <ContactDiv orientation="right">
       <Temp>
@@ -11,6 +11,8 @@ export const Email = () => {
     </ContactDiv>
   )
 }
+
+export default Email;
 
 const ContactDiv = styled.div`
   display: block;

@@ -1,15 +1,15 @@
 import './App.css'
 import { useState } from 'react'
 import MenuBar from './components/MenuBar'
-import { Experience } from './components/experience/Experience'
-import { About } from './components/about/About'
-import { Contact } from './components/contact/Contact'
+import Experience from './components/experience/Experience'
+import About from './components/about/About'
+import Contact from './components/contact/Contact'
 import styled from 'styled-components'
-import { Footer } from './components/footer/Footer'
-import { Social } from './components/social/Social'
-import { Email } from './components/social/Email'
-import { Loader } from './components/loader/Loader'
-import { Home } from './components/home/Home'
+import Footer from './components/footer/Footer'
+import Social from './components/social/Social'
+import Email from './components/social/Email'
+import Loader from './components/loader/Loader'
+import Home from './components/home/Home'
 
 function App() {
   const [timeOut, setTimeOut] = useState(null)

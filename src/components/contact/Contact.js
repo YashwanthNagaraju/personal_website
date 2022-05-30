@@ -1,4 +1,6 @@
-import { Box, Button, Stack } from "@mui/material";
+import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
 import { Element } from "react-scroll";
 import styled from "styled-components";
 import {
@@ -13,14 +15,14 @@ import {
 
 function handleSubmit() {}
 
-export const Contact = () => {
+const Contact = () => {
   return (
     <ContactElement name="contact">
       <StyledContainer id="contactContainer">
         <ContactStack id="contactStack" direction="row" spacing={2}>
           <ContactBox id="contactBox">
             <ContactHeading variant="h2" gutterBottom>
-              <LineDiv id="random"></LineDiv>
+              <LineDiv id="randomLine"></LineDiv>
               Have a project on your mind?
               <br />
               Get in touch.
@@ -73,6 +75,8 @@ export const Contact = () => {
     </ContactElement>
   );
 };
+
+export default Contact;
 
 const HiddenLabel = styled.label`
   border: 0;
@@ -173,6 +177,9 @@ const MessageButton = styled(Button)`
     width: 40%;
     font-size: 20px;
     text-transform: capitalize;
+    @media (max-width: 425px) {
+      font-size: 16px !important;
+    }
   }
 `;
 
@@ -181,10 +188,10 @@ const ContactHeading = styled(MyText)`
     display: flex;
     text-align: left;
     @media (max-width: 374px) {
-      font-size: 3.5rem !important;
+      font-size: 3rem !important;
     }
     @media (min-width: 375px) and (max-width: 424px) {
-      font-size: 3.5rem !important;
+      font-size: 3rem !important;
     }
     @media (min-width: 425px) and (max-width: 599px) {
       font-size: 3.5rem !important;
