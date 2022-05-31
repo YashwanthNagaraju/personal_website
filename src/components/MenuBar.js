@@ -100,7 +100,6 @@ const MenuBar = () => {
                 </HomeLink>
               </NavText>
             ))}
-            {/* <ResumeButton variant="outlined">Resume</ResumeButton> */}
           </StyledBox>
         </Toolbar>
       </NavContainer>
@@ -116,9 +115,8 @@ export default MenuBar;
 // `;
 
 const HomeLink = styled(Link)`
-cursor: pointer;
-
-`
+  cursor: pointer;
+`;
 
 const NavContainer = styled(Container)`
   && {

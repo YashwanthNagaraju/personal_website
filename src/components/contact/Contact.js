@@ -92,7 +92,7 @@ const HiddenLabel = styled.label`
 const ContactStack = styled(Stack)`
   && {
     width: 100%;
-    @media (max-width: 767px) {
+    @media (max-width: 768px) {
       display: block;
     }
     @media (min-width: 768px) {
@@ -145,7 +145,7 @@ const ContactElement = styled(Element)`
 
 const ContactBox = styled(Box)`
   align-content: baseline;
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     height:50vh
     width: 80%;
   }
@@ -158,7 +158,7 @@ const ContactBox = styled(Box)`
 const ContactInfoBox = styled(Box)`
   display: grid;
   align-content: baseline;
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     padding-top:10%;
     height:50vh
     width: 80%;
@@ -187,22 +187,22 @@ const ContactHeading = styled(MyText)`
   && {
     display: flex;
     text-align: left;
-    @media (max-width: 374px) {
+    @media (max-width: 375px) {
       font-size: 3rem !important;
     }
-    @media (min-width: 375px) and (max-width: 424px) {
+    @media (min-width: 375px) and (max-width: 425px) {
       font-size: 3rem !important;
     }
-    @media (min-width: 425px) and (max-width: 599px) {
+    @media (min-width: 425px) and (max-width: 600px) {
       font-size: 3.5rem !important;
     }
-    @media (min-width: 600px) and (max-width: 767px) {
+    @media (min-width: 600px) and (max-width: 768px) {
       font-size: 3.5rem !important;
     }
-    @media (min-width: 768px) and (max-width: 1023px) {
+    @media (min-width: 768px) and (max-width: 1024px) {
       font-size: 4rem !important;
     }
-    @media (min-width: 1024px) and (max-width: 1199px) {
+    @media (min-width: 1024px) and (max-width: 1200px) {
       font-size: 5rem !important;
     }
     @media (min-width: 1200px) {
