@@ -19,7 +19,7 @@ const ContactDiv = styled.div`
   position: fixed;
   bottom: 0px;
   right: 40px;
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     display: none;
   }
 `
@@ -33,4 +33,5 @@ const Temp = styled.div`
 const StyledLink = styled.a`
   text-decoration: none;
   color: #f4f9fc;
+  font-size:18px;
 `

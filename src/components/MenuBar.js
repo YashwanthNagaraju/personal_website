@@ -15,7 +15,7 @@ import { MyText, primaryBgColor, secondColor } from "./common/commonStyles";
 
 const MenuBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-
+  
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -139,7 +139,7 @@ const NavContainer = styled(Container)`
       max-width: 85% !important;
     }
     @media (min-width: 1200px) {
-      max-width: 80% !important;
+      max-width: 95% !important;
     }
   }
 `;
@@ -180,7 +180,7 @@ const StyledAppBar = styled(AppBar)`
     background: linear-gradient(
       180deg,
       ${primaryBgColor},
-      rgba(21, 24, 28, 0.8) 59%,
+      rgba(21, 24, 28, 0.8) 60%,
       transparent
     );
   }
@@ -189,7 +189,6 @@ const StyledAppBar = styled(AppBar)`
 const NoStyleLink = styled(Link)`
   margin-top: 15px;
   cursor: pointer;
-
   @media (max-width: 900px) {
   }
   text-decoration: none;

@@ -6,7 +6,7 @@ export const primaryBgColor = "#15181C";
 export const secondaryBgColor = "#1E242A";
 export const whiteColor = "#FFFFFF";
 export const secondColor = "#075fe4";
-export const myFont = "Akshar";
+export const myFont = "Oswald";
 
 export const MyText = styled(Typography)`
   && {

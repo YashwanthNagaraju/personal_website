@@ -8,7 +8,10 @@ import {
   StyledContainer,
 } from "../common/commonStyles";
 import { Element } from "react-scroll";
-import { Grid, Paper, Stack } from "@mui/material";
+import Animista, { AnimistaTypes } from "react-animista";
+import { bounceInLeft } from "react-animations";
+import { keyframes } from "styled-components";
+import { flip } from "react-animations";
 
 const Home = () => {
   const [subtitle, setSubtitle] = useState("A Web Developer");
@@ -23,21 +26,46 @@ const Home = () => {
     const interval = setInterval(() => {
       const select = Math.floor(Math.random() * 3);
       setSubtitle(subtitleTexts[select]);
-    }, 2000);
+    }, 1500);
     return () => clearInterval(interval);
     // }, 5000);
   }, []);
-
+  const nameString = [
+    "I",
+    "'",
+    "m",
+    " ",
+    "Y",
+    "a",
+    "s",
+    "h",
+    "w",
+    "a",
+    "n",
+    "t",
+    "h",
+    ",",
+  ];
   return (
     <HomeElement name="home">
       <HomeContainer id="homeContainer" maxWidth="xl">
         <HomeBox id="homeBox" sx={{ flexGrow: 1 }}>
           <NameDiv>
-            <MyText style={{ fontSize: "36px", color: secondColor }}>
-              Hello there. I'm{" "}
+            <MyText
+              style={{
+                fontSize: "36px",
+                color: secondColor,
+                fontWeight: "bold",
+              }}
+            >
+              Hello there.
             </MyText>
             <HomeHeading component="h1" tabIndex={1}>
-              Yashwanth Nagaraju,
+              <Animista type={AnimistaTypes.SHADOW_DROP_LEFT}>
+                {nameString.map((char) => (
+                  <NameSpan>{char}</NameSpan>
+                ))}
+              </Animista>
             </HomeHeading>
             <HomeHeading>
               {subtitle}
@@ -148,10 +176,13 @@ const NameDiv = styled.div`
     text-align: left;
   }
 `;
+const bounceLeftAnimation = keyframes`${bounceInLeft}`;
 
 const HomeHeading = styled(MyText)`
   && {
+    animation: 2s ${bounceLeftAnimation};
     display: block;
+    font-weight: bold;
     text-align: left;
     line-height: 1;
     @media (max-width: 374px) {
@@ -189,4 +220,19 @@ const SubText = styled(MyText)`
     @media (min-width: 1024px) {
       max-width:90% !important;
   }
+`;
+
+const flipAnimation = keyframes`${flip}`;
+
+const NameSpan = styled.span`
+  &:hover {
+    color: ${secondColor};
+    animation: flip 2s infinite;
+  }
+
+  @keyframes flip {
+  0%,80% {
+    transform: rotateY(360deg) 
+  }
+}
 `;

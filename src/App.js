@@ -23,8 +23,8 @@ function App() {
       {/* {timeOut !== 1 && <Loader />} */}
       {/* {timeOut == 1 && ( */}
       <MenuBar />
-      {/* <Social />
-      <Email /> */}
+      <Social />
+      {/* <Email /> */}
       <Home />
       <About />
       <Experience />

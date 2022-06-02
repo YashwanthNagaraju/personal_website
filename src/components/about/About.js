@@ -8,7 +8,6 @@ import {
   whiteColor,
 } from "../common/commonStyles";
 import { Element } from "react-scroll";
-import { Grid } from "@mui/material";
 
 const About = () => {
   return (

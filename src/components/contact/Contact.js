@@ -18,7 +18,7 @@ function handleSubmit() {}
 const Contact = () => {
   return (
     <ContactElement name="contact">
-      <StyledContainer id="contactContainer">
+      <ContactContainer id="contactContainer">
         <ContactStack id="contactStack" direction="row" spacing={2}>
           <ContactBox id="contactBox">
             <ContactHeading variant="h2" gutterBottom>
@@ -29,9 +29,7 @@ const Contact = () => {
             </ContactHeading>
           </ContactBox>
           <ContactInfoBox component="form" id="contactInfoBox">
-            <HiddenLabel for="nameField">
-              Name:{" "}
-            </HiddenLabel>
+            <HiddenLabel for="nameField">Name: </HiddenLabel>
             <InfoField
               maxLength={40}
               id="nameField"
@@ -39,9 +37,7 @@ const Contact = () => {
               placeholder="Your Name"
             />
             <StyleDiv />
-            <HiddenLabel for="emailIdField">
-              Email ID:{" "}
-            </HiddenLabel>
+            <HiddenLabel for="emailIdField">Email ID: </HiddenLabel>
             <InfoField
               id="emailIdField"
               type="text"
@@ -49,9 +45,7 @@ const Contact = () => {
               placeholder="Your email address"
             />
             <StyleDiv />
-            <HiddenLabel for="messageField" >
-              Message:{" "}
-            </HiddenLabel>
+            <HiddenLabel for="messageField">Message: </HiddenLabel>
             <TextField
               id="messageField"
               placeholder="Message"
@@ -71,12 +65,45 @@ const Contact = () => {
             </MessageButton>
           </ContactInfoBox>
         </ContactStack>
-      </StyledContainer>
+      </ContactContainer>
     </ContactElement>
   );
 };
 
 export default Contact;
+
+const ContactContainer = styled(StyledContainer)`
+  && {
+    @media (max-width: 375px) {
+      max-width: 90% !important;
+      display: flex;
+    }
+    @media (min-width: 375px) and (max-width: 425px) {
+      max-width: 90% !important;
+      display: flex;
+    }
+    @media (min-width: 425px) and (max-width: 600px) {
+      max-width: 90% !important;
+      display: flex;
+    }
+    @media (min-width: 600px) and (max-width: 768px) {
+      max-width: 90% !important;
+      display: flex;
+    }
+    @media (min-width: 768px) and (max-width: 1024px) {
+      max-width: 85% !important;
+      display: inline-flex;
+    }
+    @media (min-width: 1024px) and (max-width: 1200px) {
+      max-width: 85% !important;
+      display: inline-flex;
+    }
+    @media (min-width: 1200px) {
+      max-width: 80% !important;
+      display: inline-flex;
+    }
+  }
+`;
 
 const HiddenLabel = styled.label`
   border: 0;
@@ -156,16 +183,19 @@ const ContactBox = styled(Box)`
 `;
 
 const ContactInfoBox = styled(Box)`
+&&{
   display: grid;
   align-content: baseline;
   @media (max-width: 768px) {
     padding-top:10%;
+    margin:0%;
     height:50vh
     width: 80%;
   }
   @media (min-width: 768px) {
     width: 50%;
   }
+}
 `;
 
 const MessageButton = styled(Button)`
@@ -200,12 +230,12 @@ const ContactHeading = styled(MyText)`
       font-size: 3.5rem !important;
     }
     @media (min-width: 768px) and (max-width: 1024px) {
-      font-size: 4rem !important;
+      font-size: 3.5rem !important;
     }
-    @media (min-width: 1024px) and (max-width: 1200px) {
-      font-size: 5rem !important;
+    @media (min-width: 1024px) and (max-width: 1440px) {
+      font-size: 4.2rem !important;
     }
-    @media (min-width: 1200px) {
+    @media (min-width: 1440px) {
       font-size: 5rem !important;
     }
   }

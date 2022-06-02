@@ -1,7 +1,12 @@
 import Box from "@mui/material/Box";
-import Stack from "@mui/material/Stack";
 import styled from "styled-components";
-import { primaryBgColor } from "../common/commonStyles";
+import {
+  StyledContainer,
+  primaryBgColor,
+  MyText,
+  secondColor,
+  whiteColor,
+} from "../common/commonStyles";
 import { Element } from "react-scroll";
 
 const Experience = () => {
@@ -9,9 +14,42 @@ const Experience = () => {
 
   return (
     <ExperienceElement name="experience">
-      <StyledBox sx={{ height: "100vh" }} id="homeBox">
-        <Stack direction="row" spacing={2}></Stack>
-      </StyledBox>
+      <ExperienceContainer id="experienceContainer">
+        {/* <ExperienceStack id="ExperienceStack" direction="row" spacing={2}> */}
+        <ExperienceBox id="experienceBox">
+          <ExperienceDiv>
+            <MyText
+              style={{
+                fontSize: "52px",
+                color: secondColor,
+                fontWeight: "bold",
+              }}
+            >
+              <span style={{ color: whiteColor }}>{"<"}</span>My Experience /
+              <span style={{ color: whiteColor }}>{">"}</span>
+            </MyText>
+            <MyText
+              style={{
+                fontSize: "24px",
+                marginTop: "15px",
+                textAlign: "justify",
+              }}
+            >
+              Hi! My name is Yashwanth Nagaraju. I am a developer with
+              experience in frontend and backend with a passion for coding. I
+              enjoy solving complex problems using a computer. I started my
+              career as a software engineer. I am currently a full time Grad
+              student at the University of Melbourne and work as a freelance
+              developer. I help people to showcase their talent and art and to
+              promote their business by designing and building accessible and
+              customized websites.
+            </MyText>
+          </ExperienceDiv>
+        </ExperienceBox>
+        <ExperienceInfoBox component="div" >
+
+        </ExperienceInfoBox>
+      </ExperienceContainer>
     </ExperienceElement>
   );
 };
@@ -22,15 +60,85 @@ const ExperienceElement = styled(Element)`
   background-color: ${primaryBgColor};
 `;
 
-const StyledBox = styled(Box)`
-  text-align: initial;
-  display: inline-table;
-  @media (max-width: 767px) {
-    width: 80%;
+
+const ExperienceContainer = styled(StyledContainer)`
+  && {
+    @media (max-width: 375px) {
+      max-width: 90% !important;
+      display: flex;
+    }
+    @media (min-width: 375px) and (max-width: 425px) {
+      max-width: 90% !important;
+      display: flex;
+    }
+    @media (min-width: 425px) and (max-width: 600px) {
+      max-width: 90% !important;
+      display: flex;
+    }
+    @media (min-width: 600px) and (max-width: 768px) {
+      max-width: 90% !important;
+      display: flex;
+    }
+    @media (min-width: 768px) and (max-width: 1024px) {
+      max-width: 85% !important;
+      display: inline-flex;
+    }
+    @media (min-width: 1024px) and (max-width: 1200px) {
+      max-width: 85% !important;
+      display: inline-flex;
+    }
+    @media (min-width: 1200px) {
+      max-width: 80% !important;
+      display: inline-flex;
+    }
   }
-  @media (min-width: 768px) {
-    width: 50%;
+`;
+
+const ExperienceBox = styled(Box)`
+  align-content: baseline;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media (max-width: 1024px) {
+    width: 100%;
   }
-  max-width: 1000px;
-  width: 70%;
+  @media (min-width: 1024px) and (max-width: 1200px) {
+    padding-right: 2%;
+    width: 70%;
+  }
+  @media (min-width: 1200px) and (max-width: 1400px) {
+    padding-right: 2%;
+    width: 65%;
+  }
+  @media (min-width: 1400px) {
+    padding-right: 2%;
+    width: 60%;
+  }
+`;
+
+const ExperienceInfoBox = styled(Box)`
+&&{
+  align-content: baseline;
+  @media (max-width: 1024px) {
+    display: none;
+  }
+  @media (min-width: 1024px) and (max-width: 1200px) {
+    display: grid;
+    width: 30%;
+  }
+  @media (min-width: 1200px) and (max-width: 1400px) {
+    width: 35%;
+    display: grid;
+  }
+  @media (min-width: 1400px) {
+    width: 40%;
+    display: grid;
+  }
+`;
+
+const ExperienceDiv = styled.div`
+  && {
+    display: block;
+    text-align: left;
+  }
 `;
