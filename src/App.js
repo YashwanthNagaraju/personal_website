@@ -11,39 +11,51 @@ import Social from "./components/social/Social";
 // import Loader from './components/loader/Loader'
 import Home from "./components/home/Home";
 import Effect from "./components/social/Effect";
-import { blackTextColor, primaryBgColor, whiteColor } from "./components/common/commonStyles";
+import {
+  blackTextColor,
+  primaryBgColor,
+  whiteBgColor,
+  whiteColor,
+} from "./components/common/commonStyles";
 
 export const ThemeContext = createContext();
 
 function App() {
   const [timeOut, setTimeOut] = useState(null);
-  const [theme, setTheme] = useState('dark');
+  const date = new Date();
+  const isEvening = date.getHours() > 20 || date.getHours() < 7;
+  const [theme, setTheme] = useState(isEvening ? "dark" : "light");
   setTimeout(() => {
     setTimeOut(1);
   }, 3000);
 
   return (
-    <ThemeContext.Provider value={{theme,setTheme}}>
-    <Appdiv className="App" style={{color: theme==="dark"?whiteColor:blackTextColor,backgroundColor:theme==="dark"?primaryBgColor: whiteColor}}>
-      
-      {/* {timeOut !== 1 && <Loader />} */}
-      {/* {timeOut == 1 && ( */}
-      <MenuBar />
-      <Social />
-      <Effect />
-      <Home />
-      <About />
-      <Experience />
-      <Contact />
-      <Footer />
-      {/* )} */}
-    </Appdiv>
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      <Appdiv className="App" themeChange={theme}>
+        {/* {timeOut !== 1 && <Loader />} */}
+        {/* {timeOut == 1 && ( */}
+        <MenuBar />
+        <Social />
+        <Effect />
+        <Home />
+        <About />
+        <Experience />
+        <Contact />
+        <Footer />
+        {/* )} */}
+      </Appdiv>
     </ThemeContext.Provider>
   );
 }
 
 const Appdiv = styled.div`
-
+  color: ${(props) =>
+    props.themeChange === "dark" ? whiteColor : blackTextColor};
+  background-color: ${(props) =>
+    props.themeChange === "dark" ? primaryBgColor : whiteBgColor};
+    -webkit-transition: background-color 1.5s linear;
+    -ms-transition: background-color 1.5s linear;
+    transition: background-color 1.5s linear;
 `;
 
 export const pageRoutes = [

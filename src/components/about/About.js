@@ -4,7 +4,8 @@ import {
   StyledContainer,
   MyText,
   blueColor,
-  TagSpan,
+  whiteColor,
+  blackTextColor,
 } from "../common/commonStyles";
 import { Element } from "react-scroll";
 import { useContext } from "react";
@@ -12,7 +13,6 @@ import { ThemeContext } from "../../App";
 
 const About = () => {
   const { theme, setTheme } = useContext(ThemeContext);
-
   return (
     <AboutElement name="about">
       <AboutContainer id="aboutContainer">
@@ -26,9 +26,22 @@ const About = () => {
                 fontWeight: "bold",
               }}
             >
-              <TagSpan changeColor={{ theme }}>{"<"}</TagSpan>
+              <span
+                style={{
+                  color: theme === "dark" ? whiteColor : blackTextColor,
+                }}
+              >
+                {"<"}
+              </span>
               About Me/
-              <TagSpan changeColor={{ theme }}>{">"}</TagSpan>
+              <span
+                style={{
+                  color: theme === "dark" ? whiteColor : blackTextColor,
+                }}
+                currentColor={{ theme }}
+              >
+                {">"}
+              </span>
             </MyText>
             <MyText
               style={{

@@ -5,6 +5,8 @@ import {
   MyText,
   blueColor,
   TagSpan,
+  whiteColor,
+  blackTextColor,
 } from "../common/commonStyles";
 import { Element } from "react-scroll";
 import { useContext } from "react";
@@ -25,8 +27,21 @@ const Experience = () => {
                 fontWeight: "bold",
               }}
             >
-              <TagSpan changeColor={{ theme }}>{"<"}</TagSpan>My Experience /
-              <TagSpan changeColor={{ theme }}>{">"}</TagSpan>
+              <span
+                style={{
+                  color: theme === "dark" ? whiteColor : blackTextColor,
+                }}
+              >
+                {"<"}
+              </span>
+              My Experience /
+              <span
+                style={{
+                  color: theme === "dark" ? whiteColor : blackTextColor,
+                }}
+              >
+                {">"}
+              </span>
             </MyText>
             <MyText
               style={{

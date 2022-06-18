@@ -14,7 +14,7 @@ const Social = () => {
         <IconContext.Provider value={{ className: "shared-class", size: 26 }}>
           <ListItems>
             <LinkNoStyle
-            color={theme}
+              color={theme}
               id="linkedinIcon"
               href="https://www.linkedin.com/in/yashwanthn/"
               target="_blank"
@@ -24,7 +24,7 @@ const Social = () => {
           </ListItems>
           <ListItems>
             <LinkNoStyle
-            color={theme}
+              color={theme}
               id="githubIcon"
               href="https://github.com/YashwanthNagaraju"
               target="_blank"
@@ -34,7 +34,7 @@ const Social = () => {
           </ListItems>
           <ListItems>
             <LinkNoStyle
-            color={theme}
+              color={theme}
               id="instagramIcon"
               href="https://www.instagram.com/a.narcissistic.artist/"
               target="_blank"
@@ -72,7 +72,7 @@ const ContactDiv = styled.div`
   display: block;
   position: fixed;
   bottom: 0px;
-  padding-bottom:1vh;
+  padding-bottom: 1vh;
   @media (max-width: 768px) {
     display: none;
   }
@@ -85,7 +85,7 @@ const StyledList = styled.ul`
 const LinkNoStyle = styled.a`
   text-decoration: none;
   display: inline-block;
-  color: ${(props) => (props.color ==='dark'? whiteColor : blackTextColor)};
+  color: ${(props) => (props.color === "dark" ? whiteColor : blackTextColor)};
   &:hover {
     -webkit-animation: pulsate-fwd 0.5s ease-in-out infinite both;
     animation: pulsate-fwd 0.5s ease-in-out infinite both;

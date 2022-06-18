@@ -266,11 +266,7 @@ const NavText = styled(MyText)`
 const StyledAppBar = styled(AppBar)`
   && {
     box-shadow: none;
-    background:  ${(props) =>
-      props.changeColor === "dark"
-        ? "linear-gradient(180deg,#15181C,rgba(21, 24, 28, 0.8) 60%,transparent)"
-        : "transparent"};
-    );
+    background: transparent;
   }
 `;
 
