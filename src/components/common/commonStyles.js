@@ -2,8 +2,8 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import styled from "styled-components";
 
+
 export const primaryBgColor = "#15181C";
-export const secondaryBgColor = "#1E242A";
 export const whiteColor = "#FFFFFF";
 export const secondColor = "#075fe4";
 export const myFont = "Oswald";
@@ -30,11 +30,6 @@ export const ColorTextHeading = styled(MyText)`
   color: #08fdd8;
 `;
 
-export const TopContainer = styled(Container)`
-  margin-top: 8%;
-  min-height: 100vh;
-`;
-
 export const StyledContainer = styled(Container)`
   && {
     min-height: 100vh;
@@ -45,7 +40,12 @@ export const StyledContainer = styled(Container)`
 `;
 
 export const BottomContainer = styled(Container)`
-  max-height: 95vh;
+&& {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 `;
 
 export const GeneralTextHeading = styled(MyText)`

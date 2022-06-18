@@ -3,7 +3,6 @@ import { FiInstagram, FiGithub, FiLinkedin } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
 
 import { IconContext } from "react-icons";
-import { secondColor } from "../common/commonStyles";
 
 const Social = () => {
   return (
@@ -31,6 +30,24 @@ const Social = () => {
 export default Social;
 
 const ContactDiv = styled.div`
+  -webkit-animation: fade-in 1.5s cubic-bezier(0.755, 0.05, 0.855, 0.06) both;
+  animation: fade-in 1.5s cubic-bezier(0.755, 0.05, 0.855, 0.06) both;
+  @-webkit-keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
   display: block;
   position: fixed;
   bottom: 0px;
@@ -51,18 +68,18 @@ const ListItems = styled.li`
     }
     &#linkedin:hover {
       color: #0177b5;
-      margin-bottom: 3px;
+      padding-bottom: 40%;
     }
     &#github:hover {
-      margin-bottom: 3px;
+      padding-bottom: 40%;
     }
     &#whatsapp:hover {
       color: #25d366;
-      margin-bottom: 3px;
+      padding-bottom: 40%;
     }
     &#instagram:hover {
       color: #bc2a8d;
-      margin-bottom: 3px;
+      padding-bottom: 40%;
     }
     padding: 30% 0%;
   }

@@ -17,7 +17,9 @@ const Footer = () => {
 export default Footer;
 
 const StyledFooter = styled.footer`
+&&{
   background-color: ${primaryBgColor};
+  min-height: 10vh;
+}
 `;
-const StyledDiv = styled.div`
-`;
+const StyledDiv = styled.div``;

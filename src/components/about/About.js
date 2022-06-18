@@ -1,8 +1,8 @@
 import Box from "@mui/material/Box";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import {
   StyledContainer,
-  secondaryBgColor,
+  primaryBgColor,
   MyText,
   secondColor,
   whiteColor,
@@ -47,7 +47,7 @@ const About = () => {
         <AboutInfoBox component="div" id="imageAboutBox">
           <Box
             component="img"
-            style={{paddingLeft: "30%"}}
+            style={{ paddingLeft: "30%" }}
             alt="Yashwanth Nagaraju's photo - he ain't good looking"
             src={require("../../assets/images/about.png")}
           ></Box>
@@ -61,6 +61,24 @@ export default About;
 
 const AboutContainer = styled(StyledContainer)`
   && {
+    -webkit-animation: fade-in 1.5s cubic-bezier(0.755, 0.05, 0.855, 0.06) both;
+    animation: fade-in 1.5s cubic-bezier(0.755, 0.05, 0.855, 0.06) both;
+    @-webkit-keyframes fade-in {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    @keyframes fade-in {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
     @media (max-width: 375px) {
       max-width: 90% !important;
       display: flex;
@@ -86,6 +104,7 @@ const AboutContainer = styled(StyledContainer)`
       display: inline-flex;
     }
     @media (min-width: 1200px) {
+      padding: 0% 20%
       max-width: 80% !important;
       display: inline-flex;
     }
@@ -142,5 +161,5 @@ const AboutDiv = styled.div`
 `;
 
 const AboutElement = styled(Element)`
-  background-color: ${secondaryBgColor};
+  background-color: ${primaryBgColor};
 `;

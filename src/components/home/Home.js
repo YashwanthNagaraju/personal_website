@@ -8,10 +8,6 @@ import {
   StyledContainer,
 } from "../common/commonStyles";
 import { Element } from "react-scroll";
-import Animista, { AnimistaTypes } from "react-animista";
-import { bounceInLeft } from "react-animations";
-import { keyframes } from "styled-components";
-import { flip } from "react-animations";
 
 const Home = () => {
   const [subtitle, setSubtitle] = useState("A Web Developer");
@@ -61,11 +57,9 @@ const Home = () => {
               Hello there.
             </MyText>
             <HomeHeading component="h1" tabIndex={1}>
-              <Animista type={AnimistaTypes.SHADOW_DROP_LEFT}>
-                {nameString.map((char) => (
-                  <NameSpan>{char}</NameSpan>
-                ))}
-              </Animista>
+              {nameString.map((char) => (
+                <NameSpan>{char}</NameSpan>
+              ))}
             </HomeHeading>
             <HomeHeading>
               {subtitle}
@@ -96,6 +90,24 @@ const HomeElement = styled(Element)`
 
 const HomeContainer = styled(StyledContainer)`
   && {
+    -webkit-animation: fade-in 1.5s cubic-bezier(0.755, 0.05, 0.855, 0.06) both;
+    animation: fade-in 1.5s cubic-bezier(0.755, 0.05, 0.855, 0.06) both;
+    @-webkit-keyframes fade-in {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    @keyframes fade-in {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
     @media (max-width: 375px) {
       max-width: 90% !important;
       display: flex;
@@ -176,11 +188,9 @@ const NameDiv = styled.div`
     text-align: left;
   }
 `;
-const bounceLeftAnimation = keyframes`${bounceInLeft}`;
 
 const HomeHeading = styled(MyText)`
   && {
-    animation: 2s ${bounceLeftAnimation};
     display: block;
     font-weight: bold;
     text-align: left;
@@ -222,17 +232,74 @@ const SubText = styled(MyText)`
   }
 `;
 
-const flipAnimation = keyframes`${flip}`;
-
 const NameSpan = styled.span`
-  &:hover {
-    color: ${secondColor};
-    animation: flip 2s infinite;
-  }
+  && {
+    &:hover {
+      display: inline-flex;
+      -webkit-animation: jello-horizontal 0.9s both;
+      animation: jello-horizontal 0.9s both;
+      @-webkit-keyframes jello-horizontal {
+        0% {
+          -webkit-transform: scale3d(1, 1, 1);
+          transform: scale3d(1, 1, 1);
+        }
+        30% {
+          -webkit-transform: scale3d(1.25, 0.75, 1);
+          transform: scale3d(1.25, 0.75, 1);
+        }
+        40% {
+          -webkit-transform: scale3d(0.75, 1.25, 1);
+          transform: scale3d(0.75, 1.25, 1);
+        }
+        50% {
+          -webkit-transform: scale3d(1.15, 0.85, 1);
+          transform: scale3d(1.15, 0.85, 1);
+        }
+        65% {
+          -webkit-transform: scale3d(0.95, 1.05, 1);
+          transform: scale3d(0.95, 1.05, 1);
+        }
+        75% {
+          -webkit-transform: scale3d(1.05, 0.95, 1);
+          transform: scale3d(1.05, 0.95, 1);
+        }
+        100% {
+          -webkit-transform: scale3d(1, 1, 1);
+          transform: scale3d(1, 1, 1);
+        }
+      }
+      @keyframes jello-horizontal {
+        0% {
+          -webkit-transform: scale3d(1, 1, 1);
+          transform: scale3d(1, 1, 1);
+        }
+        30% {
+          -webkit-transform: scale3d(1.25, 0.75, 1);
+          transform: scale3d(1.25, 0.75, 1);
+        }
+        40% {
+          -webkit-transform: scale3d(0.75, 1.25, 1);
+          transform: scale3d(0.75, 1.25, 1);
+        }
+        50% {
+          -webkit-transform: scale3d(1.15, 0.85, 1);
+          transform: scale3d(1.15, 0.85, 1);
+        }
+        65% {
+          -webkit-transform: scale3d(0.95, 1.05, 1);
+          transform: scale3d(0.95, 1.05, 1);
+        }
+        75% {
+          -webkit-transform: scale3d(1.05, 0.95, 1);
+          transform: scale3d(1.05, 0.95, 1);
+        }
+        100% {
+          -webkit-transform: scale3d(1, 1, 1);
+          transform: scale3d(1, 1, 1);
+        }
+      }
 
-  @keyframes flip {
-  0%,80% {
-    transform: rotateY(360deg) 
+      color: ${secondColor};
+    }
   }
-}
 `;

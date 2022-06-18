@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useEffect, useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -7,15 +7,18 @@ import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import MenuItem from "@mui/material/MenuItem";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { pageRoutes } from "../App";
 import { Link } from "react-scroll";
 import Yash_logo from "../assets/images/My_Logo.svg";
 import { MyText, primaryBgColor, secondColor } from "./common/commonStyles";
+import { Sling as Hamburger } from "hamburger-react";
+import { bounceInRight, slideInDown } from "react-animations";
 
 const MenuBar = () => {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  
+  const [anchorElNav, setAnchorElNav] = useState(null);
+  const [isOpen, setOpen] = useState(false);
+
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -69,37 +72,41 @@ const MenuBar = () => {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pageRoutes.map((page) => (
-                <MenuItem key={page.id} onClick={handleCloseNavMenu}>
+              {isOpen &&
+                pageRoutes.map((page) => (
+                  <MenuItem key={page.id} onClick={handleCloseNavMenu}>
+                    <HomeLink
+                      key={page.id}
+                      offset={-130}
+                      to={page.id}
+                      spy={true}
+                      smooth={true}
+                      tabIndex={1}
+                    >
+                      {page.name}
+                    </HomeLink>
+                  </MenuItem>
+                ))}
+              <Hamburger toggled={isOpen} toggle={setOpen} />
+            </Menu>
+          </StyledBoxM>
+          <StyledBox id="navLinks" sx={{ flexGrow: 1 }}>
+            {isOpen &&
+              pageRoutes.map((page) => (
+                <NavText key={page.id}>
                   <HomeLink
                     key={page.id}
-                    offset={-130}
                     to={page.id}
                     spy={true}
                     smooth={true}
+                    duration={500}
                     tabIndex={1}
                   >
                     {page.name}
                   </HomeLink>
-                </MenuItem>
+                </NavText>
               ))}
-            </Menu>
-          </StyledBoxM>
-          <StyledBox id="navLinks" sx={{ flexGrow: 1 }}>
-            {pageRoutes.map((page) => (
-              <NavText key={page.id}>
-                <HomeLink
-                  key={page.id}
-                  to={page.id}
-                  spy={true}
-                  smooth={true}
-                  duration={500}
-                  tabIndex={1}
-                >
-                  {page.name}
-                </HomeLink>
-              </NavText>
-            ))}
+            <Hamburger toggled={isOpen} toggle={setOpen} duration={0.8} />
           </StyledBox>
         </Toolbar>
       </NavContainer>
@@ -114,12 +121,42 @@ export default MenuBar;
 //   margin-left: 2% !important;
 // `;
 
+const bounceRightAnimation = keyframes`${bounceInRight}`;
+
 const HomeLink = styled(Link)`
   cursor: pointer;
 `;
 
 const NavContainer = styled(Container)`
   && {
+    -webkit-animation: slide-in-fwd-top 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+      both;
+    animation: slide-in-fwd-top 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    @-webkit-keyframes slide-in-fwd-top {
+      0% {
+        -webkit-transform: translateZ(-1400px) translateY(-800px);
+        transform: translateZ(-1400px) translateY(-800px);
+        opacity: 0;
+      }
+      100% {
+        -webkit-transform: translateZ(0) translateY(0);
+        transform: translateZ(0) translateY(0);
+        opacity: 1;
+      }
+    }
+    @keyframes slide-in-fwd-top {
+      0% {
+        -webkit-transform: translateZ(-1400px) translateY(-800px);
+        transform: translateZ(-1400px) translateY(-800px);
+        opacity: 0;
+      }
+      100% {
+        -webkit-transform: translateZ(0) translateY(0);
+        transform: translateZ(0) translateY(0);
+        opacity: 1;
+      }
+    }
+
     @media (max-width: 374px) {
       max-width: 90% !important;
     }
@@ -162,6 +199,50 @@ const StyledBox = styled(Box)`
 
 const NavText = styled(MyText)`
   && {
+    -webkit-animation: slide-in-blurred-right 0.6s
+      cubic-bezier(0.23, 1, 0.32, 1) both;
+    animation: slide-in-blurred-right 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
+    @-webkit-keyframes slide-in-blurred-right {
+      0% {
+        -webkit-transform: translateX(1000px) scaleX(2.5) scaleY(0.2);
+        transform: translateX(1000px) scaleX(2.5) scaleY(0.2);
+        -webkit-transform-origin: 0% 50%;
+        transform-origin: 0% 50%;
+        -webkit-filter: blur(40px);
+        filter: blur(40px);
+        opacity: 0;
+      }
+      100% {
+        -webkit-transform: translateX(0) scaleY(1) scaleX(1);
+        transform: translateX(0) scaleY(1) scaleX(1);
+        -webkit-transform-origin: 50% 50%;
+        transform-origin: 50% 50%;
+        -webkit-filter: blur(0);
+        filter: blur(0);
+        opacity: 1;
+      }
+    }
+    @keyframes slide-in-blurred-right {
+      0% {
+        -webkit-transform: translateX(1000px) scaleX(2.5) scaleY(0.2);
+        transform: translateX(1000px) scaleX(2.5) scaleY(0.2);
+        -webkit-transform-origin: 0% 50%;
+        transform-origin: 0% 50%;
+        -webkit-filter: blur(40px);
+        filter: blur(40px);
+        opacity: 0;
+      }
+      100% {
+        -webkit-transform: translateX(0) scaleY(1) scaleX(1);
+        transform: translateX(0) scaleY(1) scaleX(1);
+        -webkit-transform-origin: 50% 50%;
+        transform-origin: 50% 50%;
+        -webkit-filter: blur(0);
+        filter: blur(0);
+        opacity: 1;
+      }
+    }
+
     margin-left: 15px !important;
     margin-right: 15px !important;
     &:hover {
@@ -183,6 +264,7 @@ const StyledAppBar = styled(AppBar)`
       rgba(21, 24, 28, 0.8) 60%,
       transparent
     );
+    background: transparent;
   }
 `;
 

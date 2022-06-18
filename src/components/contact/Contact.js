@@ -3,19 +3,63 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { Element } from "react-scroll";
 import styled from "styled-components";
+import emailjs from "@emailjs/browser";
 import {
   MyText,
   secondColor,
-  secondaryBgColor,
-  StyledContainer,
+  primaryBgColor,
+  BottomContainer,
   whiteColor,
   myFont,
   LineDiv,
 } from "../common/commonStyles";
-
-function handleSubmit() {}
+import { useState } from "react";
+import { apiKey } from "./model/emailKey";
 
 const Contact = () => {
+  const [name, setName] = useState("");
+  const [emailID, setEmailID] = useState("");
+  const [message, setMessage] = useState("");
+  const [color, setColor] = useState("#075fe4");
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (!emailID) {
+      alert("email id is empty");
+      setColor("#B00020");
+    }
+    if (!message) {
+      alert("message can't be empty");
+      setColor("#B00020");
+    }
+    try {
+      var templateParams = {
+        from_name:name,
+        from_email: emailID,
+        message: message,
+      };
+      e.preventDefault();
+      console.log("testing");
+      console.log(name);
+      console.log(emailID);
+      emailjs
+        .send(
+          apiKey.SERVICE_ID,
+          apiKey.TEMPLATE_ID,
+          templateParams,
+          apiKey.USER_ID
+        )
+        .then((response) => {
+          console.log("SUCCESS!", response.status, response.text);
+        })
+        .catch((err) => {
+          console.log("FAILED...", err);
+        });
+    } catch {
+      console("Failed to create an account.");
+    }
+  }
+
   return (
     <ContactElement name="contact">
       <ContactContainer id="contactContainer">
@@ -35,6 +79,7 @@ const Contact = () => {
               id="nameField"
               type="text"
               placeholder="Your Name"
+              onChange={(e) => setName(e.target.value)}
             />
             <StyleDiv />
             <HiddenLabel for="emailIdField">Email ID: </HiddenLabel>
@@ -43,6 +88,7 @@ const Contact = () => {
               type="text"
               maxLength={40}
               placeholder="Your email address"
+              onChange={(e) => setEmailID(e.target.value)}
             />
             <StyleDiv />
             <HiddenLabel for="messageField">Message: </HiddenLabel>
@@ -51,7 +97,11 @@ const Contact = () => {
               placeholder="Message"
               type="text"
               maxLength={1000}
-              style={{ minHeight: "10%", paddingBottom: "10%" }}
+              style={{
+                minHeight: "10%",
+                paddingBottom: "10%",
+              }}
+              onChange={(e) => setMessage(e.target.value)}
             />
             <StyleDiv />
             <MessageButton
@@ -72,7 +122,7 @@ const Contact = () => {
 
 export default Contact;
 
-const ContactContainer = styled(StyledContainer)`
+const ContactContainer = styled(BottomContainer)`
   && {
     @media (max-width: 375px) {
       max-width: 90% !important;
@@ -167,7 +217,7 @@ const TextField = styled.textarea`
 `;
 
 const ContactElement = styled(Element)`
-  background-color: ${secondaryBgColor};
+  background-color: ${primaryBgColor};
 `;
 
 const ContactBox = styled(Box)`
