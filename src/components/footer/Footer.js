@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { MyText, primaryBgColor } from "../common/commonStyles";
+import { MyText } from "../common/commonStyles";
 
 const Footer = () => {
   return (
@@ -18,7 +18,6 @@ export default Footer;
 
 const StyledFooter = styled.footer`
 &&{
-  background-color: ${primaryBgColor};
   min-height: 10vh;
 }
 `;

@@ -2,14 +2,17 @@ import Box from "@mui/material/Box";
 import styled from "styled-components";
 import {
   StyledContainer,
-  primaryBgColor,
   MyText,
   blueColor,
-  whiteColor,
+  TagSpan,
 } from "../common/commonStyles";
 import { Element } from "react-scroll";
+import { useContext } from "react";
+import { ThemeContext } from "../../App";
 
 const About = () => {
+  const { theme, setTheme } = useContext(ThemeContext);
+
   return (
     <AboutElement name="about">
       <AboutContainer id="aboutContainer">
@@ -23,8 +26,9 @@ const About = () => {
                 fontWeight: "bold",
               }}
             >
-              <span style={{ color: whiteColor }}>{"<"}</span>About Me/
-              <span style={{ color: whiteColor }}>{">"}</span>
+              <TagSpan changeColor={{ theme }}>{"<"}</TagSpan>
+              About Me/
+              <TagSpan changeColor={{ theme }}>{">"}</TagSpan>
             </MyText>
             <MyText
               style={{
@@ -160,6 +164,4 @@ const AboutDiv = styled.div`
   }
 `;
 
-const AboutElement = styled(Element)`
-  background-color: ${primaryBgColor};
-`;
+const AboutElement = styled(Element)``;

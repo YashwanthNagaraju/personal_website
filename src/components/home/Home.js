@@ -3,7 +3,6 @@ import Box from "@mui/material/Box";
 import styled from "styled-components";
 import {
   MyText,
-  primaryBgColor,
   blueColor,
   StyledContainer,
 } from "../common/commonStyles";
@@ -11,7 +10,6 @@ import { Element } from "react-scroll";
 
 const Home = () => {
   const [subtitle, setSubtitle] = useState("A Web Developer");
-
   const subtitleTexts = [
     "A Web Developer",
     "An Artist(Well kinda..)",
@@ -85,7 +83,6 @@ const Home = () => {
 export default Home;
 
 const HomeElement = styled(Element)`
-  background-color: ${primaryBgColor};
 `;
 
 const HomeContainer = styled(StyledContainer)`

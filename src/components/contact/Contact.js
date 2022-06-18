@@ -7,19 +7,21 @@ import emailjs from "@emailjs/browser";
 import {
   MyText,
   blueColor,
-  primaryBgColor,
   BottomContainer,
   whiteColor,
   myFont,
   LineDiv,
+  blackTextColor,
 } from "../common/commonStyles";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { apiKey } from "./model/emailKey";
+import { ThemeContext } from "../../App";
 
 const Contact = () => {
   const [name, setName] = useState("");
   const [emailID, setEmailID] = useState("");
   const [message, setMessage] = useState("");
+  const { theme, setTheme } = useContext(ThemeContext);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -72,6 +74,7 @@ const Contact = () => {
               maxLength={40}
               id="nameField"
               type="text"
+              changeColor={theme}
               placeholder="Your Name"
               style={{}}
               onChange={(e) => setName(e.target.value)}
@@ -81,6 +84,7 @@ const Contact = () => {
             <InfoField
               id="emailIdField"
               type="text"
+              changeColor={theme}
               maxLength={40}
               placeholder="Your email address"
               onChange={(e) => setEmailID(e.target.value)}
@@ -91,6 +95,7 @@ const Contact = () => {
               id="messageField"
               placeholder="Message"
               type="text"
+              changeColor={theme}
               maxLength={1000}
               style={{
                 minHeight: "10%",
@@ -105,6 +110,7 @@ const Contact = () => {
               onClick={handleSubmit}
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              test={theme}
             >
               Send Message
             </MessageButton>
@@ -197,7 +203,7 @@ const StyleDiv = styled.div`
 const InfoField = styled.input`
   && {
     background-color: transparent;
-    color: ${whiteColor}!important;
+    color: ${(props) => (props.changeColor ==='dark'? whiteColor : blackTextColor)};
     font-family: ${myFont}!important;
     font-size: 20px;
     border: 0px;
@@ -216,7 +222,7 @@ const TextField = styled.textarea`
   && {
     background-color: transparent;
     cursor: pointer;
-    color: ${whiteColor}!important;
+    color: ${(props) => (props.changeColor ==='dark'? whiteColor : blackTextColor)};
     font-family: ${myFont}!important;
     font-size: 20px;
     border: 0px;
@@ -230,7 +236,6 @@ const TextField = styled.textarea`
 `;
 
 const ContactElement = styled(Element)`
-  background-color: ${primaryBgColor};
 `;
 
 const ContactBox = styled(Box)`
@@ -264,7 +269,7 @@ const ContactInfoBox = styled(Box)`
 const MessageButton = styled(Button)`
   && {
     padding: 8px 0px;
-    color: ${whiteColor};
+    color:white;
     background-color: ${blueColor};
     font-family: ${myFont};
     width: 40%;

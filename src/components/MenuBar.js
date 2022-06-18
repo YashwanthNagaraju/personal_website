@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -8,13 +8,21 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import MenuItem from "@mui/material/MenuItem";
 import styled from "styled-components";
-import { pageRoutes } from "../App";
+import { pageRoutes, ThemeContext } from "../App";
 import { Link } from "react-scroll";
-import Yash_logo from "../assets/images/My_Logo.svg";
-import { MyText, primaryBgColor, blueColor } from "./common/commonStyles";
+import Yash_logo_dark from "../assets/images/My_Logo_dark.svg";
+import Yash_logo_light from "../assets/images/My_Logo_light.svg";
+
+import {
+  MyText,
+  blueColor,
+  whiteColor,
+  blackTextColor,
+} from "./common/commonStyles";
 import { Sling as Hamburger } from "hamburger-react";
 
 const MenuBar = () => {
+  const { theme, setTheme } = useContext(ThemeContext);
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [isOpen, setOpen] = useState(false);
 
@@ -27,7 +35,7 @@ const MenuBar = () => {
   };
 
   return (
-    <StyledAppBar position="fixed" id="navBarMain">
+    <StyledAppBar changeColor={theme} position="fixed" id="navBarMain">
       <NavContainer maxWidth="xl" id="navContainer">
         <Toolbar disableGutters id="navBar">
           <NoStyleLink
@@ -39,7 +47,10 @@ const MenuBar = () => {
             id="logoLink"
             tabIndex={1}
           >
-            <img src={Yash_logo} alt="Yashwanth's website logo" />
+            <img
+              src={theme === "dark" ? Yash_logo_dark : Yash_logo_light}
+              alt="Yashwanth's website logo"
+            />
           </NoStyleLink>
 
           <StyledBoxM id="navLinksM" sx={{ flexGrow: 1 }}>
@@ -92,7 +103,7 @@ const MenuBar = () => {
           <StyledBox id="navLinks" sx={{ flexGrow: 1 }}>
             {isOpen &&
               pageRoutes.map((page) => (
-                <NavText key={page.id}>
+                <NavText key={page.id} changeColor={theme}>
                   <HomeLink
                     key={page.id}
                     to={page.id}
@@ -105,7 +116,12 @@ const MenuBar = () => {
                   </HomeLink>
                 </NavText>
               ))}
-            <Hamburger toggled={isOpen} toggle={setOpen} duration={0.8} />
+            <Hamburger
+              toggled={isOpen}
+              toggle={setOpen}
+              duration={0.8}
+              color={theme === "dark" ? whiteColor : blackTextColor}
+            />
           </StyledBox>
         </Toolbar>
       </NavContainer>
@@ -113,13 +129,6 @@ const MenuBar = () => {
   );
 };
 export default MenuBar;
-
-// const ResumeButton = styled(Button)`
-//   color: #075fe4 !important;
-//   border: 2px solid #075fe4 !important;
-//   margin-left: 2% !important;
-// `;
-
 
 const HomeLink = styled(Link)`
   cursor: pointer;
@@ -240,7 +249,8 @@ const NavText = styled(MyText)`
         opacity: 1;
       }
     }
-
+    color: ${(props) =>
+      props.changeColor === "dark" ? whiteColor : blackTextColor};
     margin-left: 15px !important;
     margin-right: 15px !important;
     &:hover {
@@ -256,11 +266,10 @@ const NavText = styled(MyText)`
 const StyledAppBar = styled(AppBar)`
   && {
     box-shadow: none;
-    background: linear-gradient(
-      180deg,
-      ${primaryBgColor},
-      rgba(21, 24, 28, 0.8) 60%,
-      transparent
+    background:  ${(props) =>
+      props.changeColor === "dark"
+        ? "linear-gradient(180deg,#15181C,rgba(21, 24, 28, 0.8) 60%,transparent)"
+        : "transparent"};
     );
   }
 `;

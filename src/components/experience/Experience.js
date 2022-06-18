@@ -2,20 +2,20 @@ import Box from "@mui/material/Box";
 import styled from "styled-components";
 import {
   StyledContainer,
-  primaryBgColor,
   MyText,
   blueColor,
-  whiteColor,
+  TagSpan,
 } from "../common/commonStyles";
 import { Element } from "react-scroll";
+import { useContext } from "react";
+import { ThemeContext } from "../../App";
 
 const Experience = () => {
-  // const [dotPosition, setDotPosition] = React.useState('left');
+  const { theme, setTheme } = useContext(ThemeContext);
 
   return (
     <ExperienceElement name="experience">
       <ExperienceContainer id="experienceContainer">
-        {/* <ExperienceStack id="ExperienceStack" direction="row" spacing={2}> */}
         <ExperienceBox id="experienceBox">
           <ExperienceDiv>
             <MyText
@@ -25,8 +25,8 @@ const Experience = () => {
                 fontWeight: "bold",
               }}
             >
-              <span style={{ color: whiteColor }}>{"<"}</span>My Experience /
-              <span style={{ color: whiteColor }}>{">"}</span>
+              <TagSpan changeColor={{ theme }}>{"<"}</TagSpan>My Experience /
+              <TagSpan changeColor={{ theme }}>{">"}</TagSpan>
             </MyText>
             <MyText
               style={{
@@ -54,9 +54,7 @@ const Experience = () => {
 
 export default Experience;
 
-const ExperienceElement = styled(Element)`
-  background-color: ${primaryBgColor};
-`;
+const ExperienceElement = styled(Element)``;
 
 const ExperienceContainer = styled(StyledContainer)`
   && {
