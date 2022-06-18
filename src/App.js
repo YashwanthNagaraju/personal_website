@@ -7,8 +7,8 @@ import Contact from './components/contact/Contact'
 import styled from 'styled-components'
 import Footer from './components/footer/Footer'
 import Social from './components/social/Social'
-import Email from './components/social/Email'
-import Loader from './components/loader/Loader'
+// import Email from './components/social/Email'
+// import Loader from './components/loader/Loader'
 import Home from './components/home/Home'
 
 function App() {

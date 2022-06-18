@@ -4,7 +4,7 @@ import {
   StyledContainer,
   primaryBgColor,
   MyText,
-  secondColor,
+  blueColor,
   whiteColor,
 } from "../common/commonStyles";
 import { Element } from "react-scroll";
@@ -21,7 +21,7 @@ const Experience = () => {
             <MyText
               style={{
                 fontSize: "52px",
-                color: secondColor,
+                color: blueColor,
                 fontWeight: "bold",
               }}
             >
@@ -46,9 +46,7 @@ const Experience = () => {
             </MyText>
           </ExperienceDiv>
         </ExperienceBox>
-        <ExperienceInfoBox component="div" >
-
-        </ExperienceInfoBox>
+        <ExperienceInfoBox component="div"></ExperienceInfoBox>
       </ExperienceContainer>
     </ExperienceElement>
   );
@@ -60,9 +58,26 @@ const ExperienceElement = styled(Element)`
   background-color: ${primaryBgColor};
 `;
 
-
 const ExperienceContainer = styled(StyledContainer)`
   && {
+    -webkit-animation: fade-in 1.5s cubic-bezier(0.755, 0.05, 0.855, 0.06) both;
+    animation: fade-in 1.5s cubic-bezier(0.755, 0.05, 0.855, 0.06) both;
+    @-webkit-keyframes fade-in {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    @keyframes fade-in {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
     @media (max-width: 375px) {
       max-width: 90% !important;
       display: flex;

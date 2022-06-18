@@ -4,7 +4,7 @@ import styled from "styled-components";
 import {
   MyText,
   primaryBgColor,
-  secondColor,
+  blueColor,
   StyledContainer,
 } from "../common/commonStyles";
 import { Element } from "react-scroll";
@@ -50,7 +50,7 @@ const Home = () => {
             <MyText
               style={{
                 fontSize: "36px",
-                color: secondColor,
+                color: blueColor,
                 fontWeight: "bold",
               }}
             >
@@ -63,7 +63,7 @@ const Home = () => {
             </HomeHeading>
             <HomeHeading>
               {subtitle}
-              <span style={{ fontSize: "1.2em", color: secondColor }}>.</span>
+              <span style={{ fontSize: "1.2em", color: blueColor }}>.</span>
             </HomeHeading>
             <SubText style={{ fontSize: "24px", marginTop: "15px" }}>
               An enthusiastic web developer with a passion to design and code
@@ -299,7 +299,7 @@ const NameSpan = styled.span`
         }
       }
 
-      color: ${secondColor};
+      color: ${blueColor};
     }
   }
 `;

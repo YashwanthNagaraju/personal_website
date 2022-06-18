@@ -2,10 +2,10 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import styled from "styled-components";
 
-
 export const primaryBgColor = "#15181C";
 export const whiteColor = "#FFFFFF";
-export const secondColor = "#075fe4";
+export const blueColor = "#075fe4";
+export const errorColor = "#B00020";
 export const myFont = "Oswald";
 
 export const MyText = styled(Typography)`
@@ -14,9 +14,10 @@ export const MyText = styled(Typography)`
   }
 `;
 
+
 export const LineDiv = styled.div`
   && {
-    background: ${secondColor};
+    background: ${blueColor};
     min-width: 7px;
     margin-right: 5%;
   }
@@ -40,12 +41,12 @@ export const StyledContainer = styled(Container)`
 `;
 
 export const BottomContainer = styled(Container)`
-&& {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  && {
+    min-height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 export const GeneralTextHeading = styled(MyText)`

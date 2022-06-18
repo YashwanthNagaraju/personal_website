@@ -1,10 +1,10 @@
 import Box from "@mui/material/Box";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import {
   StyledContainer,
   primaryBgColor,
   MyText,
-  secondColor,
+  blueColor,
   whiteColor,
 } from "../common/commonStyles";
 import { Element } from "react-scroll";
@@ -19,7 +19,7 @@ const About = () => {
             <MyText
               style={{
                 fontSize: "52px",
-                color: secondColor,
+                color: blueColor,
                 fontWeight: "bold",
               }}
             >

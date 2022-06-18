@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -7,13 +7,12 @@ import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import MenuItem from "@mui/material/MenuItem";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import { pageRoutes } from "../App";
 import { Link } from "react-scroll";
 import Yash_logo from "../assets/images/My_Logo.svg";
-import { MyText, primaryBgColor, secondColor } from "./common/commonStyles";
+import { MyText, primaryBgColor, blueColor } from "./common/commonStyles";
 import { Sling as Hamburger } from "hamburger-react";
-import { bounceInRight, slideInDown } from "react-animations";
 
 const MenuBar = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -121,7 +120,6 @@ export default MenuBar;
 //   margin-left: 2% !important;
 // `;
 
-const bounceRightAnimation = keyframes`${bounceInRight}`;
 
 const HomeLink = styled(Link)`
   cursor: pointer;
@@ -246,10 +244,10 @@ const NavText = styled(MyText)`
     margin-left: 15px !important;
     margin-right: 15px !important;
     &:hover {
-      color: ${secondColor};
+      color: ${blueColor};
     }
     &:hover {
-      color: ${secondColor};
+      color: ${blueColor};
     }
     font-size: 20px;
   }
@@ -264,7 +262,6 @@ const StyledAppBar = styled(AppBar)`
       rgba(21, 24, 28, 0.8) 60%,
       transparent
     );
-    background: transparent;
   }
 `;
 

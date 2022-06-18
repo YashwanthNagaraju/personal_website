@@ -6,7 +6,7 @@ import styled from "styled-components";
 import emailjs from "@emailjs/browser";
 import {
   MyText,
-  secondColor,
+  blueColor,
   primaryBgColor,
   BottomContainer,
   whiteColor,
@@ -20,28 +20,22 @@ const Contact = () => {
   const [name, setName] = useState("");
   const [emailID, setEmailID] = useState("");
   const [message, setMessage] = useState("");
-  const [color, setColor] = useState("#075fe4");
 
   function handleSubmit(e) {
     e.preventDefault();
     if (!emailID) {
-      alert("email id is empty");
-      setColor("#B00020");
+      return alert("email id is empty");
     }
     if (!message) {
-      alert("message can't be empty");
-      setColor("#B00020");
+      return alert("message can't be empty");
     }
     try {
       var templateParams = {
-        from_name:name,
+        from_name: name,
         from_email: emailID,
         message: message,
       };
       e.preventDefault();
-      console.log("testing");
-      console.log(name);
-      console.log(emailID);
       emailjs
         .send(
           apiKey.SERVICE_ID,
@@ -79,6 +73,7 @@ const Contact = () => {
               id="nameField"
               type="text"
               placeholder="Your Name"
+              style={{}}
               onChange={(e) => setName(e.target.value)}
             />
             <StyleDiv />
@@ -124,6 +119,24 @@ export default Contact;
 
 const ContactContainer = styled(BottomContainer)`
   && {
+    -webkit-animation: fade-in 1.5s cubic-bezier(0.755, 0.05, 0.855, 0.06) both;
+    animation: fade-in 1.5s cubic-bezier(0.755, 0.05, 0.855, 0.06) both;
+    @-webkit-keyframes fade-in {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    @keyframes fade-in {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
     @media (max-width: 375px) {
       max-width: 90% !important;
       display: flex;
@@ -191,10 +204,10 @@ const InfoField = styled.input`
     text-align: left;
     cursor: pointer;
     padding-bottom: 5%;
-    border-bottom: 3px solid ${secondColor};
+    border-bottom: 3px solid ${blueColor};
     &:hover,
     &:focus {
-      border: 2px solid ${secondColor};
+      border: 2px solid ${blueColor};
     }
   }
 `;
@@ -208,10 +221,10 @@ const TextField = styled.textarea`
     font-size: 20px;
     border: 0px;
     text-align: left;
-    border-bottom: 3px solid ${secondColor};
+    border-bottom: 3px solid ${blueColor};
     &:hover,
     &:focus {
-      border: 2px solid ${secondColor};
+      border: 2px solid ${blueColor};
     }
   }
 `;
@@ -252,7 +265,7 @@ const MessageButton = styled(Button)`
   && {
     padding: 8px 0px;
     color: ${whiteColor};
-    background-color: ${secondColor};
+    background-color: ${blueColor};
     font-family: ${myFont};
     width: 40%;
     font-size: 20px;
