@@ -4,7 +4,6 @@ import {
   StyledContainer,
   MyText,
   blueColor,
-  TagSpan,
   whiteColor,
   blackTextColor,
 } from "../common/commonStyles";
@@ -13,7 +12,7 @@ import { useContext } from "react";
 import { ThemeContext } from "../../App";
 
 const Experience = () => {
-  const { theme, setTheme } = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
 
   return (
     <ExperienceElement name="experience">
@@ -73,24 +72,6 @@ const ExperienceElement = styled(Element)``;
 
 const ExperienceContainer = styled(StyledContainer)`
   && {
-    -webkit-animation: fade-in 1.5s cubic-bezier(0.755, 0.05, 0.855, 0.06) both;
-    animation: fade-in 1.5s cubic-bezier(0.755, 0.05, 0.855, 0.06) both;
-    @-webkit-keyframes fade-in {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
-    }
-    @keyframes fade-in {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
-    }
     @media (max-width: 375px) {
       max-width: 90% !important;
       display: flex;

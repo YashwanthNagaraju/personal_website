@@ -7,6 +7,7 @@ import {
   StyledContainer,
 } from "../common/commonStyles";
 import { Element } from "react-scroll";
+import { jelloHorz } from "../common/animations";
 
 const Home = () => {
   const [subtitle, setSubtitle] = useState("A Web Developer");
@@ -23,7 +24,7 @@ const Home = () => {
     }, 1500);
     return () => clearInterval(interval);
     // }, 5000);
-  }, []);
+  });
   const nameString = [
     "I",
     "'",
@@ -87,24 +88,6 @@ const HomeElement = styled(Element)`
 
 const HomeContainer = styled(StyledContainer)`
   && {
-    -webkit-animation: fade-in 1.5s cubic-bezier(0.755, 0.05, 0.855, 0.06) both;
-    animation: fade-in 1.5s cubic-bezier(0.755, 0.05, 0.855, 0.06) both;
-    @-webkit-keyframes fade-in {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
-    }
-    @keyframes fade-in {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
-    }
     @media (max-width: 375px) {
       max-width: 90% !important;
       display: flex;
@@ -233,69 +216,8 @@ const NameSpan = styled.span`
   && {
     &:hover {
       display: inline-flex;
-      -webkit-animation: jello-horizontal 0.9s both;
-      animation: jello-horizontal 0.9s both;
-      @-webkit-keyframes jello-horizontal {
-        0% {
-          -webkit-transform: scale3d(1, 1, 1);
-          transform: scale3d(1, 1, 1);
-        }
-        30% {
-          -webkit-transform: scale3d(1.25, 0.75, 1);
-          transform: scale3d(1.25, 0.75, 1);
-        }
-        40% {
-          -webkit-transform: scale3d(0.75, 1.25, 1);
-          transform: scale3d(0.75, 1.25, 1);
-        }
-        50% {
-          -webkit-transform: scale3d(1.15, 0.85, 1);
-          transform: scale3d(1.15, 0.85, 1);
-        }
-        65% {
-          -webkit-transform: scale3d(0.95, 1.05, 1);
-          transform: scale3d(0.95, 1.05, 1);
-        }
-        75% {
-          -webkit-transform: scale3d(1.05, 0.95, 1);
-          transform: scale3d(1.05, 0.95, 1);
-        }
-        100% {
-          -webkit-transform: scale3d(1, 1, 1);
-          transform: scale3d(1, 1, 1);
-        }
-      }
-      @keyframes jello-horizontal {
-        0% {
-          -webkit-transform: scale3d(1, 1, 1);
-          transform: scale3d(1, 1, 1);
-        }
-        30% {
-          -webkit-transform: scale3d(1.25, 0.75, 1);
-          transform: scale3d(1.25, 0.75, 1);
-        }
-        40% {
-          -webkit-transform: scale3d(0.75, 1.25, 1);
-          transform: scale3d(0.75, 1.25, 1);
-        }
-        50% {
-          -webkit-transform: scale3d(1.15, 0.85, 1);
-          transform: scale3d(1.15, 0.85, 1);
-        }
-        65% {
-          -webkit-transform: scale3d(0.95, 1.05, 1);
-          transform: scale3d(0.95, 1.05, 1);
-        }
-        75% {
-          -webkit-transform: scale3d(1.05, 0.95, 1);
-          transform: scale3d(1.05, 0.95, 1);
-        }
-        100% {
-          -webkit-transform: scale3d(1, 1, 1);
-          transform: scale3d(1, 1, 1);
-        }
-      }
-
+      -webkit-animation: ${jelloHorz} 0.8s both;
+      animation: ${jelloHorz} 0.8s both;
       color: ${blueColor};
     }
   }

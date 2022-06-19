@@ -12,7 +12,7 @@ import { useContext } from "react";
 import { ThemeContext } from "../../App";
 
 const About = () => {
-  const { theme, setTheme } = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
   return (
     <AboutElement name="about">
       <AboutContainer id="aboutContainer">
@@ -38,7 +38,6 @@ const About = () => {
                 style={{
                   color: theme === "dark" ? whiteColor : blackTextColor,
                 }}
-                currentColor={{ theme }}
               >
                 {">"}
               </span>
@@ -78,24 +77,6 @@ export default About;
 
 const AboutContainer = styled(StyledContainer)`
   && {
-    -webkit-animation: fade-in 1.5s cubic-bezier(0.755, 0.05, 0.855, 0.06) both;
-    animation: fade-in 1.5s cubic-bezier(0.755, 0.05, 0.855, 0.06) both;
-    @-webkit-keyframes fade-in {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
-    }
-    @keyframes fade-in {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
-    }
     @media (max-width: 375px) {
       max-width: 90% !important;
       display: flex;
@@ -127,6 +108,7 @@ const AboutContainer = styled(StyledContainer)`
     }
   }
 `;
+
 
 const AboutBox = styled(Box)`
   align-content: baseline;

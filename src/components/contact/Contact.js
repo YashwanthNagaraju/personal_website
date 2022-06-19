@@ -2,7 +2,7 @@ import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { Element } from "react-scroll";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import emailjs from "@emailjs/browser";
 import {
   MyText,
@@ -12,24 +12,56 @@ import {
   myFont,
   LineDiv,
   blackTextColor,
+  errorColor,
+  successColor,
 } from "../common/commonStyles";
 import { useContext, useState } from "react";
 import { apiKey } from "./model/emailKey";
 import { ThemeContext } from "../../App";
+import { Alert, Snackbar } from "@mui/material";
+import { slideInRightWithBlur, slideOutRight } from "../common/animations";
 
 const Contact = () => {
   const [name, setName] = useState("");
   const [emailID, setEmailID] = useState("");
   const [message, setMessage] = useState("");
-  const { theme, setTheme } = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
+  const [status, setStatus] = useState({
+    msg: "",
+    vertical: "bottom",
+    horizontal: "right",
+  });
+  const [info, setInfo] = useState("");
+  const { vertical, horizontal, msg } = status;
+
+  function moveUp() {
+    var ele = document.getElementById("effectDiv");
+    ele.style.paddingBottom = "3%";
+  }
+  function moveDown() {
+    var ele = document.getElementById("effectDiv");
+    ele.style.paddingBottom = "0%";
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
     if (!emailID) {
-      return alert("email id is empty");
+      setInfo("Enter your email ID to submit");
+      moveUp();
+      return setStatus({
+        msg: "error",
+        vertical: "bottom",
+        horizontal: "right",
+      });
     }
     if (!message) {
-      return alert("message can't be empty");
+      setInfo("Enter a message to submit");
+      moveUp();
+      return setStatus({
+        msg: "error",
+        vertical: "bottom",
+        horizontal: "right",
+      });
     }
     try {
       var templateParams = {
@@ -37,7 +69,6 @@ const Contact = () => {
         from_email: emailID,
         message: message,
       };
-      e.preventDefault();
       emailjs
         .send(
           apiKey.SERVICE_ID,
@@ -47,15 +78,38 @@ const Contact = () => {
         )
         .then((response) => {
           console.log("SUCCESS!", response.status, response.text);
+          setInfo("Message has been sent!");
+          moveUp();
+          setStatus({
+            msg: "success",
+            vertical: "bottom",
+            horizontal: "right",
+          });
         })
         .catch((err) => {
-          console.log("FAILED...", err);
+          setInfo("Something went wrong.");
+          moveUp();
+          return setStatus({
+            msg: "error",
+            vertical: "bottom",
+            horizontal: "right",
+          });
         });
     } catch {
-      console("Failed to create an account.");
+      console.log("Something went wrongggg.");
     }
   }
-
+  function handleClose(e) {
+    if (e.reason === "clickaway") {
+      moveDown();
+      setStatus({ msg: "", vertical: "bottom", horizontal: "right" });
+      return;
+    }
+    setInfo("");
+    moveDown();
+    setStatus({ msg: "", vertical: "bottom", horizontal: "right" });
+  }
+  console.log(!!msg);
   return (
     <ContactElement name="contact">
       <ContactContainer id="contactContainer">
@@ -114,6 +168,31 @@ const Contact = () => {
             >
               Send Message
             </MessageButton>
+            <InfoBar
+              id="infoBar"
+              anchorOrigin={{ vertical, horizontal }}
+              open={msg !== ""}
+              onClose={(e) => handleClose(e)}
+              key={vertical + horizontal}
+            >
+              <Alert
+                id="alertInfoBar"
+                style={{
+                  backgroundColor:
+                    msg === "error"
+                      ? errorColor
+                      : msg === "success"
+                      ? successColor
+                      : "",
+                  color: whiteColor,
+                }}
+                onClose={handleClose}
+                severity={msg}
+                sx={{ width: "100%" }}
+              >
+                {info}
+              </Alert>
+            </InfoBar>{" "}
           </ContactInfoBox>
         </ContactStack>
       </ContactContainer>
@@ -122,27 +201,10 @@ const Contact = () => {
 };
 
 export default Contact;
+const ContactElement = styled(Element)``;
 
 const ContactContainer = styled(BottomContainer)`
   && {
-    -webkit-animation: fade-in 1.5s cubic-bezier(0.755, 0.05, 0.855, 0.06) both;
-    animation: fade-in 1.5s cubic-bezier(0.755, 0.05, 0.855, 0.06) both;
-    @-webkit-keyframes fade-in {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
-    }
-    @keyframes fade-in {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
-    }
     @media (max-width: 375px) {
       max-width: 90% !important;
       display: flex;
@@ -203,7 +265,8 @@ const StyleDiv = styled.div`
 const InfoField = styled.input`
   && {
     background-color: transparent;
-    color: ${(props) => (props.changeColor ==='dark'? whiteColor : blackTextColor)};
+    color: ${(props) =>
+      props.changeColor === "dark" ? whiteColor : blackTextColor};
     font-family: ${myFont}!important;
     font-size: 20px;
     border: 0px;
@@ -222,7 +285,8 @@ const TextField = styled.textarea`
   && {
     background-color: transparent;
     cursor: pointer;
-    color: ${(props) => (props.changeColor ==='dark'? whiteColor : blackTextColor)};
+    color: ${(props) =>
+      props.changeColor === "dark" ? whiteColor : blackTextColor};
     font-family: ${myFont}!important;
     font-size: 20px;
     border: 0px;
@@ -233,9 +297,6 @@ const TextField = styled.textarea`
       border: 2px solid ${blueColor};
     }
   }
-`;
-
-const ContactElement = styled(Element)`
 `;
 
 const ContactBox = styled(Box)`
@@ -269,7 +330,7 @@ const ContactInfoBox = styled(Box)`
 const MessageButton = styled(Button)`
   && {
     padding: 8px 0px;
-    color:white;
+    color: ${whiteColor};
     background-color: ${blueColor};
     font-family: ${myFont};
     width: 40%;
@@ -307,4 +368,17 @@ const ContactHeading = styled(MyText)`
       font-size: 5rem !important;
     }
   }
+`;
+
+const entryAnimation = css`
+  ${slideInRightWithBlur} 0.8s cubic-bezier(0.23, 1, 0.32, 1) both;
+`;
+
+const exitAnimation = css`
+  ${slideOutRight} 12.8s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+`;
+const InfoBar = styled(Snackbar)`
+  -webkit-animation: ${(props) =>
+    props.open ? entryAnimation : exitAnimation};
+  animation: ${(props) => (props.open ? entryAnimation : exitAnimation)};
 `;

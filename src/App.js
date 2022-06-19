@@ -28,7 +28,7 @@ function App() {
   setTimeout(() => {
     setTimeOut(1);
   }, 3000);
-
+  console.log("app");
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
       <Appdiv className="App" themeChange={theme}>
@@ -53,9 +53,9 @@ const Appdiv = styled.div`
     props.themeChange === "dark" ? whiteColor : blackTextColor};
   background-color: ${(props) =>
     props.themeChange === "dark" ? primaryBgColor : whiteBgColor};
-    -webkit-transition: background-color 1.5s linear;
-    -ms-transition: background-color 1.5s linear;
-    transition: background-color 1.5s linear;
+  -webkit-transition: background-color 1.5s linear;
+  -ms-transition: background-color 1.5s linear;
+  transition: background-color 1.5s linear;
 `;
 
 export const pageRoutes = [
