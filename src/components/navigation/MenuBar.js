@@ -8,20 +8,20 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import MenuItem from "@mui/material/MenuItem";
 import styled from "styled-components";
-import { pageRoutes, ThemeContext } from "../App";
+import { pageRoutes, ThemeContext } from "../../App";
 import { Link } from "react-scroll";
-import Yash_logo_dark from "../assets/images/L_Logo_dark.svg";
-import Yash_logo_light from "../assets/images/L_Logo_light.svg";
-import Yash_Mlogo_dark from "../assets/images/M_Logo_dark.svg";
-import Yash_Mlogo_light from "../assets/images/M_Logo_light.svg";
+import Yash_logo_dark from "../../assets/images/L_Logo_dark.svg";
+import Yash_logo_light from "../../assets/images/L_Logo_light.svg";
+import Yash_Mlogo_dark from "../../assets/images/M_Logo_dark.svg";
+import Yash_Mlogo_light from "../../assets/images/M_Logo_light.svg";
 import {
   MyText,
   blueColor,
   whiteColor,
   blackTextColor,
-} from "./common/commonStyles";
+} from "../common/commonStyles";
 import { Sling as Hamburger } from "hamburger-react";
-import { slideFwdTop, slideInRightWithBlur } from "./common/animations";
+import { slideFwdTop, slideInRightWithBlur } from "../common/animations";
 
 const MenuBar = () => {
   const { theme, setTheme } = useContext(ThemeContext);
@@ -76,7 +76,11 @@ const MenuBar = () => {
               size={24}
               color={theme === "dark" ? whiteColor : blackTextColor}
             />
+            {/* {isOpen &&{
+              <>
+            }
 
+            } */}
             {/* <IconButton
               size="large"
               aria-label="account of current user"
@@ -161,16 +165,16 @@ const NavContainer = styled(Container)`
     -webkit-animation: ${slideFwdTop} 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)
       both;
     animation: ${slideFwdTop} 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-    @media (max-width: 374px) {
+    @media (max-width: 375px) {
       max-width: 90% !important;
     }
-    @media (min-width: 375px) and (max-width: 424px) {
+    @media (min-width: 375px) and (max-width: 425px) {
       max-width: 90% !important;
     }
-    @media (min-width: 425px) and (max-width: 599px) {
+    @media (min-width: 425px) and (max-width: 600px) {
       max-width: 90% !important;
     }
-    @media (min-width: 600px) and (max-width: 767px) {
+    @media (min-width: 600px) and (max-width: 768px) {
       max-width: 90% !important;
     }
     @media (min-width: 768px) and (max-width: 1024px) {
@@ -183,18 +187,18 @@ const NavContainer = styled(Container)`
 `;
 
 const StyledBoxM = styled(Box)`
-  @media (max-width: 767px) {
-    display: flex;
-    justify-content: flex-end;
+  @media (min-width: 768px) {
+    display:none;
   }
-  display: none;
+  display: flex;
+  justify-content: flex-end;
 `;
 
 const StyledBox = styled(Box)`
-  justify-content: flex-end;
-  align-items: center;
   @media (min-width: 768px) {
     display: flex;
+    justify-content: flex-end;
+    align-items: center;
   }
   display: none;
 `;

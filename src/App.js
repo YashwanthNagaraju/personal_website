@@ -1,6 +1,5 @@
 import "./App.css";
 import { createContext, useState } from "react";
-import MenuBar from "./components/MenuBar";
 import Experience from "./components/experience/Experience";
 import About from "./components/about/About";
 import Contact from "./components/contact/Contact";
@@ -17,6 +16,7 @@ import {
   whiteBgColor,
   whiteColor,
 } from "./components/common/commonStyles";
+import MenuBar from "./components/navigation/MenuBar";
 
 export const ThemeContext = createContext();
 
