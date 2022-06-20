@@ -18,6 +18,7 @@ import {
 } from "./components/common/commonStyles";
 import MenuBar from "./components/navigation/MenuBar";
 import { MobileBar } from "./components/navigation/MobileBar";
+import { darkTheme, lightTheme } from "./assets/common/commonText";
 
 export const ThemeContext = createContext();
 
@@ -25,7 +26,7 @@ function App() {
   const [timeOut, setTimeOut] = useState(null);
   const date = new Date();
   const isEvening = date.getHours() > 20 || date.getHours() < 7;
-  const [theme, setTheme] = useState(isEvening ? "dark" : "light");
+  const [theme, setTheme] = useState(isEvening ? darkTheme : lightTheme);
   const [isOpen, setOpen] = useState(false);
   setTimeout(() => {
     setTimeOut(1);
@@ -51,12 +52,12 @@ function App() {
 
 const Appdiv = styled.div`
   color: ${(props) =>
-    props.themeChange === "dark" ? whiteColor : blackTextColor};
+    props.themeChange === darkTheme ? whiteColor : blackTextColor};
   background-color: ${(props) =>
-    props.themeChange === "dark" ? primaryBgColor : whiteBgColor};
-  -webkit-transition: background-color 1.5s linear;
-  -ms-transition: background-color 1.5s linear;
-  transition: background-color 1.5s linear;
+    props.themeChange === darkTheme ? primaryBgColor : whiteBgColor};
+  -webkit-transition: background-color 1.2s linear;
+  -ms-transition: background-color 1.2s linear;
+  transition: background-color 1.2s linear;
 `;
 
 export const pageRoutes = [

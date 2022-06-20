@@ -6,10 +6,12 @@ import {
   blueColor,
   whiteColor,
   blackTextColor,
+  purpleColor,
 } from "../common/commonStyles";
 import { Element } from "react-scroll";
 import { useContext } from "react";
 import { ThemeContext } from "../../App";
+import { darkTheme } from "../../assets/common/commonText";
 
 const About = () => {
   const { theme } = useContext(ThemeContext);
@@ -22,13 +24,13 @@ const About = () => {
             <MyText
               style={{
                 fontSize: "52px",
-                color: blueColor,
+                color: theme === darkTheme ? blueColor : purpleColor,
                 fontWeight: "bold",
               }}
             >
               <span
                 style={{
-                  color: theme === "dark" ? whiteColor : blackTextColor,
+                  color: theme === darkTheme ? whiteColor : blackTextColor,
                 }}
               >
                 {"<"}
@@ -36,7 +38,7 @@ const About = () => {
               About Me/
               <span
                 style={{
-                  color: theme === "dark" ? whiteColor : blackTextColor,
+                  color: theme === darkTheme ? whiteColor : blackTextColor,
                 }}
               >
                 {">"}
@@ -108,7 +110,6 @@ const AboutContainer = styled(StyledContainer)`
     }
   }
 `;
-
 
 const AboutBox = styled(Box)`
   align-content: baseline;

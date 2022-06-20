@@ -5,10 +5,11 @@ import { useContext } from "react";
 import { Link } from "react-scroll";
 import styled from "styled-components";
 import { pageRoutes, ThemeContext } from "../../App";
+import { darkTheme } from "../../assets/common/commonText";
 import { blackTextColor, whiteColor } from "../common/commonStyles";
 
 export const MobileBar = () => {
-  const { theme, setTheme, isOpen, setOpen } = useContext(ThemeContext);
+  const { theme, isOpen, setOpen } = useContext(ThemeContext);
 
   return (
     <>
@@ -20,7 +21,7 @@ export const MobileBar = () => {
               toggle={setOpen}
               duration={0.8}
               size={32}
-              color={theme === "dark" ? whiteColor : blackTextColor}
+              color={theme === darkTheme ? whiteColor : blackTextColor}
             />
           </IconBox>
           <ContentBox id="mobilePageBox">

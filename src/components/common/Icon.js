@@ -9,8 +9,10 @@ import {
 } from "react-icons/fi";
 import { ThemeContext } from "../../App";
 import {
+  darkTheme,
   githubID,
   instagramID,
+  lightTheme,
   linkedInID,
 } from "../../assets/common/commonText";
 import styled from "styled-components";
@@ -47,7 +49,7 @@ export const SoundIcon = ({ iconSize }) => {
   return (
     <IconButton
       id="soundIcon"
-      changeColor={theme}
+      themeChange={theme}
       onClick={playMusic}
       isPlaying={music}
     >
@@ -61,12 +63,12 @@ export const ThemeIcon = ({ iconSize }) => {
   const { theme, setTheme } = useContext(ThemeContext);
   function handleThemeToggle(e) {
     e.preventDefault();
-    setTheme(theme === "light" ? "dark" : "light");
+    setTheme(theme === lightTheme ? darkTheme : lightTheme);
   }
   return (
-    <ThemeButton id="themeIcon" changeColor={theme} onClick={handleThemeToggle}>
-      {theme === "light" && <FiMoon size={iconSize} />}
-      {theme === "dark" && <FiSun size={iconSize} />}
+    <ThemeButton id="themeIcon" themeChange={theme} onClick={handleThemeToggle}>
+      {theme === lightTheme && <FiMoon size={iconSize} />}
+      {theme === darkTheme && <FiSun size={iconSize} />}
     </ThemeButton>
   );
 };
@@ -76,7 +78,7 @@ const IconButton = styled.button`
     background-color: transparent;
     padding: 0%;
     color: ${(props) =>
-      props.changeColor === "dark" ? whiteColor : blackTextColor};
+      props.themeChange === darkTheme ? whiteColor : blackTextColor};
     border: none;
     cursor: pointer;
   }
@@ -92,7 +94,7 @@ const ThemeButton = styled.button`
       animation: ${puffOutCenter} 1.5s cubic-bezier(0.165, 0.84, 0.44, 1) both;
     }
     color: ${(props) =>
-      props.changeColor === "dark" ? whiteColor : blackTextColor};
+      props.themeChange === darkTheme ? whiteColor : blackTextColor};
     border: none;
     cursor: pointer;
   }
@@ -101,7 +103,7 @@ const ThemeButton = styled.button`
 const LinkNoStyle = styled.a`
   text-decoration: none;
   display: inline-block;
-  color: ${(props) => (props.color === "dark" ? whiteColor : blackTextColor)};
+  color: ${(props) => (props.color === darkTheme ? whiteColor : blackTextColor)};
   &:hover {
     -webkit-animation: ${pulsateForward} 0.8s ease-in-out infinite both;
     animation: ${pulsateForward} 0.8s ease-in-out infinite both;

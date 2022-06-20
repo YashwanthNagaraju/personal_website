@@ -6,10 +6,12 @@ import {
   blueColor,
   whiteColor,
   blackTextColor,
+  purpleColor,
 } from "../common/commonStyles";
 import { Element } from "react-scroll";
 import { useContext } from "react";
 import { ThemeContext } from "../../App";
+import { darkTheme } from "../../assets/common/commonText";
 
 const Experience = () => {
   const { theme } = useContext(ThemeContext);
@@ -22,13 +24,13 @@ const Experience = () => {
             <MyText
               style={{
                 fontSize: "52px",
-                color: blueColor,
+                color: theme === darkTheme ? blueColor : purpleColor,
                 fontWeight: "bold",
               }}
             >
               <span
                 style={{
-                  color: theme === "dark" ? whiteColor : blackTextColor,
+                  color: theme === darkTheme ? whiteColor : blackTextColor,
                 }}
               >
                 {"<"}
@@ -36,7 +38,7 @@ const Experience = () => {
               My Experience /
               <span
                 style={{
-                  color: theme === "dark" ? whiteColor : blackTextColor,
+                  color: theme === darkTheme ? whiteColor : blackTextColor,
                 }}
               >
                 {">"}

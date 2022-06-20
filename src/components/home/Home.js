@@ -1,11 +1,20 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import styled from "styled-components";
-import { MyText, blueColor, StyledContainer } from "../common/commonStyles";
+import {
+  MyText,
+  blueColor,
+  StyledContainer,
+  purpleColor,
+} from "../common/commonStyles";
 import { Element } from "react-scroll";
 import { jelloHorz } from "../common/animations";
+import { ThemeContext } from "../../App";
+import { darkTheme } from "../../assets/common/commonText";
 
 const Home = () => {
+  const { theme } = useContext(ThemeContext);
+
   const [subtitle, setSubtitle] = useState("A Web Developer");
   const subtitleTexts = [
     "A Web Developer",
@@ -31,7 +40,7 @@ const Home = () => {
             <MyText
               style={{
                 fontSize: "36px",
-                color: blueColor,
+                color: theme === darkTheme ? blueColor : purpleColor,
                 fontWeight: "bold",
               }}
             >
@@ -39,15 +48,22 @@ const Home = () => {
             </MyText>
             <HomeHeading component="h1" tabIndex={1}>
               {introString.map((char) => (
-                <NameSpan>{char}</NameSpan>
+                <NameSpan themeChange={theme}>{char}</NameSpan>
               ))}{" "}
               {nameString.map((char) => (
-                <NameSpan>{char}</NameSpan>
+                <NameSpan themeChange={theme}>{char}</NameSpan>
               ))}
             </HomeHeading>
             <HomeHeading>
               {subtitle}
-              <span style={{ fontSize: "1.2em", color: blueColor }}>.</span>
+              <span
+                style={{
+                  fontSize: "1.2em",
+                  color: theme === darkTheme ? blueColor : purpleColor,
+                }}
+              >
+                .
+              </span>
             </HomeHeading>
             <SubText style={{ fontSize: "24px", marginTop: "15px" }}>
               An enthusiastic web developer with a passion to design and code
@@ -202,7 +218,8 @@ const NameSpan = styled.span`
       display: inline-flex;
       -webkit-animation: ${jelloHorz} 0.8s both;
       animation: ${jelloHorz} 0.8s both;
-      color: ${blueColor};
+      color: ${(props) =>
+        props.themeChange === darkTheme ? blueColor : purpleColor};
     }
   }
 `;

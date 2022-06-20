@@ -2,11 +2,7 @@ import { useContext, useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import MenuItem from "@mui/material/MenuItem";
 import styled from "styled-components";
 import { pageRoutes, ThemeContext } from "../../App";
 import { Link } from "react-scroll";
@@ -19,24 +15,18 @@ import {
   blueColor,
   whiteColor,
   blackTextColor,
+  purpleColor,
 } from "../common/commonStyles";
 import { Sling as Hamburger } from "hamburger-react";
 import { slideFwdTop, slideInRightWithBlur } from "../common/animations";
+import { darkTheme } from "../../assets/common/commonText";
 // import { MobileBar } from "./MobileBar";
 
 const MenuBar = () => {
-  const { theme, setTheme, isOpen, setOpen } = useContext(ThemeContext);
-  const [anchorElNav, setAnchorElNav] = useState(null);
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
+  const { theme, isOpen, setOpen } = useContext(ThemeContext);
 
   return (
-    <StyledAppBar changeColor={theme} position="fixed" id="navBarMain">
+    <StyledAppBar themeChange={theme} position="fixed" id="navBarMain">
       <NavContainer maxWidth="xl" id="navContainer">
         <Toolbar disableGutters id="navBar">
           <LogoLinkL
@@ -49,7 +39,7 @@ const MenuBar = () => {
             tabIndex={1}
           >
             <img
-              src={theme === "dark" ? Yash_logo_dark : Yash_logo_light}
+              src={theme === darkTheme ? Yash_logo_dark : Yash_logo_light}
               alt="Yashwanth's website logo"
             />
           </LogoLinkL>
@@ -63,7 +53,7 @@ const MenuBar = () => {
             tabIndex={1}
           >
             <img
-              src={theme === "dark" ? Yash_Mlogo_dark : Yash_Mlogo_light}
+              src={theme === darkTheme ? Yash_Mlogo_dark : Yash_Mlogo_light}
               alt="Yashwanth's Mobile logo"
             />
           </LogoLinkM>
@@ -74,13 +64,13 @@ const MenuBar = () => {
               toggle={setOpen}
               duration={0.8}
               size={24}
-              color={theme === "dark" ? whiteColor : blackTextColor}
+              color={theme === darkTheme ? whiteColor : blackTextColor}
             />
           </StyledBoxM> */}
           <StyledBox id="navLinks" sx={{ flexGrow: 1 }}>
             {isOpen &&
               pageRoutes.map((page) => (
-                <NavText key={page.id} changeColor={theme}>
+                <NavText key={page.id} themeChange={theme}>
                   <HomeLink
                     key={page.id}
                     to={page.id}
@@ -97,7 +87,7 @@ const MenuBar = () => {
               toggled={isOpen}
               toggle={setOpen}
               duration={0.8}
-              color={theme === "dark" ? whiteColor : blackTextColor}
+              color={theme === darkTheme ? whiteColor : blackTextColor}
             />
           </StyledBox>
         </Toolbar>
@@ -160,11 +150,12 @@ const NavText = styled(MyText)`
       cubic-bezier(0.23, 1, 0.32, 1) both;
     animation: ${slideInRightWithBlur} 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
     color: ${(props) =>
-      props.changeColor === "dark" ? whiteColor : blackTextColor};
+      props.themeChange === darkTheme ? whiteColor : blackTextColor};
     margin-left: 15px !important;
     margin-right: 15px !important;
     &:hover {
-      color: ${blueColor};
+      color: ${(props) =>
+        props.themeChange === darkTheme ? blueColor : purpleColor};
     }
     font-size: 20px;
   }

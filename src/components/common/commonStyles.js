@@ -8,6 +8,7 @@ export const whiteBgColor = "#f2f1ef";
 export const whiteColor = "#FFFFFF";
 export const blackTextColor = "#161513";
 export const blueColor = "#075fe4";
+export const purpleColor = "#5e3bee";
 export const errorColor = "#B00020";
 export const successColor = "rgb(56, 142, 60)";
 export const myFont = "Oswald";
@@ -15,14 +16,6 @@ export const myFont = "Oswald";
 export const MyText = styled(Typography)`
   && {
     font-family: ${myFont};
-  }
-`;
-
-export const LineDiv = styled.div`
-  && {
-    background: ${blueColor};
-    min-width: 7px;
-    margin-right: 5%;
   }
 `;
 
@@ -64,4 +57,8 @@ export const GeneralTextHeading = styled(MyText)`
 
 export const GeneralTextBody = styled(MyText)`
   color: #f4f9fc;
+`;
+
+export const StyleDiv = styled.div`
+  padding-top: 3%;
 `;

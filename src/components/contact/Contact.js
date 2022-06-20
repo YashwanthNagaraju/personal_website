@@ -10,16 +10,20 @@ import {
   BottomContainer,
   whiteColor,
   myFont,
-  LineDiv,
   blackTextColor,
   errorColor,
   successColor,
+  purpleColor,
+  StyleDiv,
+  primaryBgColor,
+  whiteBgColor,
 } from "../common/commonStyles";
 import { useContext, useState } from "react";
 import { apiKey } from "./model/emailKey";
 import { ThemeContext } from "../../App";
 import { Alert, Snackbar } from "@mui/material";
 import { slideInRightWithBlur, slideOutRight } from "../common/animations";
+import { darkTheme } from "../../assets/common/commonText";
 
 const Contact = () => {
   const [name, setName] = useState("");
@@ -110,7 +114,7 @@ const Contact = () => {
         <ContactStack id="contactStack" direction="row" spacing={2}>
           <ContactBox id="contactBox">
             <ContactHeading variant="h2" gutterBottom>
-              <LineDiv id="randomLine"></LineDiv>
+              <LineDiv themeChange={theme} id="randomLine"></LineDiv>
               Have a project on your mind?
               <br />
               Get in touch.
@@ -122,7 +126,7 @@ const Contact = () => {
               maxLength={40}
               id="nameField"
               type="text"
-              changeColor={theme}
+              themeChange={theme}
               placeholder="Your Name"
               style={{}}
               onChange={(e) => setName(e.target.value)}
@@ -132,7 +136,7 @@ const Contact = () => {
             <InfoField
               id="emailIdField"
               type="text"
-              changeColor={theme}
+              themeChange={theme}
               maxLength={40}
               placeholder="Your email address"
               onChange={(e) => setEmailID(e.target.value)}
@@ -143,7 +147,7 @@ const Contact = () => {
               id="messageField"
               placeholder="Message"
               type="text"
-              changeColor={theme}
+              themeChange={theme}
               maxLength={1000}
               style={{
                 minHeight: "10%",
@@ -158,7 +162,7 @@ const Contact = () => {
               onClick={handleSubmit}
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              test={theme}
+              themeChange={theme}
             >
               Send Message
             </MessageButton>
@@ -237,25 +241,33 @@ const ContactStack = styled(Stack)`
   }
 `;
 
-const StyleDiv = styled.div`
-  padding-top: 3%;
+const LineDiv = styled.div`
+  && {
+    background: ${(props) =>
+      props.themeChange === darkTheme ? blueColor : purpleColor};
+    min-width: 7px;
+    margin-right: 5%;
+  }
 `;
 
 const InfoField = styled.input`
   && {
     background-color: transparent;
     color: ${(props) =>
-      props.changeColor === "dark" ? whiteColor : blackTextColor};
+      props.themeChange === darkTheme ? whiteColor : blackTextColor};
     font-family: ${myFont}!important;
     font-size: 20px;
     border: 0px;
     text-align: left;
     cursor: pointer;
     padding-bottom: 5%;
-    border-bottom: 3px solid ${blueColor};
+    border-bottom: 3px solid
+      ${(props) => (props.themeChange === darkTheme ? blueColor : purpleColor)};
     &:hover,
     &:focus {
-      border: 2px solid ${blueColor};
+      border: 2px solid
+        ${(props) =>
+          props.themeChange === darkTheme ? blueColor : purpleColor};
     }
   }
 `;
@@ -265,15 +277,19 @@ const TextField = styled.textarea`
     background-color: transparent;
     cursor: pointer;
     color: ${(props) =>
-      props.changeColor === "dark" ? whiteColor : blackTextColor};
+      props.themeChange === darkTheme ? whiteColor : blackTextColor};
     font-family: ${myFont}!important;
     font-size: 20px;
     border: 0px;
     text-align: left;
-    border-bottom: 3px solid ${blueColor};
+    border-bottom: 3px solid
+      ${(props) => (props.themeChange === darkTheme ? blueColor : purpleColor)};
     &:hover,
-    &:focus {
-      border: 2px solid ${blueColor};
+    &:focus,
+    &:active {
+      border: 2px solid
+        ${(props) =>
+          props.themeChange === darkTheme ? blueColor : purpleColor};
     }
   }
 `;
@@ -310,8 +326,20 @@ const ContactInfoBox = styled(Box)`
 const MessageButton = styled(Button)`
   && {
     padding: 8px 0px;
-    color: ${whiteColor};
-    background-color: ${blueColor};
+    color:  ${(props) =>
+      props.themeChange === darkTheme ? blueColor : purpleColor};
+    border: 3px solid  ${(props) =>
+      props.themeChange === darkTheme ? blueColor : purpleColor};
+    background-color: ${(props) =>
+      props.themeChange === darkTheme ? primaryBgColor : whiteBgColor};
+    &:hover {
+      background-color: ${(props) =>
+        props.themeChange === darkTheme ? blueColor : purpleColor};
+      color: ${(props) => props.themeChange === darkTheme ? primaryBgColor : whiteBgColor};
+    }
+    -webkit-transition: background-color 1.2s linear;
+    -ms-transition: background-color 1.2s linear;
+    transition: background-color 1.2s linear;
     font-family: ${myFont};
     width: 40%;
     font-size: 20px;
