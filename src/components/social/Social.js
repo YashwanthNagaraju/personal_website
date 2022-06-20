@@ -56,7 +56,7 @@ const SocialDiv = styled.div`
     display: block;
     position: fixed;
     bottom: 0px;
-    padding-bottom: 1vh;
+    padding-bottom: 3.5vh;
   }
   display: none;
 `;

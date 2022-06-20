@@ -57,7 +57,6 @@ const MobileContainer = styled(Container)`
   && {
     display: block;
     height: 100vh;
-
     width: 100vw;
     @media (min-width: 768px) {
       display: none;

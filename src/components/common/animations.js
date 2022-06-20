@@ -1,4 +1,4 @@
-import { keyframes } from "styled-components";
+import { css, keyframes } from "styled-components";
 
 export const fadeIn = keyframes`
   0% {
@@ -119,6 +119,14 @@ export const slideOutRight = keyframes`
   opacity: 0;
 }
 `;
+export const entryAnimation = css`
+  ${slideInRightWithBlur} 0.8s cubic-bezier(0.23, 1, 0.32, 1) both;
+`;
+
+export const exitAnimation = css`
+  ${slideOutRight} 0.8s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+`;
+
 
 export const slideFwdTop = keyframes`
 0% {

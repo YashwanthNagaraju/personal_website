@@ -18,7 +18,11 @@ import {
   purpleColor,
 } from "../common/commonStyles";
 import { Sling as Hamburger } from "hamburger-react";
-import { slideFwdTop, slideInRightWithBlur } from "../common/animations";
+import {
+  entryAnimation,
+  exitAnimation,
+  slideFwdTop,
+} from "../common/animations";
 import { darkTheme } from "../../assets/common/commonText";
 // import { MobileBar } from "./MobileBar";
 
@@ -68,21 +72,20 @@ const MenuBar = () => {
             />
           </StyledBoxM> */}
           <StyledBox id="navLinks" sx={{ flexGrow: 1 }}>
-            {isOpen &&
-              pageRoutes.map((page) => (
-                <NavText key={page.id} themeChange={theme}>
-                  <HomeLink
-                    key={page.id}
-                    to={page.id}
-                    spy={true}
-                    smooth={true}
-                    duration={500}
-                    tabIndex={1}
-                  >
-                    {page.name}
-                  </HomeLink>
-                </NavText>
-              ))}
+            {pageRoutes.map((page) => (
+              <NavText key={page.id} themeChange={theme} open={isOpen}>
+                <HomeLink
+                  key={page.id}
+                  to={page.id}
+                  spy={true}
+                  smooth={true}
+                  duration={500}
+                  tabIndex={1}
+                >
+                  {page.name}
+                </HomeLink>
+              </NavText>
+            ))}
             <Hamburger
               toggled={isOpen}
               toggle={setOpen}
@@ -146,9 +149,9 @@ const StyledBox = styled(Box)`
 
 const NavText = styled(MyText)`
   && {
-    -webkit-animation: ${slideInRightWithBlur} 0.6s
-      cubic-bezier(0.23, 1, 0.32, 1) both;
-    animation: ${slideInRightWithBlur} 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
+    -webkit-animation: ${(props) =>
+      props.open ? entryAnimation : exitAnimation};
+    animation: ${(props) => (props.open ? entryAnimation : exitAnimation)};
     color: ${(props) =>
       props.themeChange === darkTheme ? whiteColor : blackTextColor};
     margin-left: 15px !important;

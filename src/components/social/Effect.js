@@ -29,7 +29,7 @@ const EffectDiv = styled.div`
     position: fixed;
     bottom: 0px;
     right: 40px;
-    padding-bottom: 1vh;
+    padding-bottom: 3.5vh;
     -webkit-animation: ${slideInBottom} 1.5s
       cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
     animation: ${slideInBottom} 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;

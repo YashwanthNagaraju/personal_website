@@ -22,7 +22,7 @@ import { useContext, useState } from "react";
 import { apiKey } from "./model/emailKey";
 import { ThemeContext } from "../../App";
 import { Alert, Snackbar } from "@mui/material";
-import { slideInRightWithBlur, slideOutRight } from "../common/animations";
+import { entryAnimation, exitAnimation } from "../common/animations";
 import { darkTheme } from "../../assets/common/commonText";
 
 const Contact = () => {
@@ -39,12 +39,12 @@ const Contact = () => {
   const { vertical, horizontal, msg } = status;
   function moveUp() {
     var ele = document.getElementById("effectDiv");
-    ele.style.paddingBottom = "3%";
+    ele.style.paddingBottom = "6vh";
   }
 
   function moveDown() {
     var ele = document.getElementById("effectDiv");
-    ele.style.paddingBottom = "0%";
+    ele.style.paddingBottom = "3.5vh";
   }
   function handleSuccess(infoText) {
     setInfo(infoText);
@@ -376,14 +376,6 @@ const ContactHeading = styled(MyText)`
       font-size: 5rem !important;
     }
   }
-`;
-
-const entryAnimation = css`
-  ${slideInRightWithBlur} 0.8s cubic-bezier(0.23, 1, 0.32, 1) both;
-`;
-
-const exitAnimation = css`
-  ${slideOutRight} 12.8s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
 `;
 
 const InfoBar = styled(Snackbar)`

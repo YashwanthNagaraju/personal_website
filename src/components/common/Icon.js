@@ -80,6 +80,10 @@ const IconButton = styled.button`
     color: ${(props) =>
       props.themeChange === darkTheme ? whiteColor : blackTextColor};
     border: none;
+    &:hover {
+      -webkit-animation: ${pulsateForward} 0.8s ease-in-out infinite both;
+      animation: ${pulsateForward} 0.8s ease-in-out infinite both;
+    }
     cursor: pointer;
   }
 `;
@@ -103,7 +107,8 @@ const ThemeButton = styled.button`
 const LinkNoStyle = styled.a`
   text-decoration: none;
   display: inline-block;
-  color: ${(props) => (props.color === darkTheme ? whiteColor : blackTextColor)};
+  color: ${(props) =>
+    props.color === darkTheme ? whiteColor : blackTextColor};
   &:hover {
     -webkit-animation: ${pulsateForward} 0.8s ease-in-out infinite both;
     animation: ${pulsateForward} 0.8s ease-in-out infinite both;
