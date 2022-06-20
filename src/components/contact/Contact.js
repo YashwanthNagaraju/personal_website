@@ -33,35 +33,42 @@ const Contact = () => {
   });
   const [info, setInfo] = useState("");
   const { vertical, horizontal, msg } = status;
-
   function moveUp() {
     var ele = document.getElementById("effectDiv");
     ele.style.paddingBottom = "3%";
   }
+
   function moveDown() {
     var ele = document.getElementById("effectDiv");
     ele.style.paddingBottom = "0%";
+  }
+  function handleSuccess(infoText) {
+    setInfo(infoText);
+    moveUp();
+    setStatus({
+      msg: "success",
+      vertical: "bottom",
+      horizontal: "right",
+    });
+  }
+
+  function handleError(infoText) {
+    setInfo(infoText);
+    moveUp();
+    setStatus({
+      msg: "error",
+      vertical: "bottom",
+      horizontal: "right",
+    });
   }
 
   function handleSubmit(e) {
     e.preventDefault();
     if (!emailID) {
-      setInfo("Enter your email ID to submit");
-      moveUp();
-      return setStatus({
-        msg: "error",
-        vertical: "bottom",
-        horizontal: "right",
-      });
+      return handleError("Enter your email ID to submit.");
     }
     if (!message) {
-      setInfo("Enter a message to submit");
-      moveUp();
-      return setStatus({
-        msg: "error",
-        vertical: "bottom",
-        horizontal: "right",
-      });
+      return handleError("Enter a message to submit.");
     }
     try {
       var templateParams = {
@@ -77,26 +84,13 @@ const Contact = () => {
           apiKey.USER_ID
         )
         .then((response) => {
-          console.log("SUCCESS!", response.status, response.text);
-          setInfo("Message has been sent!");
-          moveUp();
-          setStatus({
-            msg: "success",
-            vertical: "bottom",
-            horizontal: "right",
-          });
+          return handleSuccess("Message has been sent.");
         })
         .catch((err) => {
-          setInfo("Something went wrong.");
-          moveUp();
-          return setStatus({
-            msg: "error",
-            vertical: "bottom",
-            horizontal: "right",
-          });
+          return handleError("Something went wrong.");
         });
     } catch {
-      console.log("Something went wrongggg.");
+      return handleError("Something went wrong.");
     }
   }
   function handleClose(e) {
@@ -109,7 +103,7 @@ const Contact = () => {
     moveDown();
     setStatus({ msg: "", vertical: "bottom", horizontal: "right" });
   }
-  console.log(!!msg);
+
   return (
     <ContactElement name="contact">
       <ContactContainer id="contactContainer">
@@ -205,27 +199,11 @@ const ContactElement = styled(Element)``;
 
 const ContactContainer = styled(BottomContainer)`
   && {
-    @media (max-width: 375px) {
+    @media (max-width: 768px) {
       max-width: 90% !important;
       display: flex;
     }
-    @media (min-width: 375px) and (max-width: 425px) {
-      max-width: 90% !important;
-      display: flex;
-    }
-    @media (min-width: 425px) and (max-width: 600px) {
-      max-width: 90% !important;
-      display: flex;
-    }
-    @media (min-width: 600px) and (max-width: 768px) {
-      max-width: 90% !important;
-      display: flex;
-    }
-    @media (min-width: 768px) and (max-width: 1024px) {
-      max-width: 85% !important;
-      display: inline-flex;
-    }
-    @media (min-width: 1024px) and (max-width: 1200px) {
+    @media (min-width: 768px) and (max-width: 1200px) {
       max-width: 85% !important;
       display: inline-flex;
     }
@@ -254,7 +232,7 @@ const ContactStack = styled(Stack)`
       display: block;
     }
     @media (min-width: 900px) {
-      display:flex;
+      display: flex;
     }
   }
 `;
@@ -379,6 +357,7 @@ const entryAnimation = css`
 const exitAnimation = css`
   ${slideOutRight} 12.8s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
 `;
+
 const InfoBar = styled(Snackbar)`
   -webkit-animation: ${(props) =>
     props.open ? entryAnimation : exitAnimation};

@@ -1,11 +1,7 @@
 import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import styled from "styled-components";
-import {
-  MyText,
-  blueColor,
-  StyledContainer,
-} from "../common/commonStyles";
+import { MyText, blueColor, StyledContainer } from "../common/commonStyles";
 import { Element } from "react-scroll";
 import { jelloHorz } from "../common/animations";
 
@@ -25,22 +21,8 @@ const Home = () => {
     return () => clearInterval(interval);
     // }, 5000);
   });
-  const nameString = [
-    "I",
-    "'",
-    "m",
-    " ",
-    "Y",
-    "a",
-    "s",
-    "h",
-    "w",
-    "a",
-    "n",
-    "t",
-    "h",
-    ",",
-  ];
+  const introString = ["I", "'", "m"];
+  const nameString = ["Y", "a", "s", "h", "w", "a", "n", "t", "h", ","];
   return (
     <HomeElement name="home">
       <HomeContainer id="homeContainer" maxWidth="xl">
@@ -56,6 +38,9 @@ const Home = () => {
               Hello there.
             </MyText>
             <HomeHeading component="h1" tabIndex={1}>
+              {introString.map((char) => (
+                <NameSpan>{char}</NameSpan>
+              ))}{" "}
               {nameString.map((char) => (
                 <NameSpan>{char}</NameSpan>
               ))}
@@ -83,8 +68,7 @@ const Home = () => {
 
 export default Home;
 
-const HomeElement = styled(Element)`
-`;
+const HomeElement = styled(Element)``;
 
 const HomeContainer = styled(StyledContainer)`
   && {

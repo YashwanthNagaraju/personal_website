@@ -22,11 +22,11 @@ import {
 } from "../common/commonStyles";
 import { Sling as Hamburger } from "hamburger-react";
 import { slideFwdTop, slideInRightWithBlur } from "../common/animations";
+// import { MobileBar } from "./MobileBar";
 
 const MenuBar = () => {
-  const { theme, setTheme } = useContext(ThemeContext);
+  const { theme, setTheme, isOpen, setOpen } = useContext(ThemeContext);
   const [anchorElNav, setAnchorElNav] = useState(null);
-  const [isOpen, setOpen] = useState(false);
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -67,7 +67,7 @@ const MenuBar = () => {
               alt="Yashwanth's Mobile logo"
             />
           </LogoLinkM>
-          <StyledBoxM id="navLinksM" sx={{ flexGrow: 1 }}>
+          {/* <StyledBoxM id="navLinksM" sx={{ flexGrow: 1 }}>
             <Hamburger
               style={{ display: "flex-end" }}
               toggled={isOpen}
@@ -76,56 +76,7 @@ const MenuBar = () => {
               size={24}
               color={theme === "dark" ? whiteColor : blackTextColor}
             />
-            {/* {isOpen &&{
-              <>
-            }
-
-            } */}
-            {/* <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: "block", md: "none" },
-              }}
-            >
-              {isOpen &&
-                pageRoutes.map((page) => (
-                  <MenuItem key={page.id} onClick={handleCloseNavMenu}>
-                    <HomeLink
-                      key={page.id}
-                      offset={-130}
-                      to={page.id}
-                      spy={true}
-                      smooth={true}
-                      tabIndex={1}
-                    >
-                      {page.name}
-                    </HomeLink>
-                  </MenuItem>
-                ))}
-            </Menu> */}
-          </StyledBoxM>
+          </StyledBoxM> */}
           <StyledBox id="navLinks" sx={{ flexGrow: 1 }}>
             {isOpen &&
               pageRoutes.map((page) => (
@@ -188,7 +139,7 @@ const NavContainer = styled(Container)`
 
 const StyledBoxM = styled(Box)`
   @media (min-width: 768px) {
-    display:none;
+    display: none;
   }
   display: flex;
   justify-content: flex-end;

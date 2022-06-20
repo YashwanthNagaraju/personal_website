@@ -17,6 +17,7 @@ import {
   whiteColor,
 } from "./components/common/commonStyles";
 import MenuBar from "./components/navigation/MenuBar";
+import { MobileBar } from "./components/navigation/MobileBar";
 
 export const ThemeContext = createContext();
 
@@ -25,12 +26,13 @@ function App() {
   const date = new Date();
   const isEvening = date.getHours() > 20 || date.getHours() < 7;
   const [theme, setTheme] = useState(isEvening ? "dark" : "light");
+  const [isOpen, setOpen] = useState(false);
   setTimeout(() => {
     setTimeOut(1);
   }, 3000);
-  console.log("app");
+
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
+    <ThemeContext.Provider value={{ theme, setTheme, isOpen, setOpen }}>
       <Appdiv className="App" themeChange={theme}>
         {/* {timeOut !== 1 && <Loader />} */}
         {/* {timeOut == 1 && ( */}
@@ -42,7 +44,6 @@ function App() {
         <Experience />
         <Contact />
         <Footer />
-        {/* )} */}
       </Appdiv>
     </ThemeContext.Provider>
   );
