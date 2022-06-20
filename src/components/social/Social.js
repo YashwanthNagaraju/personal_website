@@ -1,6 +1,4 @@
-import styled from "styled-components";
 import { IconContext } from "react-icons";
-import { slideInBottom } from "../common/animations";
 import { SocialIcons } from "../common/Icon";
 import {
   githubID,
@@ -13,10 +11,11 @@ import {
   Instagram_Link,
   LinkedIn_Link,
 } from "../../assets/common/commonLinks";
+import { IconsDiv, ListItems, StyledList } from "../common/commonStyles";
 
 const Social = () => {
   return (
-    <SocialDiv id="socialDiv" orientation="left">
+    <IconsDiv id="socialDiv" orientation="left">
       <StyledList>
         <IconContext.Provider value={{ className: "shared-class", size: 26 }}>
           <ListItems>
@@ -42,32 +41,8 @@ const Social = () => {
           </ListItems>
         </IconContext.Provider>
       </StyledList>
-    </SocialDiv>
+    </IconsDiv>
   );
 };
 
 export default Social;
-
-const SocialDiv = styled.div`
-  @media (min-width: 768px) {
-    -webkit-animation: ${slideInBottom} 1.5s
-      cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-    animation: ${slideInBottom} 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-    display: block;
-    position: fixed;
-    bottom: 0px;
-    padding-bottom: 3.5vh;
-  }
-  display: none;
-`;
-
-const StyledList = styled.ul`
-  list-style-type: none;
-`;
-
-const ListItems = styled.li`
-  &&& {
-    cursor: pointer;
-    padding: 30% 0%;
-  }
-`;

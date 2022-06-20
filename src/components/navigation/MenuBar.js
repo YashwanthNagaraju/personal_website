@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -109,19 +109,7 @@ const NavContainer = styled(Container)`
     -webkit-animation: ${slideFwdTop} 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)
       both;
     animation: ${slideFwdTop} 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-    @media (max-width: 375px) {
-      max-width: 90% !important;
-    }
-    @media (min-width: 375px) and (max-width: 425px) {
-      max-width: 90% !important;
-    }
-    @media (min-width: 425px) and (max-width: 600px) {
-      max-width: 90% !important;
-    }
-    @media (min-width: 600px) and (max-width: 768px) {
-      max-width: 90% !important;
-    }
-    @media (min-width: 768px) and (max-width: 1024px) {
+    @media (max-width: 1024px) {
       max-width: 90% !important;
     }
     @media (min-width: 1024px) {

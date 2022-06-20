@@ -6,7 +6,7 @@ import { Link } from "react-scroll";
 import styled from "styled-components";
 import { pageRoutes, ThemeContext } from "../../App";
 import { darkTheme } from "../../assets/common/commonText";
-import { blackTextColor, whiteColor } from "../common/commonStyles";
+import { blackTextColor, ListItems, StyledList, whiteColor } from "../common/commonStyles";
 
 export const MobileBar = () => {
   const { theme, isOpen, setOpen } = useContext(ThemeContext);
@@ -25,7 +25,7 @@ export const MobileBar = () => {
             />
           </IconBox>
           <ContentBox id="mobilePageBox">
-            <StyledList is="navList">
+            <StyledList id="navList">
               {pageRoutes.map((page) => (
                 <ListItems>
                   <HomeLink
@@ -74,14 +74,4 @@ const IconBox = styled(Box)`
 const ContentBox = styled(Box)`
   height: 90vh;
   width: 100%;
-`;
-
-const StyledList = styled.ul`
-  list-style-type: none;
-`;
-
-const ListItems = styled.li`
-  &&& {
-    cursor: pointer;
-  }
 `;

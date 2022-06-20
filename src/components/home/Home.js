@@ -8,30 +8,33 @@ import {
   purpleColor,
 } from "../common/commonStyles";
 import { Element } from "react-scroll";
-import { jelloHorz } from "../common/animations";
+import { jelloHorz, trackingInAnimation } from "../common/animations";
 import { ThemeContext } from "../../App";
 import { darkTheme } from "../../assets/common/commonText";
 
 const Home = () => {
   const { theme } = useContext(ThemeContext);
-
   const [subtitle, setSubtitle] = useState("A Web Developer");
   const subtitleTexts = [
     "A Web Developer",
-    "An Artist(Well kinda..)",
+    "An Artist(Kind Of..)",
     "Eternally Hungry",
+    "A thrifty Student",
+    "Skilled Junk Food Eater",
   ];
   useEffect(() => {
-    // setTimeout(() => {
     const interval = setInterval(() => {
-      const select = Math.floor(Math.random() * 3);
+      const select = Math.floor(Math.random() * 5);
+      // const element= document.getElementById("subHeadingText");
+      // element.style.animation(trackingInAnimation);
       setSubtitle(subtitleTexts[select]);
-    }, 1500);
+    }, 3000);
     return () => clearInterval(interval);
-    // }, 5000);
   });
+
   const introString = ["I", "'", "m"];
   const nameString = ["Y", "a", "s", "h", "w", "a", "n", "t", "h", ","];
+
   return (
     <HomeElement name="home">
       <HomeContainer id="homeContainer" maxWidth="xl">
@@ -54,17 +57,16 @@ const Home = () => {
                 <NameSpan themeChange={theme}>{char}</NameSpan>
               ))}
             </HomeHeading>
-            <HomeHeading>
+            <SubHeading key={subtitle} id="subHeading" change={subtitle}>
               {subtitle}
               <span
                 style={{
-                  fontSize: "1.2em",
                   color: theme === darkTheme ? blueColor : purpleColor,
                 }}
               >
                 .
               </span>
-            </HomeHeading>
+            </SubHeading>
             <SubText style={{ fontSize: "24px", marginTop: "15px" }}>
               An enthusiastic web developer with a passion to design and code
               user interfaces for people and their business.
@@ -88,27 +90,12 @@ const HomeElement = styled(Element)``;
 
 const HomeContainer = styled(StyledContainer)`
   && {
-    @media (max-width: 375px) {
+    @media (max-width: 768px) {
       max-width: 90% !important;
       display: flex;
     }
-    @media (min-width: 375px) and (max-width: 425px) {
-      max-width: 90% !important;
-      display: flex;
-    }
-    @media (min-width: 425px) and (max-width: 600px) {
-      max-width: 90% !important;
-      display: flex;
-    }
-    @media (min-width: 600px) and (max-width: 768px) {
-      max-width: 90% !important;
-      display: flex;
-    }
-    @media (min-width: 768px) and (max-width: 1024px) {
-      max-width: 85% !important;
-      display: inline-flex;
-    }
-    @media (min-width: 1024px) and (max-width: 1200px) {
+
+    @media (min-width: 768px) and (max-width: 1200px) {
       max-width: 85% !important;
       display: inline-flex;
     }
@@ -203,6 +190,11 @@ const HomeHeading = styled(MyText)`
       font-size: 5rem !important;
     }
   }
+`;
+
+const SubHeading = styled(HomeHeading)`  
+  animation: ${trackingInAnimation};
+  -webkit-animation: ${trackingInAnimation};
 `;
 
 const SubText = styled(MyText)`

@@ -74,27 +74,11 @@ const ExperienceElement = styled(Element)``;
 
 const ExperienceContainer = styled(StyledContainer)`
   && {
-    @media (max-width: 375px) {
+    @media (max-width: 768px) {
       max-width: 90% !important;
       display: flex;
     }
-    @media (min-width: 375px) and (max-width: 425px) {
-      max-width: 90% !important;
-      display: flex;
-    }
-    @media (min-width: 425px) and (max-width: 600px) {
-      max-width: 90% !important;
-      display: flex;
-    }
-    @media (min-width: 600px) and (max-width: 768px) {
-      max-width: 90% !important;
-      display: flex;
-    }
-    @media (min-width: 768px) and (max-width: 1024px) {
-      max-width: 85% !important;
-      display: inline-flex;
-    }
-    @media (min-width: 1024px) and (max-width: 1200px) {
+    @media (min-width: 768px) and (max-width: 1200px) {
       max-width: 85% !important;
       display: inline-flex;
     }

@@ -1,12 +1,11 @@
-import styled from "styled-components";
 import { IconContext } from "react-icons";
-import { slideInBottom } from "../common/animations";
 import { SoundIcon, ThemeIcon } from "../common/Icon";
 import { laptopSize } from "../../assets/common/commonText";
+import { IconsDiv, ListItems, StyledList } from "../common/commonStyles";
 
 const Effect = () => {
   return (
-    <EffectDiv id="effectDiv" orientation="right">
+    <IconsDiv style={{right:'40px'}} id="effectDiv" orientation="right">
       <StyledList>
         <IconContext.Provider value={{ className: "shared-class", size: 26 }}>
           <ListItems>
@@ -17,33 +16,8 @@ const Effect = () => {
           </ListItems>
         </IconContext.Provider>
       </StyledList>
-    </EffectDiv>
+    </IconsDiv>
   );
 };
 
 export default Effect;
-
-const EffectDiv = styled.div`
-  @media (min-width: 768px) {
-    display: block;
-    position: fixed;
-    bottom: 0px;
-    right: 40px;
-    padding-bottom: 3.5vh;
-    -webkit-animation: ${slideInBottom} 1.5s
-      cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-    animation: ${slideInBottom} 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  }
-  display: none;
-`;
-
-const StyledList = styled.ul`
-  list-style-type: none;
-`;
-
-const ListItems = styled.li`
-  &&& {
-    cursor: pointer;
-    padding: 30% 0%;
-  }
-`;

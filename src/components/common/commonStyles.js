@@ -1,7 +1,7 @@
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import styled from "styled-components";
-import { fadeIn } from "./animations";
+import { fadeIn, slideInBottom } from "./animations";
 
 export const primaryBgColor = "#15181C";
 export const whiteBgColor = "#f2f1ef";
@@ -61,4 +61,28 @@ export const GeneralTextBody = styled(MyText)`
 
 export const StyleDiv = styled.div`
   padding-top: 3%;
+`;
+
+export const StyledList = styled.ul`
+  list-style-type: none;
+`;
+
+export const ListItems = styled.li`
+  &&& {
+    cursor: pointer;
+    padding: 30% 0%;
+  }
+`;
+
+export const IconsDiv = styled.div`
+  @media (min-width: 768px) {
+    display: block;
+    position: fixed;
+    bottom: 0px;
+    padding-bottom: 3.5vh;
+    -webkit-animation: ${slideInBottom} 1.5s
+      cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation: ${slideInBottom} 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+  display: none;
 `;
