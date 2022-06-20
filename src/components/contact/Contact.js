@@ -250,10 +250,11 @@ const HiddenLabel = styled.label`
 const ContactStack = styled(Stack)`
   && {
     width: 100%;
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
       display: block;
     }
-    @media (min-width: 768px) {
+    @media (min-width: 900px) {
+      display:flex;
     }
   }
 `;
@@ -301,12 +302,12 @@ const TextField = styled.textarea`
 
 const ContactBox = styled(Box)`
   align-content: baseline;
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     height:50vh
     width: 80%;
   }
-  @media (min-width: 768px) {
-    padding-right:8%;
+  @media (min-width: 900px) {
+    padding-right:5%;
     width: 50%;
   }
 `;
@@ -315,13 +316,14 @@ const ContactInfoBox = styled(Box)`
 &&{
   display: grid;
   align-content: baseline;
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     padding-top:10%;
     margin:0%;
     height:50vh
     width: 80%;
   }
-  @media (min-width: 768px) {
+  @media (min-width: 900px) {
+    padding-top:0%;
     width: 50%;
   }
 }
