@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { MyText } from "../common/commonStyles";
-import { SocialIcons, SoundIcon, ThemeIcon } from "../social/Icon";
+import { SocialIcons, SoundIcon, ThemeIcon } from "../common/Icon";
 import {
   githubID,
   instagramID,
@@ -13,6 +13,7 @@ import {
   Instagram_Link,
   LinkedIn_Link,
 } from "../../assets/common/commonLinks";
+import { slideInBottom } from "../common/animations";
 
 const Footer = () => {
   return (
@@ -49,9 +50,13 @@ export default Footer;
 
 const StyledFooter = styled.footer`
   && {
-    min-height: 5vh;
+    
+    min-height: 2vh;
     padding-top: 2vh;
     padding-bottom: 2vh;
+    -webkit-animation: ${slideInBottom} 1.5s
+      cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation: ${slideInBottom} 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   }
 `;
 const StyledDiv = styled.div``;

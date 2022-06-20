@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { IconContext } from "react-icons";
 import { slideInBottom } from "../common/animations";
-import { SoundIcon, ThemeIcon } from "./Icon";
+import { SoundIcon, ThemeIcon } from "../common/Icon";
 import { laptopSize } from "../../assets/common/commonText";
 
 const Effect = () => {

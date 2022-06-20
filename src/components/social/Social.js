@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { IconContext } from "react-icons";
 import { slideInBottom } from "../common/animations";
-import { SocialIcons } from "./Icon";
+import { SocialIcons } from "../common/Icon";
 import {
   githubID,
   instagramID,
