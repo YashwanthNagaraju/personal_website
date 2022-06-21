@@ -51,14 +51,13 @@ const Experience = () => {
                 textAlign: "justify",
               }}
             >
-              Hi! My name is Yashwanth Nagaraju. I am a developer with
-              experience in frontend and backend with a passion for coding. I
-              enjoy solving complex problems using a computer. I started my
-              career as a software engineer. I am currently a full time Grad
-              student at the University of Melbourne and work as a freelance
-              developer. I help people to showcase their talent and art and to
-              promote their business by designing and building accessible and
-              customized websites.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
             </MyText>
           </ExperienceDiv>
         </ExperienceBox>

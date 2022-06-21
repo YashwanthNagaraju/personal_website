@@ -114,40 +114,40 @@ const Contact = () => {
         <ContactStack id="contactStack" direction="row" spacing={2}>
           <ContactBox id="contactBox">
             <ContactHeading variant="h2" gutterBottom>
-              <LineDiv themeChange={theme} id="randomLine"></LineDiv>
+              <LineDiv newtheme={theme} id="randomLine"></LineDiv>
               Have a project on your mind?
               <br />
               Get in touch.
             </ContactHeading>
           </ContactBox>
           <ContactInfoBox component="form" id="contactInfoBox">
-            <HiddenLabel for="nameField">Name: </HiddenLabel>
+            <HiddenLabel htmlfor="nameField">Name: </HiddenLabel>
             <InfoField
               maxLength={40}
               id="nameField"
               type="text"
-              themeChange={theme}
+              newtheme={theme}
               placeholder="Your Name"
               style={{}}
               onChange={(e) => setName(e.target.value)}
             />
             <StyleDiv />
-            <HiddenLabel for="emailIdField">Email ID: </HiddenLabel>
+            <HiddenLabel htmlfor="emailIdField">Email ID: </HiddenLabel>
             <InfoField
               id="emailIdField"
               type="text"
-              themeChange={theme}
+              newtheme={theme}
               maxLength={40}
               placeholder="Your email address"
               onChange={(e) => setEmailID(e.target.value)}
             />
             <StyleDiv />
-            <HiddenLabel for="messageField">Message: </HiddenLabel>
+            <HiddenLabel htmlfor="messageField">Message: </HiddenLabel>
             <TextField
               id="messageField"
               placeholder="Message"
               type="text"
-              themeChange={theme}
+              newtheme={theme}
               maxLength={1000}
               style={{
                 minHeight: "10%",
@@ -162,35 +162,33 @@ const Contact = () => {
               onClick={handleSubmit}
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              themeChange={theme}
+              newtheme={theme}
             >
               Send Message
             </MessageButton>
-            <InfoBar
-              id="infoBar"
-              anchorOrigin={{ vertical, horizontal }}
-              open={msg !== ""}
-              onClose={(e) => handleClose(e)}
-              key={vertical + horizontal}
-            >
-              <Alert
-                id="alertInfoBar"
-                style={{
-                  backgroundColor:
-                    msg === "error"
-                      ? errorColor
-                      : msg === "success"
-                      ? successColor
-                      : "",
-                  color: whiteColor,
-                }}
-                onClose={handleClose}
-                severity={msg}
-                sx={{ width: "100%" }}
+            {msg !== "" && (
+              <InfoBar
+                id="infoBar"
+                anchorOrigin={{ vertical, horizontal }}
+                open={msg !== ""}
+                onClose={(e) => handleClose(e)}
+                key={vertical + horizontal}
               >
-                {info}
-              </Alert>
-            </InfoBar>{" "}
+                <Alert
+                  id="alertInfoBar"
+                  style={{
+                    backgroundColor:
+                      msg === "error" ? errorColor : successColor,
+                    color: whiteColor,
+                  }}
+                  onClose={handleClose}
+                  severity={msg}
+                  sx={{ width: "100%" }}
+                >
+                  {info}
+                </Alert>
+              </InfoBar>
+            )}
           </ContactInfoBox>
         </ContactStack>
       </ContactContainer>
@@ -244,7 +242,7 @@ const ContactStack = styled(Stack)`
 const LineDiv = styled.div`
   && {
     background: ${(props) =>
-      props.themeChange === darkTheme ? blueColor : purpleColor};
+      props.newtheme === darkTheme ? blueColor : purpleColor};
     min-width: 7px;
     margin-right: 5%;
   }
@@ -254,7 +252,7 @@ const InfoField = styled.input`
   && {
     background-color: transparent;
     color: ${(props) =>
-      props.themeChange === darkTheme ? whiteColor : blackTextColor};
+      props.newtheme === darkTheme ? whiteColor : blackTextColor};
     font-family: ${myFont}!important;
     font-size: 20px;
     border: 0px;
@@ -262,12 +260,11 @@ const InfoField = styled.input`
     cursor: pointer;
     padding-bottom: 5%;
     border-bottom: 3px solid
-      ${(props) => (props.themeChange === darkTheme ? blueColor : purpleColor)};
+      ${(props) => (props.newtheme === darkTheme ? blueColor : purpleColor)};
     &:hover,
     &:focus {
       border: 2px solid
-        ${(props) =>
-          props.themeChange === darkTheme ? blueColor : purpleColor};
+        ${(props) => (props.newtheme === darkTheme ? blueColor : purpleColor)};
     }
   }
 `;
@@ -277,19 +274,18 @@ const TextField = styled.textarea`
     background-color: transparent;
     cursor: pointer;
     color: ${(props) =>
-      props.themeChange === darkTheme ? whiteColor : blackTextColor};
+      props.newtheme === darkTheme ? whiteColor : blackTextColor};
     font-family: ${myFont}!important;
     font-size: 20px;
     border: 0px;
     text-align: left;
     border-bottom: 3px solid
-      ${(props) => (props.themeChange === darkTheme ? blueColor : purpleColor)};
+      ${(props) => (props.newtheme === darkTheme ? blueColor : purpleColor)};
     &:hover,
     &:focus,
     &:active {
       border: 2px solid
-        ${(props) =>
-          props.themeChange === darkTheme ? blueColor : purpleColor};
+        ${(props) => (props.newtheme === darkTheme ? blueColor : purpleColor)};
     }
   }
 `;
@@ -326,16 +322,17 @@ const ContactInfoBox = styled(Box)`
 const MessageButton = styled(Button)`
   && {
     padding: 8px 0px;
-    color:  ${(props) =>
-      props.themeChange === darkTheme ? blueColor : purpleColor};
-    border: 3px solid  ${(props) =>
-      props.themeChange === darkTheme ? blueColor : purpleColor};
+    color: ${(props) =>
+      props.newtheme === darkTheme ? blueColor : purpleColor};
+    border: 3px solid
+      ${(props) => (props.newtheme === darkTheme ? blueColor : purpleColor)};
     background-color: ${(props) =>
-      props.themeChange === darkTheme ? primaryBgColor : whiteBgColor};
+      props.newtheme === darkTheme ? primaryBgColor : whiteBgColor};
     &:hover {
       background-color: ${(props) =>
-        props.themeChange === darkTheme ? blueColor : purpleColor};
-      color: ${(props) => props.themeChange === darkTheme ? primaryBgColor : whiteBgColor};
+        props.newtheme === darkTheme ? blueColor : purpleColor};
+      color: ${(props) =>
+        props.newtheme === darkTheme ? primaryBgColor : whiteBgColor};
     }
     -webkit-transition: background-color 1.2s linear;
     -ms-transition: background-color 1.2s linear;

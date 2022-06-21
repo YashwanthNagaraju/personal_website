@@ -49,7 +49,7 @@ export const SoundIcon = ({ iconSize }) => {
   return (
     <IconButton
       id="soundIcon"
-      themeChange={theme}
+      newtheme={theme}
       onClick={playMusic}
       isPlaying={music}
     >
@@ -66,7 +66,7 @@ export const ThemeIcon = ({ iconSize }) => {
     setTheme(theme === lightTheme ? darkTheme : lightTheme);
   }
   return (
-    <ThemeButton id="themeIcon" themeChange={theme} onClick={handleThemeToggle}>
+    <ThemeButton id="themeIcon" newtheme={theme} onClick={handleThemeToggle}>
       {theme === lightTheme && <FiMoon size={iconSize} />}
       {theme === darkTheme && <FiSun size={iconSize} />}
     </ThemeButton>
@@ -78,7 +78,7 @@ const IconButton = styled.button`
     background-color: transparent;
     padding: 0%;
     color: ${(props) =>
-      props.themeChange === darkTheme ? whiteColor : blackTextColor};
+      props.newtheme === darkTheme ? whiteColor : blackTextColor};
     border: none;
     &:hover {
       -webkit-animation: ${pulsateForward} 0.8s ease-in-out infinite both;
@@ -98,7 +98,7 @@ const ThemeButton = styled.button`
       animation: ${puffOutCenter} 1.5s cubic-bezier(0.165, 0.84, 0.44, 1) both;
     }
     color: ${(props) =>
-      props.themeChange === darkTheme ? whiteColor : blackTextColor};
+      props.newtheme === darkTheme ? whiteColor : blackTextColor};
     border: none;
     cursor: pointer;
   }

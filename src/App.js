@@ -34,7 +34,7 @@ function App() {
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme, isOpen, setOpen }}>
-      <Appdiv className="App" themeChange={theme}>
+      <Appdiv className="App" newtheme={theme}>
         {/* {timeOut !== 1 && <Loader />} */}
         {/* {timeOut == 1 && ( */}
         <MenuBar />
@@ -52,9 +52,9 @@ function App() {
 
 const Appdiv = styled.div`
   color: ${(props) =>
-    props.themeChange === darkTheme ? whiteColor : blackTextColor};
+    props.newtheme === darkTheme ? whiteColor : blackTextColor};
   background-color: ${(props) =>
-    props.themeChange === darkTheme ? primaryBgColor : whiteBgColor};
+    props.newtheme === darkTheme ? primaryBgColor : whiteBgColor};
   -webkit-transition: background-color 1.2s linear;
   -ms-transition: background-color 1.2s linear;
   transition: background-color 1.2s linear;

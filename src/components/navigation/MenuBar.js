@@ -30,7 +30,7 @@ const MenuBar = () => {
   const { theme, isOpen, setOpen } = useContext(ThemeContext);
 
   return (
-    <StyledAppBar themeChange={theme} position="fixed" id="navBarMain">
+    <StyledAppBar position="fixed" id="navBarMain">
       <NavContainer maxWidth="xl" id="navContainer">
         <Toolbar disableGutters id="navBar">
           <LogoLinkL
@@ -73,7 +73,7 @@ const MenuBar = () => {
           </StyledBoxM> */}
           <StyledBox id="navLinks" sx={{ flexGrow: 1 }}>
             {pageRoutes.map((page) => (
-              <NavText key={page.id} themeChange={theme} open={isOpen}>
+              <NavText key={page.id} newtheme={theme} open={isOpen}>
                 <HomeLink
                   key={page.id}
                   to={page.id}
@@ -141,12 +141,12 @@ const NavText = styled(MyText)`
       props.open ? entryAnimation : exitAnimation};
     animation: ${(props) => (props.open ? entryAnimation : exitAnimation)};
     color: ${(props) =>
-      props.themeChange === darkTheme ? whiteColor : blackTextColor};
+      props.newtheme === darkTheme ? whiteColor : blackTextColor};
     margin-left: 15px !important;
     margin-right: 15px !important;
     &:hover {
       color: ${(props) =>
-        props.themeChange === darkTheme ? blueColor : purpleColor};
+        props.newtheme === darkTheme ? blueColor : purpleColor};
     }
     font-size: 20px;
   }

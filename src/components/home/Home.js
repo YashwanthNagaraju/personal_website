@@ -25,8 +25,6 @@ const Home = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       const select = Math.floor(Math.random() * 5);
-      // const element= document.getElementById("subHeadingText");
-      // element.style.animation(trackingInAnimation);
       setSubtitle(subtitleTexts[select]);
     }, 3000);
     return () => clearInterval(interval);
@@ -50,11 +48,11 @@ const Home = () => {
               Hello there.
             </MyText>
             <HomeHeading component="h1" tabIndex={1}>
-              {introString.map((char) => (
-                <NameSpan themeChange={theme}>{char}</NameSpan>
+              {introString.map((char, index) => (
+                <NameSpan key={index} newtheme={theme}>{char}</NameSpan>
               ))}{" "}
-              {nameString.map((char) => (
-                <NameSpan themeChange={theme}>{char}</NameSpan>
+              {nameString.map((char,index) => (
+                <NameSpan key={index } newtheme={theme}>{char}</NameSpan>
               ))}
             </HomeHeading>
             <SubHeading key={subtitle} id="subHeading" change={subtitle}>
@@ -211,7 +209,7 @@ const NameSpan = styled.span`
       -webkit-animation: ${jelloHorz} 0.8s both;
       animation: ${jelloHorz} 0.8s both;
       color: ${(props) =>
-        props.themeChange === darkTheme ? blueColor : purpleColor};
+        props.newtheme === darkTheme ? blueColor : purpleColor};
     }
   }
 `;
