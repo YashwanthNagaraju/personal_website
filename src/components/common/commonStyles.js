@@ -12,6 +12,8 @@ export const blueColor = "#075fe4";
 export const purpleColor = "#5e3bee";
 export const errorColor = "#B00020";
 export const successColor = "rgb(56, 142, 60)";
+export const navPrimBgClr ='#1a1e23';
+
 export const myFont = "Oswald";
 
 export const MyText = styled(Typography)`
@@ -49,7 +51,7 @@ export const MyText = styled(Typography)`
 
 export const HeaderText = styled(Typography)`
   && {
-    font-size:52px;
+    font-size: 52px;
     font-weight: bold;
     color: ${(props) =>
       props.newtheme === darkTheme ? blueColor : purpleColor};

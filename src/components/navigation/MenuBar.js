@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useRef } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -19,7 +19,6 @@ import {
   primaryBgColor,
   whiteBgColor,
   navPrimBgClr,
-  navSecBgClr,
 } from "../common/commonStyles";
 import { Sling as Hamburger } from "hamburger-react";
 import {
@@ -28,21 +27,40 @@ import {
   slideFwdTop,
 } from "../common/animations";
 import { darkTheme } from "../../assets/common/commonText";
-import { ClickAwayListener, Slide, useMediaQuery } from "@mui/material";
+import { Slide, useMediaQuery } from "@mui/material";
 
 const MenuBar = () => {
   const { theme, isOpen, setOpen } = useContext(ThemeContext);
   const matches = useMediaQuery("(max-width:768px)");
+  const ref = useRef(null);
+
+  const handleHideDropdown = (event) => {
+    if (event.key === "Escape" && isOpen) {
+      setOpen(!isOpen);
+    }
+  };
+
+  const handleClickOutside = (event) => {
+    if (ref.current && !ref.current.contains(event.target) && isOpen) {
+      setOpen(!isOpen);
+    }
+  };
 
   function makeBlur(elementID, style) {
     var element = document.getElementById(elementID);
     element.style.filter = style;
   }
+
   function handleClose() {
     if (isOpen) {
       setOpen(!isOpen);
     }
   }
+  function logit() {
+    setOpen(!isOpen);
+  }
+
+  //blur other elements when mobile nav bar is active
   useEffect(() => {
     if (matches && isOpen) {
       [
@@ -62,6 +80,29 @@ const MenuBar = () => {
       ].map((ele) => makeBlur(ele, "none"));
     }
   }, [matches, isOpen]);
+
+  //hide mobile nav on mouse scroll
+  useEffect(() => {
+    if (isOpen) {
+      function watchScroll() {
+        window.addEventListener("scroll", logit);
+      }
+      watchScroll();
+      return () => {
+        window.removeEventListener("scroll", logit);
+      };
+    }
+  });
+
+  //hide mobile nav on escape and click away
+  useEffect(() => {
+    document.addEventListener("keydown", handleHideDropdown, true);
+    document.addEventListener("click", handleClickOutside, true);
+    return () => {
+      document.removeEventListener("keydown", handleHideDropdown, true);
+      document.removeEventListener("click", handleClickOutside, true);
+    };
+  });
 
   return (
     <>
@@ -133,35 +174,34 @@ const MenuBar = () => {
           </Toolbar>
         </NavContainer>
       </StyledAppBar>
-      {/* <ClickAwayListener onClickAway={handleClose}> */}
-        <Slide
-          direction="left"
-          id="mobileNavBar"
-          in={isOpen}
-          mountOnEnter
-          unmountOnExit
-        >
-          <SideNav id="navBarM" newtheme={theme} open={isOpen}>
-            <MobileNav>
-              {pageRoutes.map((page) => (
-                <NavText key={page.id} newtheme={theme} open={isOpen}>
-                  <HomeLink
-                    key={page.id}
-                    to={page.id}
-                    spy={true}
-                    onClick={handleClose}
-                    smooth={true}
-                    duration={500}
-                    tabIndex={1}
-                  >
-                    {page.name}
-                  </HomeLink>
-                </NavText>
-              ))}
-            </MobileNav>
-          </SideNav>
-        </Slide>
-      {/* </ClickAwayListener> */}
+      <Slide
+        direction="left"
+        id="mobileNavBar"
+        in={isOpen}
+        mountOnEnter
+        unmountOnExit
+        ref={ref}
+      >
+        <SideNav id="navBarM" newtheme={theme} open={isOpen}>
+          <MobileNav>
+            {pageRoutes.map((page) => (
+              <NavText key={page.id} newtheme={theme} open={isOpen}>
+                <HomeLink
+                  key={page.id}
+                  to={page.id}
+                  spy={true}
+                  onClick={handleClose}
+                  smooth={true}
+                  duration={500}
+                  tabIndex={1}
+                >
+                  {page.name}
+                </HomeLink>
+              </NavText>
+            ))}
+          </MobileNav>
+        </SideNav>
+      </Slide>
     </>
   );
 };
@@ -204,7 +244,7 @@ const StyledBox = styled(Box)`
 
 const SideNav = styled.aside`
   &&& {
-    height: 100%;
+    height: 100vh;
     filter: none;
     width: 50%;
     @media (max-width: 425px) {
