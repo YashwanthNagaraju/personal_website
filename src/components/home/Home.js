@@ -6,6 +6,8 @@ import {
   blueColor,
   StyledContainer,
   purpleColor,
+  CommonDiv,
+  GeneralText,
 } from "../common/commonStyles";
 import { Element } from "react-scroll";
 import { jelloHorz, trackingInAnimation } from "../common/animations";
@@ -39,8 +41,8 @@ const Home = () => {
       <HomeContainer id="homeContainer" maxWidth="xl">
         <HomeBox id="homeBox" sx={{ flexGrow: 1 }}>
           <Zoom triggerOnce>
-            <NameDiv>
-              <MyText
+            <CommonDiv>
+              <GeneralText
                 style={{
                   fontSize: "36px",
                   color: theme === darkTheme ? blueColor : purpleColor,
@@ -48,7 +50,7 @@ const Home = () => {
                 }}
               >
                 Hello there.
-              </MyText>
+              </GeneralText>
               <HomeHeading component="h1" tabIndex={1}>
                 {introString.map((char, index) => (
                   <NameSpan key={index} newtheme={theme}>
@@ -75,7 +77,7 @@ const Home = () => {
                 An enthusiastic web developer with a passion to design and code
                 user interfaces for people and their business.
               </SubText>
-            </NameDiv>
+            </CommonDiv>
           </Zoom>
         </HomeBox>
         <HomeInfoBox
@@ -154,14 +156,7 @@ const HomeInfoBox = styled(Box)`
   }
 `;
 
-const NameDiv = styled.div`
-  && {
-    display: block;
-    text-align: left;
-  }
-`;
-
-const HomeHeading = styled(MyText)`
+const HomeHeading = styled(GeneralText)`
   && {
     display: block;
     font-weight: bold;
@@ -204,33 +199,6 @@ const SubHeading = styled(HomeHeading)`
 
 const SubText = styled(MyText)`
   && {
-    @media (max-width: 374px) {
-      font-size: 18px !important;
-    }
-    @media (min-width: 375px) and (max-width: 425px) {
-      font-size: 18px !important;
-    }
-    @media (min-width: 425px) and (max-width: 600px) {
-      font-size: 20px !important;
-    }
-    @media (min-width: 600px) and (max-width: 768px) {
-      font-size: 20px !important;
-    }
-    @media (min-width: 768px) and (max-width: 1024px) {
-      font-size: 20px !important;
-    }
-    @media (min-width: 1024px) and (max-width: 1200px) {
-      font-size: 24px !important;
-    }
-    @media (min-width: 1200px) and (max-width: 1400px) {
-      font-size: 24px !important;
-    }
-    @media (min-width: 1400px) and (max-width: 1536px) {
-      font-size: 24px !important;
-    }
-    @media (min-width: 1536px) {
-      font-size: 24px !important;
-    }
     @media (min-width: 1024px) {
       max-width: 90% !important;
     }

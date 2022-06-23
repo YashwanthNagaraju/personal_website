@@ -3,15 +3,13 @@ import styled from "styled-components";
 import {
   StyledContainer,
   MyText,
-  blueColor,
-  whiteColor,
-  blackTextColor,
-  purpleColor,
+  CommonDiv,
+  TagSpan,
+  HeaderText,
 } from "../common/commonStyles";
 import { Element } from "react-scroll";
 import { useContext } from "react";
 import { ThemeContext } from "../../App";
-import { darkTheme } from "../../assets/common/commonText";
 import { Zoom } from "react-awesome-reveal";
 
 const About = () => {
@@ -22,33 +20,14 @@ const About = () => {
         {/* <AboutStack id="AboutStack" direction="row" spacing={2}> */}
         <AboutBox id="aboutBox">
           <Zoom triggerOnce>
-            <AboutDiv>
-              <MyText
-                style={{
-                  fontSize: "52px",
-                  color: theme === darkTheme ? blueColor : purpleColor,
-                  fontWeight: "bold",
-                }}
-              >
-                <span
-                  style={{
-                    color: theme === darkTheme ? whiteColor : blackTextColor,
-                  }}
-                >
-                  {"<"}
-                </span>
+            <CommonDiv>
+              <HeaderText newtheme={theme}>
+                <TagSpan newtheme={theme}>{"<"}</TagSpan>
                 About Me/
-                <span
-                  style={{
-                    color: theme === darkTheme ? whiteColor : blackTextColor,
-                  }}
-                >
-                  {">"}
-                </span>
-              </MyText>
+                <TagSpan newtheme={theme}>{">"}</TagSpan>
+              </HeaderText>
               <MyText
                 style={{
-                  fontSize: "24px",
                   marginTop: "15px",
                   textAlign: "justify",
                 }}
@@ -62,7 +41,7 @@ const About = () => {
                 promote their business by designing and building accessible and
                 customized websites.
               </MyText>
-            </AboutDiv>
+            </CommonDiv>
           </Zoom>
         </AboutBox>
         <AboutInfoBox component="div" id="imageAboutBox">
@@ -137,13 +116,6 @@ const AboutInfoBox = styled(Box)`
   @media (min-width: 1400px) {
     width: 40%;
     display: grid;
-  }
-`;
-
-const AboutDiv = styled.div`
-  && {
-    display: block;
-    text-align: left;
   }
 `;
 

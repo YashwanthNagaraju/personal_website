@@ -11,7 +11,7 @@ import Yash_logo_light from "../../assets/images/L_Logo_light.svg";
 import Yash_Mlogo_dark from "../../assets/images/M_Logo_dark.svg";
 import Yash_Mlogo_light from "../../assets/images/M_Logo_light.svg";
 import {
-  MyText,
+  GeneralText,
   blueColor,
   whiteColor,
   blackTextColor,
@@ -161,26 +161,29 @@ const StyledBox = styled(Box)`
 
 const SideNav = styled.aside`
   height: 100%;
-  width: 70%;
+  width: 50%;
+  @media (max-width: 425px) {
+    width: 65%;
+  }
   position: fixed;
   z-index: 1;
   top: 0;
   right: 0;
   display: flex;
   -moz-box-pack: center;
-
   justify-content: center;
   -moz-box-align: center;
   align-items: center;
   background-color: ${(props) =>
     props.newtheme === darkTheme ? primaryBgColor : whiteBgColor};
   overflow-x: hidden;
+  box-shadow: -10px 0px 30px -15px ${(props) => (props.newtheme === darkTheme ? primaryBgColor : whiteBgColor)};
   @media (min-width: 768px) {
     display: none;
   }
 `;
 
-const NavText = styled(MyText)`
+const NavText = styled(GeneralText)`
   && {
     color: ${(props) =>
       props.newtheme === darkTheme ? whiteColor : blackTextColor};

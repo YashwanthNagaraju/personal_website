@@ -5,7 +5,6 @@ import { Element } from "react-scroll";
 import styled from "styled-components";
 import emailjs from "@emailjs/browser";
 import {
-  MyText,
   blueColor,
   BottomContainer,
   whiteColor,
@@ -17,6 +16,7 @@ import {
   StyleDiv,
   primaryBgColor,
   whiteBgColor,
+  GeneralText,
 } from "../common/commonStyles";
 import { useContext, useState } from "react";
 import { apiKey } from "./model/emailKey";
@@ -176,6 +176,7 @@ const Contact = () => {
             id="infoBar"
             anchorOrigin={{ vertical, horizontal }}
             open={msg !== ""}
+            autoHideDuration={2}
             onClose={(e) => handleClose(e)}
             key={vertical + horizontal}
           >
@@ -349,7 +350,7 @@ const MessageButton = styled(Button)`
   }
 `;
 
-const ContactHeading = styled(MyText)`
+const ContactHeading = styled(GeneralText)`
   && {
     display: flex;
     text-align: left;

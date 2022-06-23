@@ -3,15 +3,13 @@ import styled from "styled-components";
 import {
   StyledContainer,
   MyText,
-  blueColor,
-  whiteColor,
-  blackTextColor,
-  purpleColor,
+  CommonDiv,
+  TagSpan,
+  HeaderText,
 } from "../common/commonStyles";
 import { Element } from "react-scroll";
 import { useContext } from "react";
 import { ThemeContext } from "../../App";
-import { darkTheme } from "../../assets/common/commonText";
 import { Zoom } from "react-awesome-reveal";
 
 const Experience = () => {
@@ -22,33 +20,15 @@ const Experience = () => {
       <ExperienceContainer id="experienceContainer">
         <ExperienceBox id="experienceBox">
           <Zoom triggerOnce>
-            <ExperienceDiv>
-              <MyText
-                style={{
-                  fontSize: "52px",
-                  color: theme === darkTheme ? blueColor : purpleColor,
-                  fontWeight: "bold",
-                }}
+            <CommonDiv>
+              <HeaderText
+                newtheme={theme}
               >
-                <span
-                  style={{
-                    color: theme === darkTheme ? whiteColor : blackTextColor,
-                  }}
-                >
-                  {"<"}
-                </span>
-                My Experience /
-                <span
-                  style={{
-                    color: theme === darkTheme ? whiteColor : blackTextColor,
-                  }}
-                >
-                  {">"}
-                </span>
-              </MyText>
+                <TagSpan newtheme={theme}>{"<"}</TagSpan>
+                My Experience /<TagSpan newtheme={theme}>{">"}</TagSpan>
+              </HeaderText>
               <MyText
                 style={{
-                  fontSize: "24px",
                   marginTop: "15px",
                   textAlign: "justify",
                 }}
@@ -61,7 +41,7 @@ const Experience = () => {
                 nulla pariatur. Excepteur sint occaecat cupidatat non proident,
                 sunt in culpa qui officia deserunt mollit anim id est laborum.
               </MyText>
-            </ExperienceDiv>
+            </CommonDiv>
           </Zoom>
         </ExperienceBox>
         <ExperienceInfoBox component="div"></ExperienceInfoBox>
@@ -130,12 +110,5 @@ const ExperienceInfoBox = styled(Box)`
   @media (min-width: 1400px) {
     width: 40%;
     display: grid;
-  }
-`;
-
-const ExperienceDiv = styled.div`
-  && {
-    display: block;
-    text-align: left;
   }
 `;

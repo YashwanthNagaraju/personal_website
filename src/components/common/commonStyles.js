@@ -1,6 +1,7 @@
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import styled from "styled-components";
+import { darkTheme } from "../../assets/common/commonText";
 import { fadeIn, slideInBottom } from "./animations";
 
 export const primaryBgColor = "#15181C";
@@ -15,16 +16,51 @@ export const myFont = "Oswald";
 
 export const MyText = styled(Typography)`
   && {
+    @media (max-width: 374px) {
+      font-size: 18px !important;
+    }
+    @media (min-width: 375px) and (max-width: 425px) {
+      font-size: 18px !important;
+    }
+    @media (min-width: 425px) and (max-width: 600px) {
+      font-size: 20px !important;
+    }
+    @media (min-width: 600px) and (max-width: 768px) {
+      font-size: 20px !important;
+    }
+    @media (min-width: 768px) and (max-width: 1024px) {
+      font-size: 20px !important;
+    }
+    @media (min-width: 1024px) and (max-width: 1200px) {
+      font-size: 24px !important;
+    }
+    @media (min-width: 1200px) and (max-width: 1400px) {
+      font-size: 24px !important;
+    }
+    @media (min-width: 1400px) and (max-width: 1536px) {
+      font-size: 24px !important;
+    }
+    @media (min-width: 1536px) {
+      font-size: 24px !important;
+    }
     font-family: ${myFont};
   }
 `;
 
-export const ColorTextBody = styled(MyText)`
-  color: #08fdd8;
+export const HeaderText = styled(Typography)`
+  && {
+    font-size:52px;
+    font-weight: bold;
+    color: ${(props) =>
+      props.newtheme === darkTheme ? blueColor : purpleColor};
+    font-family: ${myFont};
+  }
 `;
 
-export const ColorTextHeading = styled(MyText)`
-  color: #08fdd8;
+export const GeneralText = styled(Typography)`
+  && {
+    font-family: ${myFont};
+  }
 `;
 
 export const StyledContainer = styled(Container)`
@@ -46,14 +82,6 @@ export const BottomContainer = styled(Container)`
       both;
     animation: ${fadeIn} 1.5s cubic-bezier(0.755, 0.05, 0.855, 0.06) both;
   }
-`;
-
-export const GeneralTextHeading = styled(MyText)`
-  color: #f4f9fc;
-`;
-
-export const GeneralTextBody = styled(MyText)`
-  color: #f4f9fc;
 `;
 
 export const StyleDiv = styled.div`
@@ -82,4 +110,16 @@ export const IconsDiv = styled.div`
     animation: ${slideInBottom} 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   }
   display: none;
+`;
+
+export const CommonDiv = styled.div`
+  && {
+    display: block;
+    text-align: left;
+  }
+`;
+
+export const TagSpan = styled.span`
+  color: ${(props) =>
+    props.newtheme === darkTheme ? whiteColor : blackTextColor};
 `;
