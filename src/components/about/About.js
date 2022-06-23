@@ -12,6 +12,7 @@ import { Element } from "react-scroll";
 import { useContext } from "react";
 import { ThemeContext } from "../../App";
 import { darkTheme } from "../../assets/common/commonText";
+import { Zoom } from "react-awesome-reveal";
 
 const About = () => {
   const { theme } = useContext(ThemeContext);
@@ -20,47 +21,49 @@ const About = () => {
       <AboutContainer id="aboutContainer">
         {/* <AboutStack id="AboutStack" direction="row" spacing={2}> */}
         <AboutBox id="aboutBox">
-          <AboutDiv>
-            <MyText
-              style={{
-                fontSize: "52px",
-                color: theme === darkTheme ? blueColor : purpleColor,
-                fontWeight: "bold",
-              }}
-            >
-              <span
+          <Zoom triggerOnce>
+            <AboutDiv>
+              <MyText
                 style={{
-                  color: theme === darkTheme ? whiteColor : blackTextColor,
+                  fontSize: "52px",
+                  color: theme === darkTheme ? blueColor : purpleColor,
+                  fontWeight: "bold",
                 }}
               >
-                {"<"}
-              </span>
-              About Me/
-              <span
+                <span
+                  style={{
+                    color: theme === darkTheme ? whiteColor : blackTextColor,
+                  }}
+                >
+                  {"<"}
+                </span>
+                About Me/
+                <span
+                  style={{
+                    color: theme === darkTheme ? whiteColor : blackTextColor,
+                  }}
+                >
+                  {">"}
+                </span>
+              </MyText>
+              <MyText
                 style={{
-                  color: theme === darkTheme ? whiteColor : blackTextColor,
+                  fontSize: "24px",
+                  marginTop: "15px",
+                  textAlign: "justify",
                 }}
               >
-                {">"}
-              </span>
-            </MyText>
-            <MyText
-              style={{
-                fontSize: "24px",
-                marginTop: "15px",
-                textAlign: "justify",
-              }}
-            >
-              Hi! My name is Yashwanth Nagaraju. I am a developer with
-              experience in frontend and backend with a passion for coding. I
-              enjoy solving complex problems using a computer. I started my
-              career as a software engineer. I am currently a full time Grad
-              student at the University of Melbourne and work as a freelance
-              developer. I help people to showcase their talent and art and to
-              promote their business by designing and building accessible and
-              customized websites.
-            </MyText>
-          </AboutDiv>
+                Hi! My name is Yashwanth Nagaraju. I am a developer with
+                experience in frontend and backend with a passion for coding. I
+                enjoy solving complex problems using a computer. I started my
+                career as a software engineer. I am currently a full time Grad
+                student at the University of Melbourne and work as a freelance
+                developer. I help people to showcase their talent and art and to
+                promote their business by designing and building accessible and
+                customized websites.
+              </MyText>
+            </AboutDiv>
+          </Zoom>
         </AboutBox>
         <AboutInfoBox component="div" id="imageAboutBox">
           <Box

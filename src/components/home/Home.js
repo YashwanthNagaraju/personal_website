@@ -11,6 +11,7 @@ import { Element } from "react-scroll";
 import { jelloHorz, trackingInAnimation } from "../common/animations";
 import { ThemeContext } from "../../App";
 import { darkTheme } from "../../assets/common/commonText";
+import { Zoom } from "react-awesome-reveal";
 
 const Home = () => {
   const { theme } = useContext(ThemeContext);
@@ -37,39 +38,45 @@ const Home = () => {
     <HomeElement name="home">
       <HomeContainer id="homeContainer" maxWidth="xl">
         <HomeBox id="homeBox" sx={{ flexGrow: 1 }}>
-          <NameDiv>
-            <MyText
-              style={{
-                fontSize: "36px",
-                color: theme === darkTheme ? blueColor : purpleColor,
-                fontWeight: "bold",
-              }}
-            >
-              Hello there.
-            </MyText>
-            <HomeHeading component="h1" tabIndex={1}>
-              {introString.map((char, index) => (
-                <NameSpan key={index} newtheme={theme}>{char}</NameSpan>
-              ))}{" "}
-              {nameString.map((char,index) => (
-                <NameSpan key={index } newtheme={theme}>{char}</NameSpan>
-              ))}
-            </HomeHeading>
-            <SubHeading key={subtitle} id="subHeading" change={subtitle}>
-              {subtitle}
-              <span
+          <Zoom triggerOnce>
+            <NameDiv>
+              <MyText
                 style={{
+                  fontSize: "36px",
                   color: theme === darkTheme ? blueColor : purpleColor,
+                  fontWeight: "bold",
                 }}
               >
-                .
-              </span>
-            </SubHeading>
-            <SubText style={{ fontSize: "24px", marginTop: "15px" }}>
-              An enthusiastic web developer with a passion to design and code
-              user interfaces for people and their business.
-            </SubText>
-          </NameDiv>
+                Hello there.
+              </MyText>
+              <HomeHeading component="h1" tabIndex={1}>
+                {introString.map((char, index) => (
+                  <NameSpan key={index} newtheme={theme}>
+                    {char}
+                  </NameSpan>
+                ))}{" "}
+                {nameString.map((char, index) => (
+                  <NameSpan key={index} newtheme={theme}>
+                    {char}
+                  </NameSpan>
+                ))}
+              </HomeHeading>
+              <SubHeading key={subtitle} id="subHeading" change={subtitle}>
+                {subtitle}
+                <span
+                  style={{
+                    color: theme === darkTheme ? blueColor : purpleColor,
+                  }}
+                >
+                  .
+                </span>
+              </SubHeading>
+              <SubText style={{ marginTop: "15px" }}>
+                An enthusiastic web developer with a passion to design and code
+                user interfaces for people and their business.
+              </SubText>
+            </NameDiv>
+          </Zoom>
         </HomeBox>
         <HomeInfoBox
           component="img"
@@ -161,10 +168,10 @@ const HomeHeading = styled(MyText)`
     text-align: left;
     line-height: 1;
     @media (max-width: 374px) {
-      font-size: 3rem !important;
+      font-size: 2.5rem !important;
     }
     @media (min-width: 375px) and (max-width: 425px) {
-      font-size: 3rem !important;
+      font-size: 2.5rem !important;
     }
     @media (min-width: 425px) and (max-width: 600px) {
       font-size: 3.5rem !important;
@@ -190,15 +197,43 @@ const HomeHeading = styled(MyText)`
   }
 `;
 
-const SubHeading = styled(HomeHeading)`  
+const SubHeading = styled(HomeHeading)`
   animation: ${trackingInAnimation};
   -webkit-animation: ${trackingInAnimation};
 `;
 
 const SubText = styled(MyText)`
   && {
+    @media (max-width: 374px) {
+      font-size: 18px !important;
+    }
+    @media (min-width: 375px) and (max-width: 425px) {
+      font-size: 18px !important;
+    }
+    @media (min-width: 425px) and (max-width: 600px) {
+      font-size: 20px !important;
+    }
+    @media (min-width: 600px) and (max-width: 768px) {
+      font-size: 20px !important;
+    }
+    @media (min-width: 768px) and (max-width: 1024px) {
+      font-size: 20px !important;
+    }
+    @media (min-width: 1024px) and (max-width: 1200px) {
+      font-size: 24px !important;
+    }
+    @media (min-width: 1200px) and (max-width: 1400px) {
+      font-size: 24px !important;
+    }
+    @media (min-width: 1400px) and (max-width: 1536px) {
+      font-size: 24px !important;
+    }
+    @media (min-width: 1536px) {
+      font-size: 24px !important;
+    }
     @media (min-width: 1024px) {
-      max-width:90% !important;
+      max-width: 90% !important;
+    }
   }
 `;
 

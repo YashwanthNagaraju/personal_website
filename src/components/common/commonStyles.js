@@ -33,9 +33,6 @@ export const StyledContainer = styled(Container)`
     display: flex;
     justify-content: center;
     align-items: center;
-    -webkit-animation: ${fadeIn} 1.5s cubic-bezier(0.755, 0.05, 0.855, 0.06)
-      both;
-    animation: ${fadeIn} 1.5s cubic-bezier(0.755, 0.05, 0.855, 0.06) both;
   }
 `;
 

@@ -2,7 +2,7 @@ import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { Element } from "react-scroll";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import emailjs from "@emailjs/browser";
 import {
   MyText,
@@ -24,6 +24,7 @@ import { ThemeContext } from "../../App";
 import { Alert, Snackbar } from "@mui/material";
 import { entryAnimation, exitAnimation } from "../common/animations";
 import { darkTheme } from "../../assets/common/commonText";
+import { Zoom } from "react-awesome-reveal";
 
 const Contact = () => {
   const [name, setName] = useState("");
@@ -111,86 +112,87 @@ const Contact = () => {
   return (
     <ContactElement name="contact">
       <ContactContainer id="contactContainer">
-        <ContactStack id="contactStack" direction="row" spacing={2}>
-          <ContactBox id="contactBox">
-            <ContactHeading variant="h2" gutterBottom>
-              <LineDiv newtheme={theme} id="randomLine"></LineDiv>
-              Have a project on your mind?
-              <br />
-              Get in touch.
-            </ContactHeading>
-          </ContactBox>
-          <ContactInfoBox component="form" id="contactInfoBox">
-            <HiddenLabel htmlfor="nameField">Name: </HiddenLabel>
-            <InfoField
-              maxLength={40}
-              id="nameField"
-              type="text"
-              newtheme={theme}
-              placeholder="Your Name"
-              style={{}}
-              onChange={(e) => setName(e.target.value)}
-            />
-            <StyleDiv />
-            <HiddenLabel htmlfor="emailIdField">Email ID: </HiddenLabel>
-            <InfoField
-              id="emailIdField"
-              type="text"
-              newtheme={theme}
-              maxLength={40}
-              placeholder="Your email address"
-              onChange={(e) => setEmailID(e.target.value)}
-            />
-            <StyleDiv />
-            <HiddenLabel htmlfor="messageField">Message: </HiddenLabel>
-            <TextField
-              id="messageField"
-              placeholder="Message"
-              type="text"
-              newtheme={theme}
-              maxLength={1000}
-              style={{
-                minHeight: "10%",
-                paddingBottom: "10%",
-              }}
-              onChange={(e) => setMessage(e.target.value)}
-            />
-            <StyleDiv />
-            <MessageButton
-              id="profileButton"
-              type="submit"
-              onClick={handleSubmit}
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-              newtheme={theme}
-            >
-              Send Message
-            </MessageButton>
-            {msg !== "" && (
-              <InfoBar
-                id="infoBar"
-                anchorOrigin={{ vertical, horizontal }}
-                open={msg !== ""}
-                onClose={(e) => handleClose(e)}
-                key={vertical + horizontal}
+        <Zoom triggerOnce style={{ width: "100%" }}>
+          <ContactStack id="contactStack" direction="row" spacing={2}>
+            <ContactBox id="contactBox">
+              <ContactHeading variant="h2" gutterBottom>
+                <LineDiv newtheme={theme} id="randomLine"></LineDiv>
+                Have a project on your mind?
+                <br />
+                Get in touch.
+              </ContactHeading>
+            </ContactBox>
+            <ContactInfoBox component="form" id="contactInfoBox">
+              <HiddenLabel htmlfor="nameField">Name: </HiddenLabel>
+              <InfoField
+                maxLength={40}
+                id="nameField"
+                type="text"
+                newtheme={theme}
+                placeholder="Your Name"
+                style={{}}
+                onChange={(e) => setName(e.target.value)}
+              />
+              <StyleDiv />
+              <HiddenLabel htmlfor="emailIdField">Email ID: </HiddenLabel>
+              <InfoField
+                id="emailIdField"
+                type="text"
+                newtheme={theme}
+                maxLength={40}
+                placeholder="Your email address"
+                onChange={(e) => setEmailID(e.target.value)}
+              />
+              <StyleDiv />
+              <HiddenLabel htmlfor="messageField">Message: </HiddenLabel>
+              <TextField
+                id="messageField"
+                placeholder="Message"
+                type="text"
+                newtheme={theme}
+                maxLength={1000}
+                style={{
+                  minHeight: "10%",
+                  paddingBottom: "10%",
+                }}
+                onChange={(e) => setMessage(e.target.value)}
+              />
+              <StyleDiv />
+              <MessageButton
+                id="profileButton"
+                type="submit"
+                onClick={handleSubmit}
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+                newtheme={theme}
               >
-                <Alert
-                  id="alertInfoBar"
-                  style={{
-                    backgroundColor:
-                      msg === "error" ? errorColor : successColor,
-                    color: whiteColor,
-                  }}
-                  onClose={handleClose}
-                  severity={msg}
-                  sx={{ width: "100%" }}
-                >
-                  {info}
-                </Alert>
-              </InfoBar>
-            )}
-          </ContactInfoBox>
-        </ContactStack>
+                Send Message
+              </MessageButton>
+            </ContactInfoBox>
+          </ContactStack>
+        </Zoom>
+        {msg !== "" && (
+          <InfoBar
+            id="infoBar"
+            anchorOrigin={{ vertical, horizontal }}
+            open={msg !== ""}
+            onClose={(e) => handleClose(e)}
+            key={vertical + horizontal}
+          >
+            <Alert
+              id="alertInfoBar"
+              style={{
+                backgroundColor: msg === "error" ? errorColor : successColor,
+                color: whiteColor,
+              }}
+              onClose={handleClose}
+              severity={msg}
+              sx={{ width: "100%" }}
+            >
+              {info}
+            </Alert>
+          </InfoBar>
+        )}
       </ContactContainer>
     </ContactElement>
   );

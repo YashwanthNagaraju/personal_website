@@ -182,18 +182,3 @@ export const trackingInAnimation = css`
   ${trackingIn} 1.5s cubic-bezier(0.215, 0.610, 0.355, 1.000) both
 `;
 // export const trackingOutAnimation = css`${trackingOut} 1.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both`;
-
-const slideInForward = keyframes`
-  0% {
-    -webkit-transform: translateZ(-1400px);
-    transform: translateZ(-1400px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    opacity: 1;
-  }
-`;
-
-export const slideInForwardAmt = css`${slideInForward} 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both`

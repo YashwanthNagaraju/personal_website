@@ -12,6 +12,7 @@ import { Element } from "react-scroll";
 import { useContext } from "react";
 import { ThemeContext } from "../../App";
 import { darkTheme } from "../../assets/common/commonText";
+import { Zoom } from "react-awesome-reveal";
 
 const Experience = () => {
   const { theme } = useContext(ThemeContext);
@@ -20,46 +21,48 @@ const Experience = () => {
     <ExperienceElement name="experience">
       <ExperienceContainer id="experienceContainer">
         <ExperienceBox id="experienceBox">
-          <ExperienceDiv>
-            <MyText
-              style={{
-                fontSize: "52px",
-                color: theme === darkTheme ? blueColor : purpleColor,
-                fontWeight: "bold",
-              }}
-            >
-              <span
+          <Zoom triggerOnce>
+            <ExperienceDiv>
+              <MyText
                 style={{
-                  color: theme === darkTheme ? whiteColor : blackTextColor,
+                  fontSize: "52px",
+                  color: theme === darkTheme ? blueColor : purpleColor,
+                  fontWeight: "bold",
                 }}
               >
-                {"<"}
-              </span>
-              My Experience /
-              <span
+                <span
+                  style={{
+                    color: theme === darkTheme ? whiteColor : blackTextColor,
+                  }}
+                >
+                  {"<"}
+                </span>
+                My Experience /
+                <span
+                  style={{
+                    color: theme === darkTheme ? whiteColor : blackTextColor,
+                  }}
+                >
+                  {">"}
+                </span>
+              </MyText>
+              <MyText
                 style={{
-                  color: theme === darkTheme ? whiteColor : blackTextColor,
+                  fontSize: "24px",
+                  marginTop: "15px",
+                  textAlign: "justify",
                 }}
               >
-                {">"}
-              </span>
-            </MyText>
-            <MyText
-              style={{
-                fontSize: "24px",
-                marginTop: "15px",
-                textAlign: "justify",
-              }}
-            >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </MyText>
-          </ExperienceDiv>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </MyText>
+            </ExperienceDiv>
+          </Zoom>
         </ExperienceBox>
         <ExperienceInfoBox component="div"></ExperienceInfoBox>
       </ExperienceContainer>
