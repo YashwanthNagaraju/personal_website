@@ -15,7 +15,7 @@ import { Zoom } from "react-awesome-reveal";
 const About = () => {
   const { theme } = useContext(ThemeContext);
   return (
-    <AboutElement name="about">
+    <AboutElement id="aboutElement" name="about">
       <AboutContainer id="aboutContainer">
         {/* <AboutStack id="AboutStack" direction="row" spacing={2}> */}
         <AboutBox id="aboutBox">

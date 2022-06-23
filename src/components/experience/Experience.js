@@ -16,7 +16,7 @@ const Experience = () => {
   const { theme } = useContext(ThemeContext);
 
   return (
-    <ExperienceElement name="experience">
+    <ExperienceElement id="expElement" name="experience">
       <ExperienceContainer id="experienceContainer">
         <ExperienceBox id="experienceBox">
           <Zoom triggerOnce>

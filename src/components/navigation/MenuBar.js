@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -18,6 +18,8 @@ import {
   purpleColor,
   primaryBgColor,
   whiteBgColor,
+  navPrimBgClr,
+  navSecBgClr,
 } from "../common/commonStyles";
 import { Sling as Hamburger } from "hamburger-react";
 import {
@@ -26,10 +28,40 @@ import {
   slideFwdTop,
 } from "../common/animations";
 import { darkTheme } from "../../assets/common/commonText";
-import { Slide } from "@mui/material";
+import { ClickAwayListener, Slide, useMediaQuery } from "@mui/material";
 
 const MenuBar = () => {
   const { theme, isOpen, setOpen } = useContext(ThemeContext);
+  const matches = useMediaQuery("(max-width:768px)");
+
+  function makeBlur(elementID, style) {
+    var element = document.getElementById(elementID);
+    element.style.filter = style;
+  }
+  function handleClose() {
+    if (isOpen) {
+      setOpen(!isOpen);
+    }
+  }
+  useEffect(() => {
+    if (matches && isOpen) {
+      [
+        "homeElement",
+        "aboutElement",
+        "expElement",
+        "contactElement",
+        "footerElement",
+      ].map((ele) => makeBlur(ele, "blur(4px)"));
+    } else {
+      [
+        "homeElement",
+        "aboutElement",
+        "expElement",
+        "contactElement",
+        "footerElement",
+      ].map((ele) => makeBlur(ele, "none"));
+    }
+  }, [matches, isOpen]);
 
   return (
     <>
@@ -66,6 +98,7 @@ const MenuBar = () => {
             </LogoLinkM>
             <StyledBoxM id="navLinksM" sx={{ flexGrow: 1 }}>
               <Hamburger
+                id="mobileHamburgerIcon"
                 style={{ display: "flex-end" }}
                 toggled={isOpen}
                 toggle={setOpen}
@@ -90,6 +123,7 @@ const MenuBar = () => {
                 </NavText>
               ))}
               <Hamburger
+                id="hamburgerIcon"
                 toggled={isOpen}
                 toggle={setOpen}
                 duration={0.8}
@@ -99,26 +133,35 @@ const MenuBar = () => {
           </Toolbar>
         </NavContainer>
       </StyledAppBar>
-      <Slide direction="left" in={isOpen} mountOnEnter unmountOnExit>
-        <SideNav id="mobileNavBar" newtheme={theme} open={isOpen}>
-          <MobileNav>
-            {pageRoutes.map((page) => (
-              <NavText key={page.id} newtheme={theme} open={isOpen}>
-                <HomeLink
-                  key={page.id}
-                  to={page.id}
-                  spy={true}
-                  smooth={true}
-                  duration={500}
-                  tabIndex={1}
-                >
-                  {page.name}
-                </HomeLink>
-              </NavText>
-            ))}
-          </MobileNav>
-        </SideNav>
-      </Slide>
+      {/* <ClickAwayListener onClickAway={handleClose}> */}
+        <Slide
+          direction="left"
+          id="mobileNavBar"
+          in={isOpen}
+          mountOnEnter
+          unmountOnExit
+        >
+          <SideNav id="navBarM" newtheme={theme} open={isOpen}>
+            <MobileNav>
+              {pageRoutes.map((page) => (
+                <NavText key={page.id} newtheme={theme} open={isOpen}>
+                  <HomeLink
+                    key={page.id}
+                    to={page.id}
+                    spy={true}
+                    onClick={handleClose}
+                    smooth={true}
+                    duration={500}
+                    tabIndex={1}
+                  >
+                    {page.name}
+                  </HomeLink>
+                </NavText>
+              ))}
+            </MobileNav>
+          </SideNav>
+        </Slide>
+      {/* </ClickAwayListener> */}
     </>
   );
 };
@@ -160,26 +203,29 @@ const StyledBox = styled(Box)`
 `;
 
 const SideNav = styled.aside`
-  height: 100%;
-  width: 50%;
-  @media (max-width: 425px) {
-    width: 65%;
-  }
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  right: 0;
-  display: flex;
-  -moz-box-pack: center;
-  justify-content: center;
-  -moz-box-align: center;
-  align-items: center;
-  background-color: ${(props) =>
-    props.newtheme === darkTheme ? primaryBgColor : whiteBgColor};
-  overflow-x: hidden;
-  box-shadow: -10px 0px 30px -15px ${(props) => (props.newtheme === darkTheme ? primaryBgColor : whiteBgColor)};
-  @media (min-width: 768px) {
-    display: none;
+  &&& {
+    height: 100%;
+    filter: none;
+    width: 50%;
+    @media (max-width: 425px) {
+      width: 65%;
+    }
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    display: flex;
+    -moz-box-pack: center;
+    justify-content: center;
+    -moz-box-align: center;
+    align-items: center;
+    background-color: ${(props) =>
+      props.newtheme === darkTheme ? navPrimBgClr : whiteBgColor};
+    overflow-x: hidden;
+    box-shadow: -10px 0px 30px -15px ${(props) => (props.newtheme === darkTheme ? primaryBgColor : whiteBgColor)};
+    @media (min-width: 768px) {
+      display: none;
+    }
   }
 `;
 

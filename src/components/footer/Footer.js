@@ -17,7 +17,7 @@ import { slideInBottom } from "../common/animations";
 
 const Footer = () => {
   return (
-    <StyledFooter>
+    <StyledFooter id="footerElement">
         <IconDiv>
           <SocialIcons
             iconId={linkedInID}

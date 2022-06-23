@@ -110,7 +110,7 @@ const Contact = () => {
   }
 
   return (
-    <ContactElement name="contact">
+    <ContactElement id="contactElement" name="contact">
       <ContactContainer id="contactContainer">
         <Zoom triggerOnce style={{ width: "100%" }}>
           <ContactStack id="contactStack" direction="row" spacing={2}>

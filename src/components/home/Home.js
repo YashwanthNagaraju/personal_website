@@ -37,7 +37,7 @@ const Home = () => {
   const nameString = ["Y", "a", "s", "h", "w", "a", "n", "t", "h", ","];
 
   return (
-    <HomeElement name="home">
+    <HomeElement id="homeElement" name="home">
       <HomeContainer id="homeContainer" maxWidth="xl">
         <HomeBox id="homeBox" sx={{ flexGrow: 1 }}>
           <Zoom triggerOnce>

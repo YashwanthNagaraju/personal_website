@@ -34,7 +34,7 @@ function App() {
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme, isOpen, setOpen }}>
-      <Appdiv className="App" newtheme={theme}>
+      <Appdiv className="App" id="App" newtheme={theme}>
         {/* {timeOut !== 1 && <Loader />} */}
         {/* {timeOut == 1 && ( */}
         <MenuBar />
