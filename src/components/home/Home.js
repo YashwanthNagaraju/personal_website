@@ -22,12 +22,11 @@ const Home = () => {
     "A Web Developer",
     "An Artist(Kind Of..)",
     "Eternally Hungry",
-    "A thrifty Student",
-    "Skilled Junk Food Eater",
+    "A Thrifty Student",
   ];
   useEffect(() => {
     const interval = setInterval(() => {
-      const select = Math.floor(Math.random() * 5);
+      const select = Math.floor(Math.random() * 4);
       setSubtitle(subtitleTexts[select]);
     }, 3000);
     return () => clearInterval(interval);
@@ -51,7 +50,7 @@ const Home = () => {
               >
                 Hello there.
               </GeneralText>
-              <HomeHeading component="h1" tabIndex={1}>
+              <HomeHeading id="nameHeader" component="h1" tabIndex={1}>
                 {introString.map((char, index) => (
                   <NameSpan key={index} newtheme={theme}>
                     {char}
@@ -73,7 +72,7 @@ const Home = () => {
                   .
                 </span>
               </SubHeading>
-              <SubText style={{ marginTop: "15px" }}>
+              <SubText id="subText" style={{ marginTop: "15px" }}>
                 An enthusiastic web developer with a passion to design and code
                 user interfaces for people and their business.
               </SubText>
@@ -84,7 +83,7 @@ const Home = () => {
           component="img"
           alt="Yashwanth Nagaraju's photo - he ain't good looking"
           src={require("../../assets/images/john.png")}
-          id="imageHomeBox"
+          id="homeImageBox"
         ></HomeInfoBox>
       </HomeContainer>
     </HomeElement>

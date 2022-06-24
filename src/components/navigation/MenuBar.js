@@ -32,25 +32,17 @@ import { Slide, useMediaQuery } from "@mui/material";
 const MenuBar = () => {
   const { theme, isOpen, setOpen } = useContext(ThemeContext);
   const matches = useMediaQuery("(max-width:768px)");
-  const ref = useRef(null);
-
-  const handleHideDropdown = (event) => {
-    if (event.key === "Escape" && isOpen) {
-      setOpen(!isOpen);
-    }
-  };
-
-  const handleClickOutside = (event) => {
-    if (ref.current && !ref.current.contains(event.target) && isOpen) {
-      setOpen(!isOpen);
-    }
-  };
 
   function makeBlur(elementID, style) {
     var element = document.getElementById(elementID);
     element.style.filter = style;
   }
 
+  function handleClickAway() {
+    if (isOpen) {
+      setOpen(!isOpen);
+    }
+  }
   function handleClose() {
     if (isOpen) {
       setOpen(!isOpen);
@@ -93,15 +85,24 @@ const MenuBar = () => {
       };
     }
   });
-
-  //hide mobile nav on escape and click away
+  //to handle click away and escape
   useEffect(() => {
-    document.addEventListener("keydown", handleHideDropdown, true);
-    document.addEventListener("click", handleClickOutside, true);
-    return () => {
-      document.removeEventListener("keydown", handleHideDropdown, true);
-      document.removeEventListener("click", handleClickOutside, true);
-    };
+    document.getElementById("App").addEventListener("keydown", function(e) {
+      if (e.key === "Escape" && isOpen) {
+        setOpen(!isOpen);
+      }
+    });
+    var homeEl = document.getElementById("homeElement");
+    var aboutEl = document.getElementById("aboutElement");
+    var expEl = document.getElementById("expElement");
+    var contactEl = document.getElementById("contactElement");
+    var footerEl = document.getElementById("footerElement");
+
+    homeEl.onclick = handleClickAway;
+    aboutEl.onclick = handleClickAway;
+    expEl.onclick = handleClickAway;
+    contactEl.onclick = handleClickAway;
+    footerEl.onclick = handleClickAway;
   });
 
   return (
@@ -180,7 +181,6 @@ const MenuBar = () => {
         in={isOpen}
         mountOnEnter
         unmountOnExit
-        ref={ref}
       >
         <SideNav id="navBarM" newtheme={theme} open={isOpen}>
           <MobileNav>

@@ -12,7 +12,7 @@ export const blueColor = "#075fe4";
 export const purpleColor = "#5e3bee";
 export const errorColor = "#B00020";
 export const successColor = "rgb(56, 142, 60)";
-export const navPrimBgClr ='#1a1e23';
+export const navPrimBgClr = "#1a1e23";
 
 export const myFont = "Oswald";
 
