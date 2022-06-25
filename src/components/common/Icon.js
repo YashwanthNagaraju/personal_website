@@ -6,19 +6,23 @@ import {
   FiSun,
   FiMoon,
   FiMusic,
+  FiPhoneCall,
 } from "react-icons/fi";
 import { ThemeContext } from "../../App";
 import {
   darkTheme,
+  emailID,
   githubID,
   instagramID,
   lightTheme,
   linkedInID,
+  phoneID,
 } from "../../assets/common/commonText";
 import styled from "styled-components";
 import { blackTextColor, whiteColor } from "../common/commonStyles";
 import { puffOutCenter, pulsateForward } from "../common/animations";
 import { BsSoundwave } from "react-icons/bs";
+import { AiOutlineMail } from "react-icons/ai";
 
 export const SocialIcons = ({ iconId, iconLink, iconSize }) => {
   const { theme } = useContext(ThemeContext);
@@ -27,6 +31,8 @@ export const SocialIcons = ({ iconId, iconLink, iconSize }) => {
       {iconId === instagramID && <FiInstagram size={iconSize} />}
       {iconId === linkedInID && <FiLinkedin size={iconSize} />}
       {iconId === githubID && <FiGithub size={iconSize} />}
+      {iconId === emailID && <AiOutlineMail size={iconSize} />}
+      {iconId === phoneID && <FiPhoneCall size={iconSize} />}
     </LinkNoStyle>
   );
 };
@@ -75,7 +81,7 @@ export const ThemeIcon = ({ iconSize }) => {
 
 const IconButton = styled.button`
   && {
-    z-index:1;
+    z-index: 1;
     background-color: transparent;
     padding: 0%;
     color: ${(props) =>
@@ -91,7 +97,7 @@ const IconButton = styled.button`
 
 const ThemeButton = styled.button`
   && {
-    z-index:1;
+    z-index: 1;
     background-color: transparent;
     padding: 0%;
     &:active {
@@ -109,7 +115,7 @@ const ThemeButton = styled.button`
 const LinkNoStyle = styled.a`
   text-decoration: none;
   display: inline-block;
-  z-index:1;
+  z-index: 1;
   color: ${(props) =>
     props.color === darkTheme ? whiteColor : blackTextColor};
   &:hover {

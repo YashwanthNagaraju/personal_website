@@ -2,7 +2,7 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import styled from "styled-components";
 import { darkTheme } from "../../assets/common/commonText";
-import { fadeIn, slideInBottom } from "./animations";
+import { fadeIn, slideInBtmAmt } from "./animations";
 
 export const primaryBgColor = "#15181C";
 export const whiteBgColor = "#f2f1ef";
@@ -34,16 +34,16 @@ export const MyText = styled(Typography)`
       font-size: 20px !important;
     }
     @media (min-width: 1024px) and (max-width: 1200px) {
-      font-size: 24px !important;
+      font-size: 22px !important;
     }
     @media (min-width: 1200px) and (max-width: 1400px) {
-      font-size: 24px !important;
+      font-size: 22px !important;
     }
     @media (min-width: 1400px) and (max-width: 1536px) {
-      font-size: 24px !important;
+      font-size: 22px !important;
     }
     @media (min-width: 1536px) {
-      font-size: 24px !important;
+      font-size: 22px !important;
     }
     font-family: ${myFont};
   }
@@ -102,14 +102,13 @@ export const ListItems = styled.li`
 `;
 
 export const IconsDiv = styled.div`
-  @media (min-width: 768px) {
+  @media (min-width: 900px) {
     display: block;
     position: fixed;
     bottom: 0px;
     padding-bottom: 3.5vh;
-    -webkit-animation: ${slideInBottom} 1.5s
-      cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-    animation: ${slideInBottom} 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    -webkit-animation: ${slideInBtmAmt};
+    animation: ${slideInBtmAmt};
   }
   display: none;
 `;

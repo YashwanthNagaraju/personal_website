@@ -22,7 +22,6 @@ import { useContext, useState } from "react";
 import { apiKey } from "./model/emailKey";
 import { ThemeContext } from "../../App";
 import { Alert, Snackbar } from "@mui/material";
-import { entryAnimation, exitAnimation } from "../common/animations";
 import {
   alertVerticalPos,
   alertHorizontalPos,
@@ -42,15 +41,6 @@ const Contact = () => {
   });
   const [info, setInfo] = useState("");
   const { vertical, horizontal, msg } = status;
-  function moveUp() {
-    const ele = document.getElementById("effectDiv");
-    ele.style.paddingBottom = "6vh";
-  }
-
-  function moveDown() {
-    const ele = document.getElementById("effectDiv");
-    ele.style.paddingBottom = "3.5vh";
-  }
 
   function setPosition(text) {
     setStatus({
@@ -61,14 +51,11 @@ const Contact = () => {
   }
   function handleSuccess(infoText) {
     setInfo(infoText);
-    moveUp();
     setPosition("success");
   }
 
-
   function handleError(infoText) {
     setInfo(infoText);
-    moveUp();
     setPosition("error");
   }
 
@@ -106,12 +93,10 @@ const Contact = () => {
 
   function handleClose(e) {
     if (e.reason === "clickaway") {
-      moveDown();
       setPosition("");
       return;
     }
     setInfo("");
-    moveDown();
     setPosition("");
   }
 
@@ -324,6 +309,7 @@ const ContactInfoBox = styled(Box)`
   }
   @media (min-width: 900px) {
     padding-top:0%;
+    margin-left:0%;
     width: 50%;
   }
 }
@@ -361,7 +347,7 @@ const MessageButton = styled(Button)`
       margin: initial;
     }
     @media (max-width: 600px) {
-      min-width:50%;
+      min-width: 50%;
     }
   }
 `;
@@ -395,7 +381,7 @@ const ContactHeading = styled(GeneralText)`
 `;
 
 const InfoBar = styled(Snackbar)`
-  -webkit-animation: ${(props) =>
-    props.open ? entryAnimation : exitAnimation};
-  animation: ${(props) => (props.open ? entryAnimation : exitAnimation)};
+  && {
+    display: flex;
+  }
 `;

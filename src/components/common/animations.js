@@ -161,3 +161,36 @@ const trackingIn = keyframes`
 export const trackingInAnimation = css`
   ${trackingIn} 1.5s cubic-bezier(0.215, 0.610, 0.355, 1.000) both
 `;
+
+const slideInTop = keyframes`
+0% {
+  -webkit-transform: translateY(-1000px);
+  transform: translateY(-1000px);
+  opacity: 0;
+}
+100% {
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+  opacity: 1;
+}
+`;
+export const slideInTopAmt = css`
+  ${slideInTop} 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both
+`;
+
+const slideOutTop = keyframes`
+0% {
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+  opacity: 1;
+}
+100% {
+  -webkit-transform: translateY(-1000px);
+  transform: translateY(-1000px);
+  opacity: 0;
+}
+`;
+
+export const slideOutTopAmt = css`
+  ${slideOutTop} 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both
+`;
