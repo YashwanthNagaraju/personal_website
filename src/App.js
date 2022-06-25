@@ -6,8 +6,6 @@ import Contact from "./components/contact/Contact";
 import styled from "styled-components";
 import Footer from "./components/footer/Footer";
 import Social from "./components/social/Social";
-// import Email from './components/social/Email'
-// import Loader from './components/loader/Loader'
 import Home from "./components/home/Home";
 import Effect from "./components/social/Effect";
 import {
@@ -17,20 +15,15 @@ import {
   whiteColor,
 } from "./components/common/commonStyles";
 import MenuBar from "./components/navigation/MenuBar";
-// import { MobileBar } from "./components/navigation/MobileBar";
 import { darkTheme, lightTheme } from "./assets/common/commonText";
 
 export const ThemeContext = createContext();
 
 function App() {
-  // const [timeOut, setTimeOut] = useState(null);
   const date = new Date();
   const isEvening = date.getHours() > 20 || date.getHours() < 7;
   const [theme, setTheme] = useState(isEvening ? darkTheme : lightTheme);
   const [isOpen, setOpen] = useState(false);
-  // setTimeout(() => {
-  //   setTimeOut(1);
-  // }, 3000);
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme, isOpen, setOpen }}>

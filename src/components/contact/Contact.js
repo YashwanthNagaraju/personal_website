@@ -24,7 +24,7 @@ import { ThemeContext } from "../../App";
 import { Alert, Snackbar } from "@mui/material";
 import { entryAnimation, exitAnimation } from "../common/animations";
 import { darkTheme } from "../../assets/common/commonText";
-import { Zoom } from "react-awesome-reveal";
+import { Fade } from "react-awesome-reveal";
 
 const Contact = () => {
   const [name, setName] = useState("");
@@ -39,12 +39,12 @@ const Contact = () => {
   const [info, setInfo] = useState("");
   const { vertical, horizontal, msg } = status;
   function moveUp() {
-    var ele = document.getElementById("effectDiv");
+    const ele = document.getElementById("effectDiv");
     ele.style.paddingBottom = "6vh";
   }
 
   function moveDown() {
-    var ele = document.getElementById("effectDiv");
+    const ele = document.getElementById("effectDiv");
     ele.style.paddingBottom = "3.5vh";
   }
   function handleSuccess(infoText) {
@@ -112,10 +112,10 @@ const Contact = () => {
   return (
     <ContactElement id="contactElement" name="contact">
       <ContactContainer id="contactContainer">
-        <Zoom triggerOnce style={{ width: "100%" }}>
+        <Fade triggerOnce style={{ width: "100%" }}>
           <ContactStack id="contactStack" direction="row" spacing={2}>
             <ContactBox id="contactBox">
-              <ContactHeading variant="h2" gutterBottom>
+              <ContactHeading variant="h2">
                 <LineDiv newtheme={theme} id="randomLine"></LineDiv>
                 Have a project on your mind?
                 <br />
@@ -170,7 +170,7 @@ const Contact = () => {
               </MessageButton>
             </ContactInfoBox>
           </ContactStack>
-        </Zoom>
+        </Fade>
         {msg !== "" && (
           <InfoBar
             id="infoBar"
@@ -295,6 +295,7 @@ const TextField = styled.textarea`
 
 const ContactBox = styled(Box)`
   align-content: baseline;
+  margin:auto;
   @media (max-width: 900px) {
     height:50vh
     width: 80%;
@@ -324,7 +325,7 @@ const ContactInfoBox = styled(Box)`
 
 const MessageButton = styled(Button)`
   && {
-    padding: 8px 0px;
+    padding: 2% 0%;
     color: ${(props) =>
       props.newtheme === darkTheme ? blueColor : purpleColor};
     border: 3px solid
@@ -337,6 +338,8 @@ const MessageButton = styled(Button)`
       color: ${(props) =>
         props.newtheme === darkTheme ? primaryBgColor : whiteBgColor};
     }
+    margin: auto;
+    border-radius: 50px;
     -webkit-transition: background-color 1.2s linear;
     -ms-transition: background-color 1.2s linear;
     transition: background-color 1.2s linear;
@@ -346,6 +349,10 @@ const MessageButton = styled(Button)`
     text-transform: capitalize;
     @media (max-width: 425px) {
       font-size: 16px !important;
+    }
+    @media (min-width: 900px) {
+      border-radius: 0%;
+      margin: initial;
     }
   }
 `;

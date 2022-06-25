@@ -125,3 +125,8 @@ export const TagSpan = styled.span`
   color: ${(props) =>
     props.newtheme === darkTheme ? whiteColor : blackTextColor};
 `;
+
+export const ColorSpan = styled.span`
+  color: ${(props) =>
+    props.newtheme === darkTheme ? whiteColor : blackTextColor};
+`;

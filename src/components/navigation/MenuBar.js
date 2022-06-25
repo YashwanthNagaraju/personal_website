@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -32,24 +32,22 @@ import { Slide, useMediaQuery } from "@mui/material";
 const MenuBar = () => {
   const { theme, isOpen, setOpen } = useContext(ThemeContext);
   const matches = useMediaQuery("(max-width:768px)");
+  const [scrollPosition, setScrollPosition] = useState();
 
-  function makeBlur(elementID, style) {
-    var element = document.getElementById(elementID);
+  function handleBlur(elementID, style) {
+    const element = document.getElementById(elementID);
     element.style.filter = style;
   }
 
-  function handleClickAway() {
-    if (isOpen) {
-      setOpen(!isOpen);
-    }
-  }
   function handleClose() {
     if (isOpen) {
       setOpen(!isOpen);
     }
   }
-  function logit() {
-    setOpen(!isOpen);
+
+  function handleNav(elementID) {
+    const element = document.getElementById(elementID);
+    element.onclick = handleClose;
   }
 
   //blur other elements when mobile nav bar is active
@@ -61,7 +59,7 @@ const MenuBar = () => {
         "expElement",
         "contactElement",
         "footerElement",
-      ].map((ele) => makeBlur(ele, "blur(4px)"));
+      ].map((ele) => handleBlur(ele, "blur(4px)"));
     } else {
       [
         "homeElement",
@@ -69,7 +67,7 @@ const MenuBar = () => {
         "expElement",
         "contactElement",
         "footerElement",
-      ].map((ele) => makeBlur(ele, "none"));
+      ].map((ele) => handleBlur(ele, "none"));
     }
   }, [matches, isOpen]);
 
@@ -77,14 +75,15 @@ const MenuBar = () => {
   useEffect(() => {
     if (isOpen) {
       function watchScroll() {
-        window.addEventListener("scroll", logit);
+        window.addEventListener("scroll", handleClose);
       }
       watchScroll();
       return () => {
-        window.removeEventListener("scroll", logit);
+        window.removeEventListener("scroll", handleClose);
       };
     }
   });
+
   //to handle click away and escape
   useEffect(() => {
     document.getElementById("App").addEventListener("keydown", function(e) {
@@ -92,17 +91,27 @@ const MenuBar = () => {
         setOpen(!isOpen);
       }
     });
-    var homeEl = document.getElementById("homeElement");
-    var aboutEl = document.getElementById("aboutElement");
-    var expEl = document.getElementById("expElement");
-    var contactEl = document.getElementById("contactElement");
-    var footerEl = document.getElementById("footerElement");
+    [
+      "homeElement",
+      "aboutElement",
+      "expElement",
+      "contactElement",
+      "footerElement",
+    ].map((ele) => handleNav(ele));
+  });
 
-    homeEl.onclick = handleClickAway;
-    aboutEl.onclick = handleClickAway;
-    expEl.onclick = handleClickAway;
-    contactEl.onclick = handleClickAway;
-    footerEl.onclick = handleClickAway;
+  useEffect(() => {
+    window.onscroll = function() {
+      const currentScrollPos = window.pageYOffset;
+      if (scrollPosition > currentScrollPos) {
+        document.getElementById("navBar").style.top = "0";
+        document.getElementById("navBar").style.transition = "0.7s";
+      } else {
+        document.getElementById("navBar").style.top = "-15%";
+        document.getElementById("navBar").style.transition = "0.7s";
+      }
+      setScrollPosition(currentScrollPos);
+    };
   });
 
   return (
@@ -145,7 +154,7 @@ const MenuBar = () => {
                 toggled={isOpen}
                 toggle={setOpen}
                 duration={0.8}
-                size={24}
+                size={26}
                 color={theme === darkTheme ? whiteColor : blackTextColor}
               />
             </StyledBoxM>

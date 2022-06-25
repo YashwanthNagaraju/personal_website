@@ -8,6 +8,7 @@ import {
   purpleColor,
   CommonDiv,
   GeneralText,
+  ColorSpan,
 } from "../common/commonStyles";
 import { Element } from "react-scroll";
 import { jelloHorz, trackingInAnimation } from "../common/animations";
@@ -20,7 +21,7 @@ const Home = () => {
   const [subtitle, setSubtitle] = useState("A Web Developer");
   const subtitleTexts = [
     "A Web Developer",
-    "An Artist(Kind Of..)",
+    "An Artist(Kind of..)",
     "Eternally Hungry",
     "A Thrifty Student",
   ];
@@ -64,17 +65,10 @@ const Home = () => {
               </HomeHeading>
               <SubHeading key={subtitle} id="subHeading" change={subtitle}>
                 {subtitle}
-                <span
-                  style={{
-                    color: theme === darkTheme ? blueColor : purpleColor,
-                  }}
-                >
-                  .
-                </span>
+                <ColorSpan newtheme={theme}>.</ColorSpan>
               </SubHeading>
               <SubText id="subText" style={{ marginTop: "15px" }}>
-                An enthusiastic web developer with a passion to design and code
-                user interfaces for people and their business.
+                I'm a web developer or simply a person who is constantly in a paradoxical emotion of love and hate with coding.
               </SubText>
             </CommonDiv>
           </Zoom>

@@ -10,7 +10,7 @@ import {
 import { Element } from "react-scroll";
 import { useContext } from "react";
 import { ThemeContext } from "../../App";
-import { Zoom } from "react-awesome-reveal";
+import { Fade } from "react-awesome-reveal";
 
 const About = () => {
   const { theme } = useContext(ThemeContext);
@@ -19,7 +19,7 @@ const About = () => {
       <AboutContainer id="aboutContainer">
         {/* <AboutStack id="AboutStack" direction="row" spacing={2}> */}
         <AboutBox id="aboutBox">
-          <Zoom triggerOnce>
+          <Fade triggerOnce>
             <CommonDiv>
               <HeaderText newtheme={theme}>
                 <TagSpan newtheme={theme}>{"<"}</TagSpan>
@@ -42,7 +42,7 @@ const About = () => {
                 customized websites.
               </MyText>
             </CommonDiv>
-          </Zoom>
+          </Fade>
         </AboutBox>
         <AboutInfoBox component="div" id="imageAboutBox">
           <Box

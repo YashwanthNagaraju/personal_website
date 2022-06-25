@@ -10,7 +10,7 @@ import {
 import { Element } from "react-scroll";
 import { useContext } from "react";
 import { ThemeContext } from "../../App";
-import { Zoom } from "react-awesome-reveal";
+import { Fade } from "react-awesome-reveal";
 
 const Experience = () => {
   const { theme } = useContext(ThemeContext);
@@ -19,7 +19,7 @@ const Experience = () => {
     <ExperienceElement id="expElement" name="experience">
       <ExperienceContainer id="experienceContainer">
         <ExperienceBox id="experienceBox">
-          <Zoom triggerOnce>
+          <Fade triggerOnce>
             <CommonDiv>
               <HeaderText
                 newtheme={theme}
@@ -42,7 +42,7 @@ const Experience = () => {
                 sunt in culpa qui officia deserunt mollit anim id est laborum.
               </MyText>
             </CommonDiv>
-          </Zoom>
+          </Fade>
         </ExperienceBox>
         <ExperienceInfoBox component="div"></ExperienceInfoBox>
       </ExperienceContainer>
