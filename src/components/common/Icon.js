@@ -75,6 +75,7 @@ export const ThemeIcon = ({ iconSize }) => {
 
 const IconButton = styled.button`
   && {
+    z-index:1;
     background-color: transparent;
     padding: 0%;
     color: ${(props) =>
@@ -90,6 +91,7 @@ const IconButton = styled.button`
 
 const ThemeButton = styled.button`
   && {
+    z-index:1;
     background-color: transparent;
     padding: 0%;
     &:active {
@@ -107,6 +109,7 @@ const ThemeButton = styled.button`
 const LinkNoStyle = styled.a`
   text-decoration: none;
   display: inline-block;
+  z-index:1;
   color: ${(props) =>
     props.color === darkTheme ? whiteColor : blackTextColor};
   &:hover {

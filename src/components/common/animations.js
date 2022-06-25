@@ -9,22 +9,6 @@ export const fadeIn = keyframes`
   }
 `;
 
-// export const puffInCenter = keyframes`
-// 0% {
-//   -webkit-transform: scale(2);
-//   transform: scale(2);
-//   -webkit-filter: blur(4px);
-//   filter: blur(4px);
-//   opacity: 0;
-// }
-// 100% {
-//   -webkit-transform: scale(1);
-//   transform: scale(1);
-//   -webkit-filter: blur(0px);
-//   filter: blur(0px);
-//   opacity: 1;
-// }`;
-
 export const puffOutCenter = keyframes`
 0% {
   -webkit-transform: scale(1);
@@ -107,6 +91,10 @@ export const slideInRightWithBlur = keyframes`
 }
 `;
 
+export const entryAnimation = css`
+  ${slideInRightWithBlur} 0.8s cubic-bezier(0.23, 1, 0.32, 1) both;
+`;
+
 export const slideOutRight = keyframes`
 0% {
   -webkit-transform: translateX(0);
@@ -119,15 +107,12 @@ export const slideOutRight = keyframes`
   opacity: 0;
 }
 `;
-export const entryAnimation = css`
-  ${slideInRightWithBlur} 0.8s cubic-bezier(0.23, 1, 0.32, 1) both;
-`;
 
 export const exitAnimation = css`
   ${slideOutRight} 0.8s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
 `;
 
-export const slideFwdTop = keyframes`
+const slideFwdTop = keyframes`
 0% {
   -webkit-transform: translateZ(-1400px) translateY(-800px);
   transform: translateZ(-1400px) translateY(-800px);
@@ -140,7 +125,11 @@ export const slideFwdTop = keyframes`
 }
 `;
 
-export const slideInBottom = keyframes`
+export const slideFwdTopAmt = css`
+  ${slideFwdTop} 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both
+`;
+
+const slideInBottom = keyframes`
 0% {
   -webkit-transform: translateY(1000px);
   transform: translateY(1000px);
@@ -150,6 +139,10 @@ export const slideInBottom = keyframes`
   -webkit-transform: translateY(0);
   transform: translateY(0);
   opacity: 1;
+`;
+
+export const slideInBtmAmt = css`
+  ${slideInBottom} 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both
 `;
 
 const trackingIn = keyframes`
@@ -165,20 +158,6 @@ const trackingIn = keyframes`
 }
 `;
 
-// const trackingOut = keyframes`
-// 0% {
-//   opacity: 1;
-// }
-// 50% {
-//   opacity: 1;
-// }
-// 100% {
-//   letter-spacing: -0.5em;
-//   opacity: 0;
-// }
-// `;
-
 export const trackingInAnimation = css`
   ${trackingIn} 1.5s cubic-bezier(0.215, 0.610, 0.355, 1.000) both
 `;
-// export const trackingOutAnimation = css`${trackingOut} 1.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both`;

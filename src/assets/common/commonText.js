@@ -7,3 +7,6 @@ export const laptopSize = 26;
 
 export const darkTheme = "dark";
 export const lightTheme = "light";
+
+export const alertVerticalPos = 'top';
+export const alertHorizontalPos = 'center';

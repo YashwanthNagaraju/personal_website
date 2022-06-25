@@ -24,7 +24,7 @@ import { Sling as Hamburger } from "hamburger-react";
 import {
   entryAnimation,
   exitAnimation,
-  slideFwdTop,
+  slideFwdTopAmt,
 } from "../common/animations";
 import { darkTheme } from "../../assets/common/commonText";
 import { Slide, useMediaQuery } from "@mui/material";
@@ -33,6 +33,13 @@ const MenuBar = () => {
   const { theme, isOpen, setOpen } = useContext(ThemeContext);
   const matches = useMediaQuery("(max-width:768px)");
   const [scrollPosition, setScrollPosition] = useState();
+  const elementArray = [
+    "homeElement",
+    "aboutElement",
+    "expElement",
+    "contactElement",
+    "footerElement",
+  ];
 
   function handleBlur(elementID, style) {
     const element = document.getElementById(elementID);
@@ -53,25 +60,12 @@ const MenuBar = () => {
   //blur other elements when mobile nav bar is active
   useEffect(() => {
     if (matches && isOpen) {
-      [
-        "homeElement",
-        "aboutElement",
-        "expElement",
-        "contactElement",
-        "footerElement",
-      ].map((ele) => handleBlur(ele, "blur(4px)"));
+      elementArray.map((ele) => handleBlur(ele, "blur(4px)"));
     } else {
-      [
-        "homeElement",
-        "aboutElement",
-        "expElement",
-        "contactElement",
-        "footerElement",
-      ].map((ele) => handleBlur(ele, "none"));
+      elementArray.map((ele) => handleBlur(ele, "none"));
     }
   }, [matches, isOpen]);
 
-  //hide mobile nav on mouse scroll
   useEffect(() => {
     if (isOpen) {
       function watchScroll() {
@@ -82,33 +76,31 @@ const MenuBar = () => {
         window.removeEventListener("scroll", handleClose);
       };
     }
-  });
+  }, [matches, isOpen]);
 
-  //to handle click away and escape
+  // to handle click away and escape
   useEffect(() => {
-    document.getElementById("App").addEventListener("keydown", function(e) {
-      if (e.key === "Escape" && isOpen) {
-        setOpen(!isOpen);
+    window.addEventListener("keydown", function(e) {
+      if (e.key === "Escape") {
+        handleClose();
       }
     });
-    [
-      "homeElement",
-      "aboutElement",
-      "expElement",
-      "contactElement",
-      "footerElement",
-    ].map((ele) => handleNav(ele));
-  });
+
+    elementArray.map((ele) => handleNav(ele));
+    return () => {
+      window.removeEventListener("keydown", handleClose);
+    };
+  }, [isOpen]);
 
   useEffect(() => {
     window.onscroll = function() {
       const currentScrollPos = window.pageYOffset;
       if (scrollPosition > currentScrollPos) {
         document.getElementById("navBar").style.top = "0";
-        document.getElementById("navBar").style.transition = "0.7s";
+        document.getElementById("navBar").style.transition = "0.5s";
       } else {
         document.getElementById("navBar").style.top = "-15%";
-        document.getElementById("navBar").style.transition = "0.7s";
+        document.getElementById("navBar").style.transition = "0.5s";
       }
       setScrollPosition(currentScrollPos);
     };
@@ -222,9 +214,8 @@ const HomeLink = styled(Link)`
 
 const NavContainer = styled(Container)`
   && {
-    -webkit-animation: ${slideFwdTop} 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-      both;
-    animation: ${slideFwdTop} 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    -webkit-animation: ${slideFwdTopAmt};
+    animation: ${slideFwdTopAmt};
     @media (max-width: 1024px) {
       max-width: 90% !important;
     }

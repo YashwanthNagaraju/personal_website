@@ -23,7 +23,11 @@ import { apiKey } from "./model/emailKey";
 import { ThemeContext } from "../../App";
 import { Alert, Snackbar } from "@mui/material";
 import { entryAnimation, exitAnimation } from "../common/animations";
-import { darkTheme } from "../../assets/common/commonText";
+import {
+  alertVerticalPos,
+  alertHorizontalPos,
+  darkTheme,
+} from "../../assets/common/commonText";
 import { Fade } from "react-awesome-reveal";
 
 const Contact = () => {
@@ -33,8 +37,8 @@ const Contact = () => {
   const { theme } = useContext(ThemeContext);
   const [status, setStatus] = useState({
     msg: "",
-    vertical: "bottom",
-    horizontal: "right",
+    vertical: alertVerticalPos,
+    horizontal: alertHorizontalPos,
   });
   const [info, setInfo] = useState("");
   const { vertical, horizontal, msg } = status;
@@ -47,24 +51,25 @@ const Contact = () => {
     const ele = document.getElementById("effectDiv");
     ele.style.paddingBottom = "3.5vh";
   }
+
+  function setPosition(text) {
+    setStatus({
+      msg: text,
+      vertical: alertVerticalPos,
+      horizontal: alertHorizontalPos,
+    });
+  }
   function handleSuccess(infoText) {
     setInfo(infoText);
     moveUp();
-    setStatus({
-      msg: "success",
-      vertical: "bottom",
-      horizontal: "right",
-    });
+    setPosition("success");
   }
+
 
   function handleError(infoText) {
     setInfo(infoText);
     moveUp();
-    setStatus({
-      msg: "error",
-      vertical: "bottom",
-      horizontal: "right",
-    });
+    setPosition("error");
   }
 
   function handleSubmit(e) {
@@ -98,15 +103,16 @@ const Contact = () => {
       return handleError("Something went wrong.");
     }
   }
+
   function handleClose(e) {
     if (e.reason === "clickaway") {
       moveDown();
-      setStatus({ msg: "", vertical: "bottom", horizontal: "right" });
+      setPosition("");
       return;
     }
     setInfo("");
     moveDown();
-    setStatus({ msg: "", vertical: "bottom", horizontal: "right" });
+    setPosition("");
   }
 
   return (
@@ -353,6 +359,9 @@ const MessageButton = styled(Button)`
     @media (min-width: 900px) {
       border-radius: 0%;
       margin: initial;
+    }
+    @media (max-width: 600px) {
+      min-width:50%;
     }
   }
 `;
