@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import styled from "styled-components";
 import {
@@ -11,7 +11,7 @@ import {
   ColorSpan,
 } from "../common/commonStyles";
 import { Element } from "react-scroll";
-import { jelloHorz, trackingInAnimation } from "../common/animations";
+import { jelloHorz } from "../common/animations";
 import { ThemeContext } from "../../App";
 import { darkTheme } from "../../assets/common/commonText";
 import { Zoom } from "react-awesome-reveal";
@@ -68,7 +68,7 @@ const Home = () => {
                 <ColorSpan newtheme={theme}>.</ColorSpan>
               </SubHeading>
               <SubText id="subText" style={{ marginTop: "15px" }}>
-                I'm a web developer or simply a person who is constantly in a paradoxical emotion of love and hate with coding.
+                I&apos;m a web developer or simply a person who is constantly in a paradoxical emotion of love and hate with coding.
               </SubText>
             </CommonDiv>
           </Zoom>
@@ -186,8 +186,7 @@ const HomeHeading = styled(GeneralText)`
 `;
 
 const SubHeading = styled(HomeHeading)`
-  animation: ${trackingInAnimation};
-  -webkit-animation: ${trackingInAnimation};
+
 `;
 
 const SubText = styled(MyText)`

@@ -1,5 +1,5 @@
+import React, { createContext, useState } from "react";
 import "./App.css";
-import { createContext, useState } from "react";
 import Experience from "./components/experience/Experience";
 import About from "./components/about/About";
 import Contact from "./components/contact/Contact";

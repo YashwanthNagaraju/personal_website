@@ -1,4 +1,5 @@
-import { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
+import PropTypes from "prop-types";
 import {
   FiInstagram,
   FiGithub,
@@ -24,6 +25,12 @@ import { puffOutCenter, pulsateForward } from "../common/animations";
 import { BsSoundwave } from "react-icons/bs";
 import { AiOutlineMail } from "react-icons/ai";
 
+SocialIcons.propTypes = {
+  iconId: PropTypes.string.isRequired,
+  iconLink: PropTypes.string.isRequired,
+  iconSize: PropTypes.number.isRequired
+};
+
 export const SocialIcons = ({ iconId, iconLink, iconSize }) => {
   const { theme } = useContext(ThemeContext);
   return (
@@ -37,6 +44,10 @@ export const SocialIcons = ({ iconId, iconLink, iconSize }) => {
   );
 };
 let audio = new Audio("/price_of_freedom.mp3");
+
+SoundIcon.propTypes = {
+  iconSize: PropTypes.number.isRequired
+};
 
 export const SoundIcon = ({ iconSize }) => {
   const { theme } = useContext(ThemeContext);
@@ -63,6 +74,10 @@ export const SoundIcon = ({ iconSize }) => {
       {music && <BsSoundwave size={iconSize} />}
     </IconButton>
   );
+};
+
+ThemeIcon.propTypes = {
+  iconSize: PropTypes.number.isRequired
 };
 
 export const ThemeIcon = ({ iconSize }) => {

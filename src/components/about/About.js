@@ -1,3 +1,4 @@
+import React, { useContext } from "react";
 import Box from "@mui/material/Box";
 import styled from "styled-components";
 import {
@@ -8,7 +9,6 @@ import {
   HeaderText,
 } from "../common/commonStyles";
 import { Element } from "react-scroll";
-import { useContext } from "react";
 import { ThemeContext } from "../../App";
 import { Fade } from "react-awesome-reveal";
 

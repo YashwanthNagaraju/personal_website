@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -51,6 +51,9 @@ const MenuBar = () => {
       setOpen(!isOpen);
     }
   }
+  function watchScroll() {
+    window.addEventListener("scroll", handleClose);
+  }
 
   function handleNav(elementID) {
     const element = document.getElementById(elementID);
@@ -68,9 +71,7 @@ const MenuBar = () => {
 
   useEffect(() => {
     if (isOpen) {
-      function watchScroll() {
-        window.addEventListener("scroll", handleClose);
-      }
+  
       watchScroll();
       return () => {
         window.removeEventListener("scroll", handleClose);

@@ -142,7 +142,7 @@ const InfoBox = styled(FooterBox)`
 const FooterText = styled(GeneralText)`
   && {
     font-size: 18px;
-    margin-top: 2%;
+    margin-top: 1%;
   }
 `;
 

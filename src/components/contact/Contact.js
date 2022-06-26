@@ -1,3 +1,4 @@
+import React, { useContext, useState } from "react";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
@@ -17,8 +18,9 @@ import {
   primaryBgColor,
   whiteBgColor,
   GeneralText,
+  navPrimBgClr,
+  navSecBgClr,
 } from "../common/commonStyles";
-import { useContext, useState } from "react";
 import { apiKey } from "./model/emailKey";
 import { ThemeContext } from "../../App";
 import { Alert, Snackbar } from "@mui/material";
@@ -80,10 +82,10 @@ const Contact = () => {
           templateParams,
           apiKey.USER_ID
         )
-        .then((response) => {
+        .then(() => {
           return handleSuccess("Message has been sent.");
         })
-        .catch((err) => {
+        .catch(() => {
           return handleError("Something went wrong.");
         });
     } catch {
@@ -120,7 +122,7 @@ const Contact = () => {
                 id="nameField"
                 type="text"
                 newtheme={theme}
-                placeholder="Your Name"
+                placeholder="Enter your name"
                 style={{}}
                 onChange={(e) => setName(e.target.value)}
               />
@@ -138,7 +140,7 @@ const Contact = () => {
               <HiddenLabel htmlfor="messageField">Message: </HiddenLabel>
               <TextField
                 id="messageField"
-                placeholder="Message"
+                placeholder="Describe what you have in mind"
                 type="text"
                 newtheme={theme}
                 maxLength={1000}
@@ -244,7 +246,11 @@ const LineDiv = styled.div`
 
 const InfoField = styled.input`
   && {
-    background-color: transparent;
+    -webkit-transition: background-color 1.2s linear;
+    -ms-transition: background-color 1.2s linear;
+    transition: background-color 1.2s linear;
+    background-color: ${(props) =>
+      props.newtheme === darkTheme ? navPrimBgClr : navSecBgClr};
     color: ${(props) =>
       props.newtheme === darkTheme ? whiteColor : blackTextColor};
     font-family: ${myFont}!important;
@@ -265,7 +271,11 @@ const InfoField = styled.input`
 
 const TextField = styled.textarea`
   && {
-    background-color: transparent;
+    -webkit-transition: background-color 1.2s linear;
+    -ms-transition: background-color 1.2s linear;
+    transition: background-color 1.2s linear;
+    background-color: ${(props) =>
+      props.newtheme === darkTheme ? navPrimBgClr : navSecBgClr};
     cursor: pointer;
     color: ${(props) =>
       props.newtheme === darkTheme ? whiteColor : blackTextColor};
@@ -286,7 +296,6 @@ const TextField = styled.textarea`
 
 const ContactBox = styled(Box)`
   align-content: baseline;
-  margin:auto;
   @media (max-width: 900px) {
     height:50vh
     width: 80%;

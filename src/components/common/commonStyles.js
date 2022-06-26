@@ -2,7 +2,7 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import styled from "styled-components";
 import { darkTheme } from "../../assets/common/commonText";
-import { fadeIn, slideInBtmAmt } from "./animations";
+import { slideInBtmAmt } from "./animations";
 
 export const primaryBgColor = "#15181C";
 export const whiteBgColor = "#f2f1ef";
@@ -13,7 +13,7 @@ export const purpleColor = "#5e3bee";
 export const errorColor = "#B00020";
 export const successColor = "rgb(56, 142, 60)";
 export const navPrimBgClr = "#1a1e23";
-
+export const navSecBgClr = '#f2f1ef'
 export const myFont = "Oswald";
 
 export const MyText = styled(Typography)`
@@ -76,13 +76,10 @@ export const StyledContainer = styled(Container)`
 
 export const BottomContainer = styled(Container)`
   && {
-    min-height: 90vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    -webkit-animation: ${fadeIn} 1.5s cubic-bezier(0.755, 0.05, 0.855, 0.06)
-      both;
-    animation: ${fadeIn} 1.5s cubic-bezier(0.755, 0.05, 0.855, 0.06) both;
   }
 `;
 

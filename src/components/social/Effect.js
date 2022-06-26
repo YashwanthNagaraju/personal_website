@@ -1,3 +1,4 @@
+import React from "react";
 import { IconContext } from "react-icons";
 import { SoundIcon, ThemeIcon } from "../common/Icon";
 import { laptopSize } from "../../assets/common/commonText";
